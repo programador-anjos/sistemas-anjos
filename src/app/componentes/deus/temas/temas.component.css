@@ -1,0 +1,10 @@
+
+img {
+  width: 10.5%;
+  margin: 0 2% 2% 0;
+  cursor: pointer;
+}
+
+img:hover {
+  scale: 1.2;
+}

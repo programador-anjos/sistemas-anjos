@@ -1,0 +1,19 @@
+
+@import "primeng/resources/primeng.css";
+
+@import "primeicons/primeicons.css";
+
+@import "../node_modules/primeflex/primeflex.scss";
+
+@import "assets/layout/styles/layout/layout.scss";
+
+
+
+/*body {*/
+/*  font-family: var(--font-family);*/
+/*  color: var(--text-color);*/
+/*  background-color: var(--surface-ground);*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  min-height: 100%;*/
+/*}*/

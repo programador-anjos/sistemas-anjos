@@ -1,0 +1,43 @@
+
+p-dialog p {
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  /*border: 1px solid lightgray;*/
+  border-radius: 5px !important;
+}
+
+p:hover {
+  background-color: rgba(255,255,255,0.2) !important;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  background-color: var(--surface-900) !important;
+  color: white;
+}
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background-color: var(--surface-900) !important;
+}
+:host ::ng-deep .p-table > th {
+  background-color: var(--surface-900) !important;
+}
+
+:host ::ng-deep .p-button {
+  width: 100% !important
+}
+
+:host ::ng-deep .p-multiselect {
+  width: 100% !important
+}
+
+:host ::ng-deep .p-button-outlined {
+  border: 1px solid lightgray;
+}
+
+:host ::ng-deep .p-inputnumber-input {
+  width: 90% !important
+}
+
+.p-button .p-button-label {
+  color: red !important;
+}

@@ -1,0 +1,21 @@
+<p-card class="block mt-8 mx-auto max-w-24rem fadein animation-duration-500">
+  <ng-template pTemplate="header">
+    <img alt="Card" src="../../../../assets/imagens/asas.jpg"/>
+  </ng-template>
+  <h4 class="text-center font-bold mt-0 mb-6">Altere sua conta</h4>
+  <div class="mb-5 mt-3">
+        <span class="p-float-label">
+          <input type="text" pInputText id="email" [(ngModel)]="conta.email" class="w-full"/>
+          <label for="email">Email</label>
+        </span>
+  </div>
+  <div class="mb-0">
+        <span class="p-float-label">
+<!--          <input type="text" pInputText id="senha" [(ngModel)]="conta.senha" class="w-full"/>-->
+<!--          <label for="senha">Senha</label>-->
+        </span>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Alterar" icon="pi pi-save" iconPos="right" styleClass="w-full" size="large"></p-button>
+  </ng-template>
+</p-card>

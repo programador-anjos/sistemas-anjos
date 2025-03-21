@@ -1,0 +1,88 @@
+<div class="fadein animation-duration-500 mx-3 my-4 shadow-4">
+
+  <p-table #dt [value]="contas" dataKey="_id" [globalFilterFields]="['sistema', 'login', 'senha', 'qtd', 'plano']" selectionMode="single"
+           styleClass="p-datatable-sm" responsiveLayout="scroll" [scrollable]="true" scrollHeight="700px">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="mt-1 mb-0">{{contas ? contas.length : 0 }} Sistemas</h5>
+        <p-columnFilter field="email" matchMode="contains" [showMenu]="false" [showClearButton]="false">
+          <ng-template pTemplate="filter" let-resultado let-filter="filterCallback">
+            <span class="p-input-icon-right">
+              <i class="pi pi-search"></i>
+              <input class="p-inputtext-sm" pInputText type="text" placeholder="Sistema.."
+                     [ngModel]="resultado" (ngModelChange)="filter($event)" />
+            </span>
+          </ng-template>
+        </p-columnFilter>
+<!--        <p-button icon="pi pi-plus" tooltipPosition="left" pTooltip="Criar" (click)="visivel = true"></p-button>-->
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="sistema">SISTEMA <p-sortIcon field="sistema"></p-sortIcon></th>
+        <th pSortableColumn="plano">PLANO <p-sortIcon field="plano"></p-sortIcon></th>
+        <th pSortableColumn="qtd">QTD REGISTROS <p-sortIcon field="qtd"></p-sortIcon></th>
+        <th pSortableColumn="login">LOGIN <p-sortIcon field="login"></p-sortIcon></th>
+<!--        <th pSortableColumn="senha">SENHA <p-sortIcon field="senha"></p-sortIcon></th>-->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr *ngIf="carregando">
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+<!--        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>-->
+      </tr>
+      <tr *ngIf="!carregando" (click)="passar(item)">
+        <td>{{ item.sistema }}</td>
+        <td>{{ item.plano }}</td>
+        <td>{{ item.qtd }}</td>
+        <td>{{ item.login }}</td>
+<!--        <td>{{ item.senha }}</td>-->
+      </tr>
+    </ng-template>
+<!--    <ng-template pTemplate="footer">-->
+<!--      <tr>-->
+<!--        <td colspan="8">-->
+<!--          Total de registros: {{ lista.length }}-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </ng-template>-->
+  </p-table>
+
+  <p-dialog [header]="'Informações de ' + item.sistema" [(visible)]="visivel"
+            [draggable]="true" [resizable]="false" [modal]="true" [dismissableMask]="true">
+
+    <div class="grid">
+
+<!--      <div class="col-6">-->
+<!--        <h3>Nome</h3>-->
+<!--        <p class="mt-0"><span class="font-bold">Nick:</span> {{ item.nome }}</p>-->
+<!--        <p><span class="font-bold">Item LVL:</span> {{ item.nome }}</p>-->
+<!--        <p><span class="font-bold">Classe:</span> {{ item.nome }}</p>-->
+<!--        <p><span class="font-bold">Especialização:</span> {{ item.nome }}</p>-->
+<!--      </div>-->
+
+<!--      <div class="col-6">-->
+<!--        <h3>Valor</h3>-->
+<!--        <p class="mt-0"><span class="font-bold">Nick:</span> {{ item.valor }}</p>-->
+<!--        <p><span class="font-bold">Item LVL:</span> {{ item.valor }}</p>-->
+<!--        <p><span class="font-bold">Classe:</span> {{ item.valor }}</p>-->
+<!--        <p><span class="font-bold">Especialização:</span> {{ item.valor }}</p>-->
+<!--      </div>-->
+
+    </div>
+
+    <ng-template pTemplate="footer">
+
+      <p style="float: left" class="m-0 mt-3 p-0">Cadastrado em: {{ item }}</p>
+
+      <!--      <p-button label="Responder" iconPos="right" icon="pi pi-send"-->
+      <!--                styleClass="p-button-info" (click)="respostaVisivel = true"></p-button>-->
+
+    </ng-template>
+
+  </p-dialog>
+
+</div>

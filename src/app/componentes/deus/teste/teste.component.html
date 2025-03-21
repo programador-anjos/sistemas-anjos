@@ -1,0 +1,81 @@
+<p-card header="Monte o seu formulário" class="block mt-4 mx-auto w-10 shadow-4 fadein animation-duration-500">
+
+  <div class="grid">
+
+    <div class="col-12 sm:col-12 md:col-12 lg:col-3">
+      <h5 class="mb-4">Campos:</h5>
+      <div class="mt-5">
+        <p-floatLabel pDraggable (onDragStart)="dragStart('Textos')" class="move">
+          <input id="username" type="text" pInputText class="w-full" />
+          <label for="username">Texto</label>
+        </p-floatLabel>
+      </div>
+      <div class="mt-5">
+        <p-dropdown placeholder="Listas" styleClass="w-full move"
+                    pDraggable (onDragStart)="dragStart('Listas')" (onDragEnd)="dragEnd()">
+        </p-dropdown>
+      </div>
+      <div class="mt-5">
+        <p-inputNumber placeholder="Número" styleClass="w-full" class="w-full" [maxlength]="6"
+                       pDraggable (onDragStart)="dragStart('Números')" (onDragEnd)="dragEnd()">
+        </p-inputNumber>
+      </div>
+      <div class="mt-5">
+        <p-inputNumber mode="currency" currency="BRL" locale="pt-BR" placeholder="Valor"
+                       styleClass="w-full" class="w-full" [maxlength]="12"
+                       pDraggable (onDragStart)="dragStart('Valor')" (onDragEnd)="dragEnd()">
+        </p-inputNumber>
+      </div>
+      <div class="mt-5">
+        <p-calendar dateFormat="dd/mm/yy" placeholder="Data"
+                    styleClass="w-full" pDraggable (onDragStart)="dragStart('Datas')" (onDragEnd)="dragEnd()">
+        </p-calendar>
+      </div>
+      <div class="mt-5">
+        <p-button type="button" icon="pi pi-plus" iconPos="right" label="Adicionar coluna"
+                  styleClass="w-full" (click)="novaColuna()"></p-button>
+      </div>
+    </div>
+
+    <div class="col-12 sm:col-12 md:col-12 lg:col-9">
+      <h5 class="mb-4">Formulário:</h5>
+      <div class="grid">
+        <div *ngFor="let coluna of formulario.colunas" class="col h-20rem border-1 hover:border-bluegray-500"
+             pDroppable (onDrop)="drop(coluna)">
+          <div *ngFor="let campo of coluna.campos" [ngSwitch]="campo.tipo">
+            <div class="mt-5" *ngSwitchCase="'Textos'">
+              <p-floatLabel>
+                <input type="text" [(ngModel)]="campo.rotulo" id="textos" pInputText class="w-full"/>
+                <label for="textos">{{campo.rotulo}}</label>
+              </p-floatLabel>
+            </div>
+            <div class="mt-5" *ngSwitchCase="'Listas'">
+              <p-dropdown [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" styleClass="w-full">
+              </p-dropdown>
+            </div>
+            <div class="mt-5" *ngSwitchCase="'Números'">
+              <p-inputNumber placeholder="Números" [(ngModel)]="campo.rotulo" styleClass="w-full" class="w-full" [maxlength]="6">
+              </p-inputNumber>
+            </div>
+            <div class="mt-5" *ngSwitchCase="'Valor'">
+              <p-inputNumber [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" mode="currency" currency="BRL"
+                             locale="pt-BR" [maxlength]="12" styleClass="w-full" class="w-full">
+              </p-inputNumber>
+            </div>
+            <div class="mt-5" *ngSwitchCase="'Datas'">
+              <p-calendar [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" dateFormat="dd/mm/yy" styleClass="w-full">
+              </p-calendar>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</p-card>
+
+

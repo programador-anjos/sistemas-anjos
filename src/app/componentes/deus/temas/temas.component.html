@@ -1,0 +1,96 @@
+
+<p-card header="Alterar a aparência do sistema" class="block mt-4 mx-auto w-10 shadow-4 fadein animation-duration-500">
+
+  <div class="grid">
+    <div class="col-12 sm:col-12 md:col-12 lg:col-7">
+      <h5 class="mb-4">Selecione uma aparência:</h5>
+      <h5 class="mb-4"></h5>
+      <img *ngFor="let item of lista" [src]="'assets/images/themes/' + item.label" [alt]="item.value"
+           (click)="alterarAparencia(item.label)" />
+    </div>
+
+    <p-divider layout="vertical" *ngIf="scrWidth > 991"></p-divider>
+    <p-divider layout="horizontal" *ngIf="scrWidth <= 991" class="w-full"></p-divider>
+
+    <div class="col-12 sm:col-12 md:col-12 lg:col-4">
+      <h5 class="mb-4">Prévia:</h5>
+      <div class="field">
+        <p-floatLabel>
+          <input id="username" type="text" pInputText class="w-full"/>
+          <label for="username">Textos</label>
+        </p-floatLabel>
+      </div>
+      <div class="field">
+        <p-dropdown [options]="states" placeholder="Listas" styleClass="w-full"></p-dropdown>
+      </div>
+      <div class="field">
+        <p-inputNumber [showButtons]="true" placeholder="Números" styleClass="w-full" class="w-full"></p-inputNumber>
+      </div>
+      <div class="field">
+        <p-calendar [(ngModel)]="calendar" [showIcon]="true" dateFormat="dd/mm/yy" placeholder="Datas"
+                    styleClass="w-full"></p-calendar>
+      </div>
+      <div class="field">
+        <div class="flex flex-wrap gap-3 mt-3">
+          <div class="flex align-items-center">
+            <p-checkbox binary="true" label="Teste" name="Exemplo" value="Exemplo" [(ngModel)]="check"></p-checkbox>
+          </div>
+          <div class="flex align-items-center">
+            <p-checkbox binary="true" label="Teste 2" name="Exemplo" value="Exemplo" [(ngModel)]="check2"></p-checkbox>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-3">
+          <div class="flex align-items-center">
+            <p-radioButton name="Exemplo" value="Exemplo" [(ngModel)]="radio" inputId="Exemplo"></p-radioButton>
+            <label for="Exemplo" class="ml-2">Teste</label>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton name="Exemplo2" value="Exemplo2" [(ngModel)]="radio" inputId="Exemplo2"></p-radioButton>
+            <label for="Exemplo2" class="ml-2">Teste 2</label>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <p-button type="button" icon="pi pi-check" iconPos="right" label="Primário"
+                  styleClass="w-5 mr-2" pRipple></p-button>
+        <p-button type="button" icon="pi pi-check" iconPos="right" label="Primário" [outlined]="true"
+                  styleClass="w-5" pRipple></p-button>
+      </div>
+      <div class="field">
+        <p-button type="button" icon="pi pi-times" severity="secondary" iconPos="right" label="Secundário"
+                  styleClass="w-5 mr-2" pRipple></p-button>
+        <p-button type="button" icon="pi pi-times" severity="secondary" iconPos="right" label="Secundário"
+                  [outlined]="true" styleClass="w-5" pRipple></p-button>
+      </div>
+    </div>
+
+  </div>
+
+<!--  <div class="grid mt-6">-->
+<!--    <div class="col-4">-->
+<!--      <p-button type="button" icon="pi pi-times" iconPos="right" label="Cancelar"-->
+<!--                styleClass="w-full" severity="secondary" [outlined]="true"></p-button>-->
+<!--    </div>-->
+<!--    <div class="col-8">-->
+<!--      <p-button type="button" icon="pi pi-save" iconPos="right" label="Salvar"-->
+<!--                styleClass="w-full" (click)="salvar()" pRipple></p-button>-->
+<!--    </div>-->
+<!--  </div>-->
+
+</p-card>
+
+<!--<p-dock [model]="itensBottom" [position]="'bottom'" [style]="{bottom: '170px'}">-->
+<!--  <ng-template pTemplate="item" let-item>-->
+<!--    <img [src]="'assets/images/themes/' + item.label" [alt]="item.value"-->
+<!--         (click)="alterarAparencia(item.label)"-->
+<!--         class="cursor-pointer" width="100%"/>-->
+<!--  </ng-template>-->
+<!--</p-dock>-->
+
+<!--<p-dock [model]="itensTop" [position]="'bottom'" [style]="{bottom: '240px'}">-->
+<!--  <ng-template pTemplate="item" let-item>-->
+<!--    <img [src]="'assets/images/themes/' + item.label" [alt]="item.value"-->
+<!--         (click)="alterarAparencia(item.label)"-->
+<!--         class="cursor-pointer" width="100%"/>-->
+<!--  </ng-template>-->
+<!--</p-dock>-->

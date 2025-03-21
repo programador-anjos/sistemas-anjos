@@ -1,0 +1,107 @@
+<div class="fadeinup animation-duration-500">
+
+  <form [formGroup]="formGroup" (ngSubmit)="salvar()">
+
+    <p-card header="Novo cliente" styleClass="my-4 mx-auto max-w-max">
+
+      <ng-template pTemplate="header">
+        <img alt="Card" src="assets/imagens/asas.jpg"
+             style="max-height: 200px; border-radius: 7px 7px 0 0;"/>
+      </ng-template>
+
+      <div class="grid">
+
+        <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+          <h5 class="ml-2">Conta</h5>
+
+          <div class="mt-5">
+            <p-floatLabel>
+              <input id="email" type="text" pInputText formControlName="email"/>
+              <label for="email">Email*</label>
+            </p-floatLabel>
+            <small class="ml-2 text-red-400" id="email-help" *ngIf="showErro('email')">Email é necessário.</small>
+            <small class="ml-2 text-red-400" id="email-help2" *ngIf="showErroEmail('email')">Email inválido.</small>
+          </div>
+
+          <div class="mt-5">
+            <p-floatLabel class="mt-5">
+              <input id="senha" type="password" pInputText formControlName="senha" />
+              <label for="senha">Senha*</label>
+            </p-floatLabel>
+            <small class="ml-2 text-red-400" id="senha-help" *ngIf="showErro('senha')">Senha é necessária.</small>
+            <small *ngIf="formGroup.get('senha')?.touched && formGroup.get('senha')?.hasError('minlength')"
+                   class="ml-2 text-red-400" id="senha-help2">Senha precisa ser maior que 6 digitos.</small>
+          </div>
+
+          <div class="mt-5">
+            <p-floatLabel class="mt-5">
+              <p-dropdown
+                [options]="perfis"
+                appendTo="body"
+                inputId="perfil"
+                styleClass="w-full"/>
+              <label for="perfil">Perfil*</label>
+            </p-floatLabel>
+            <small class="ml-2 text-red-400" id="perfil-help" *ngIf="showErro('perfil')">Perfil é necessário.</small>
+          </div>
+        </div>
+
+        <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+          <h5 class="ml-2">Sistema</h5>
+
+          <div class="mt-5">
+            <p-floatLabel class="mt-5">
+              <input id="sistema" type="text" pInputText formControlName="sistema"/>
+              <label for="sistema">Nome do sistema*</label>
+            </p-floatLabel>
+            <small class="ml-2 text-red-400" id="sistema-help" *ngIf="showErro('sistema')">Nome do sistema é
+              necessário.</small>
+          </div>
+
+          <div class="mt-5">
+            <p-floatLabel class="mt-5">
+              <p-dropdown
+                [options]="modelos"
+                appendTo="body"
+                inputId="modelo"
+                formControlName="modelo"
+                styleClass="w-full"/>
+              <label for="modelo">Modelo do sistema*</label>
+            </p-floatLabel>
+            <small class="ml-2 text-red-400" id="modelo-help" *ngIf="showErro('modelo')">Modelo é necessário.</small>
+          </div>
+
+          <div class="mt-5">
+            <p-floatLabel class="mt-5">
+              <p-dropdown
+                [options]="modelos"
+                appendTo="body"
+                inputId="plano"
+                formControlName="plano"
+                styleClass="w-full"/>
+              <label for="plano">Plano*</label>
+            </p-floatLabel>
+            <small class="ml-2 text-red-400" id="plano-help" *ngIf="showErro('plano')">Plano é necessário.</small>
+          </div>
+        </div>
+
+      </div>
+
+      <ng-template pTemplate="footer">
+        <div class="grid">
+          <div class="col-12 sm:col-12 md:col-4 lg:col-4 xl:col-4">
+            <p-button label="Limpar" iconPos="right" icon="pi pi-eraser" styleClass="p-button-secondary"
+                      [outlined]="true"
+                      (click)="limpar()"></p-button>
+          </div>
+          <div class="col-12 sm:col-12 md:col-8 lg:col-8 xl:col-8">
+            <p-button type="submit" label="Salvar" iconPos="right" icon="pi pi-save"></p-button>
+          </div>
+        </div>
+      </ng-template>
+
+    </p-card>
+
+  </form>
+
+</div>

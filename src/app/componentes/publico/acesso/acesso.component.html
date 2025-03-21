@@ -1,0 +1,27 @@
+<p-card class="block my-8 m-auto max-w-24rem shadow-2 border-round fadein animation-duration-500">
+
+  <ng-template pTemplate="header">
+    <img src="assets/imagens/asas.jpg" alt="asas">
+  </ng-template>
+
+  <div class="text-center text-900 text-5xl font-medium mb-5">Sistemas Anjos</div>
+  <div class="text-center text-600 text-2xl font-medium mb-4">Acesse seu sistema</div>
+  <div class="p-fluid">
+    <span class="p-input-icon-right field">
+      <i class="pi pi-envelope"></i>
+      <input type="email" pInputText pAutoFocus placeholder="Digite seu email"
+             [(ngModel)]="email" [autofocus]="true">
+    </span>
+    <p-password [(ngModel)]="senha" [toggleMask]="true" [feedback]="false"
+            placeholder="Digite sua senha"></p-password>
+    <a routerLink="/recuperar-senha" rel="noopener noreferrer" class="block mt-3 text-right">Esqueceu sua senha ?</a>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button [disabled]="!email || !senha" (click)="entrar()" styleClass="w-full"
+              label="Acessar" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-sign-in'"
+              iconPos="right" pRipple></p-button>
+    <p-messages></p-messages>
+  </ng-template>
+
+</p-card>

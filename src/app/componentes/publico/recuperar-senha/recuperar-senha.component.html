@@ -1,0 +1,20 @@
+<p-card class="block my-8 m-auto max-w-24rem shadow-2 border-round fadein animation-duration-500">
+
+  <ng-template pTemplate="header">
+    <img src="assets/imagens/asas.jpg" alt="asas">
+  </ng-template>
+
+  <div class="text-center text-900 text-5xl font-medium mb-5">Sistemas Anjos</div>
+  <div class="text-center text-600 text-2xl font-medium mb-4">Recupere sua senha</div>
+  <div class="p-fluid">
+    <span class="p-input-icon-right field">
+      <i class="pi pi-envelope"></i>
+      <input type="email" pInputText pAutoFocus placeholder="Digite seu email"
+             [(ngModel)]="email" [autofocus]="true">
+    </span>
+    <p-button [disabled]="!email" (click)="recuperarSenha()" styleClass="w-full"
+              label="Enviar email" icon="pi pi-send" iconPos="right" pRipple></p-button>
+    <p-messages></p-messages>
+  </div>
+
+</p-card>

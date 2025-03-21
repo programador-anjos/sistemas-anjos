@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  [pDraggable] {
+    cursor: move;
+  }
+  [pDroppable] {
+    cursor: move;
+  }
+}
+
+.move {
+  cursor: move !important;
+}

@@ -1,0 +1,432 @@
+[
+  {
+    "classe": "DRUID",
+    "icone": "assets/imagens/classes/icon-druid.png",
+    "style": {
+      "color": "#ff7c0a"
+    },
+    "specs": [
+      {
+        "spec": "Guardian",
+        "icone": "assets/imagens/specs/ability_racial_bearform.gif",
+        "style": {
+          "color": "#ff7c0a",
+          "border": "1px solid #ff7c0a"
+        }
+      },
+      {
+        "spec": "Balance",
+        "icone": "assets/imagens/specs/spell_nature_starfall.gif",
+        "style": {
+          "color": "#ff7c0a",
+          "border": "1px solid #ff7c0a"
+        }
+      },
+      {
+        "spec": "Feral",
+        "icone": "assets/imagens/specs/ability_druid_catform.gif",
+        "style": {
+          "color": "#ff7c0a",
+          "border": "1px solid #ff7c0a"
+        }
+      },
+      {
+        "spec": "Restoration",
+        "icone": "assets/imagens/specs/spell_nature_healingtouch.gif",
+        "style": {
+          "color": "#ff7c0a",
+          "border": "1px solid #ff7c0a"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "DEATH KNIGHT",
+    "icone": "assets/imagens/classes/icon-deathknight.png",
+    "style": {
+      "color": "#c41e3a"
+    },
+    "specs": [
+      {
+        "spec": "Blood",
+        "icone": "assets/imagens/specs/spell_deathknight_bloodpresence.gif",
+        "style": {
+          "color": "#c41e3a",
+          "border": "1px solid #c41e3a"
+        }
+      },
+      {
+        "spec": "Frost",
+        "icone": "assets/imagens/specs/spell_deathknight_frostpresence.gif",
+        "style": {
+          "color": "#c41e3a",
+          "border": "1px solid #c41e3a"
+        }
+      },
+      {
+        "spec": "Unholy",
+        "icone": "assets/imagens/specs/spell_deathknight_unholypresence.gif",
+        "style": {
+          "color": "#c41e3a",
+          "border": "1px solid #c41e3a"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "EVOKER",
+    "icone": "assets/imagens/classes/icon-evoker.png",
+    "style": {
+      "color": "#33937f"
+    },
+    "specs": [
+      {
+        "spec": "Devastation",
+        "icone": "assets/imagens/specs/classicon_evoker_devastation.gif",
+        "style": {
+          "color": "#33937f",
+          "border": "1px solid #33937f"
+        }
+      },
+      {
+        "spec": "Preservation",
+        "icone": "assets/imagens/specs/classicon_evoker_preservation.gif",
+        "style": {
+          "color": "#33937f",
+          "border": "1px solid #33937f"
+        }
+      },
+      {
+        "spec": "Augmentation",
+        "icone": "assets/imagens/specs/classicon_evoker_augmentation.gif",
+        "style": {
+          "color": "#33937f",
+          "border": "1px solid #33937f"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "HUNTER",
+    "icone": "assets/imagens/classes/icon-hunter.png",
+    "style": {
+      "color": "#aad372"
+    },
+    "specs": [
+      {
+        "spec": "Beast Mastery",
+        "icone": "assets/imagens/specs/ability_hunter_bestialdiscipline.gif",
+        "style": {
+          "color": "#aad372",
+          "border": "1px solid #aad372"
+        }
+      },
+      {
+        "spec": "Marksmanship",
+        "icone": "assets/imagens/specs/ability_hunter_focusedaim.gif",
+        "style": {
+          "color": "#aad372",
+          "border": "1px solid #aad372"
+        }
+      },
+      {
+        "spec": "Survival",
+        "icone": "assets/imagens/specs/ability_hunter_camouflage.gif",
+        "style": {
+          "color": "#aad372",
+          "border": "1px solid #aad372"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "MAGE",
+    "icone": "assets/imagens/classes/icon-mage.png",
+    "style": {
+      "color": "#3fc7eb"
+    },
+    "specs": [
+      {
+        "spec": "Fire",
+        "icone": "assets/imagens/specs/spell_fire_firebolt02.gif",
+        "style": {
+          "color": "#3fc7eb",
+          "border": "1px solid #3fc7eb"
+        }
+      },
+      {
+        "spec": "Frost",
+        "icone": "assets/imagens/specs/spell_frost_frostbolt02.gif",
+        "style": {
+          "color": "#3fc7eb",
+          "border": "1px solid #3fc7eb"
+        }
+      },
+      {
+        "spec": "Arcane",
+        "icone": "assets/imagens/specs/spell_holy_magicalsentry.gif",
+        "style": {
+          "color": "#3fc7eb",
+          "border": "1px solid #3fc7eb"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "MONK",
+    "icone": "assets/imagens/classes/icon-monk.png",
+    "style": {
+      "color": "#00ff98"
+    },
+    "specs": [
+      {
+        "spec": "Brewmaster",
+        "icone": "assets/imagens/specs/spell_monk_brewmaster_spec.gif",
+        "style": {
+          "color": "#00ff98",
+          "border": "1px solid #00ff98"
+        }
+      },
+      {
+        "spec": "Mistweaver",
+        "icone": "assets/imagens/specs/spell_monk_mistweaver_spec.gif",
+        "style": {
+          "color": "#00ff98",
+          "border": "1px solid #00ff98"
+        }
+      },
+      {
+        "spec": "Windwalker",
+        "icone": "assets/imagens/specs/spell_monk_windwalker_spec.gif",
+        "style": {
+          "color": "#00ff98",
+          "border": "1px solid #00ff98"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "PALADIN",
+    "icone": "assets/imagens/classes/icon-paladin.png",
+    "style": {
+      "color": "#f48cba"
+    },
+    "specs": [
+      {
+        "spec": "Holy",
+        "icone": "assets/imagens/specs/spell_holy_holybolt.gif",
+        "style": {
+          "color": "#f48cba",
+          "border": "1px solid #f48cba"
+        }
+      },
+      {
+        "spec": "Protection",
+        "icone": "assets/imagens/specs/ability_paladin_shieldofthetemplar.gif",
+        "style": {
+          "color": "#f48cba",
+          "border": "1px solid #f48cba"
+        }
+      },
+      {
+        "spec": "Retribution",
+        "icone": "assets/imagens/specs/spell_holy_auraoflight.gif",
+        "style": {
+          "color": "#f48cba",
+          "border": "1px solid #f48cba"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "PRIEST",
+    "icone": "assets/imagens/classes/icon-priest.png",
+    "style": {
+      "color": "#fff"
+    },
+    "specs": [
+      {
+        "spec": "Discipline",
+        "icone": "assets/imagens/specs/spell_holy_powerwordshield.gif",
+        "style": {
+          "color": "#fff",
+          "border": "1px solid #fff"
+        }
+      },
+      {
+        "spec": "Holy",
+        "icone": "assets/imagens/specs/spell_holy_guardianspirit.gif",
+        "style": {
+          "color": "#fff",
+          "border": "1px solid #fff"
+        }
+      },
+      {
+        "spec": "Shadow",
+        "icone": "assets/imagens/specs/spell_shadow_shadowwordpain.gif",
+        "style": {
+          "color": "#fff",
+          "border": "1px solid #fff"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "ROGUE",
+    "icone": "assets/imagens/classes/icon-rogue.png",
+    "style": {
+      "color": "#fff468"
+    },
+    "specs": [
+      {
+        "spec": "Assassination",
+        "icone": "assets/imagens/specs/ability_rogue_deadlybrew.gif",
+        "style": {
+          "color": "#fff468",
+          "border": "1px solid #fff468"
+        }
+      },
+      {
+        "spec": "Outlaw",
+        "icone": "assets/imagens/specs/ability_rogue_waylay.gif",
+        "style": {
+          "color": "#fff468",
+          "border": "1px solid #fff468"
+        }
+      },
+      {
+        "spec": "Subtlety",
+        "icone": "assets/imagens/specs/ability_stealth.gif",
+        "style": {
+          "color": "#fff468",
+          "border": "1px solid #fff468"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "SHAMAN",
+    "icone": "assets/imagens/classes/icon-shaman.png",
+    "style": {
+      "color": "#0070dd"
+    },
+    "specs": [
+      {
+        "spec": "Elemental",
+        "icone": "assets/imagens/specs/spell_nature_lightning.gif",
+        "style": {
+          "color": "#0070dd",
+          "border": "1px solid #0070dd"
+        }
+      },
+      {
+        "spec": "Enhancement",
+        "icone": "assets/imagens/specs/spell_shaman_improvedstormstrike.gif",
+        "style": {
+          "color": "#0070dd",
+          "border": "1px solid #0070dd"
+        }
+      },
+      {
+        "spec": "Restoration",
+        "icone": "assets/imagens/specs/spell_nature_magicimmunity.gif",
+        "style": {
+          "color": "#0070dd",
+          "border": "1px solid #0070dd"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "WARLOCK",
+    "icone": "assets/imagens/classes/icon-warlock.png",
+    "style": {
+      "color": "#8788ee"
+    },
+    "specs": [
+      {
+        "spec": "Demonology",
+        "icone": "assets/imagens/specs/spell_shadow_metamorphosis.gif",
+        "style": {
+          "color": "#8788ee",
+          "border": "1px solid #8788ee"
+        }
+      },
+      {
+        "spec": "Destruction",
+        "icone": "assets/imagens/specs/spell_shadow_rainoffire.gif",
+        "style": {
+          "color": "#8788ee",
+          "border": "1px solid #8788ee"
+        }
+      },
+      {
+        "spec": "Affliction",
+        "icone": "assets/imagens/specs/spell_shadow_deathcoil.gif",
+        "style": {
+          "color": "#8788ee",
+          "border": "1px solid #8788ee"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "WARRIOR",
+    "icone": "assets/imagens/classes/icon-warrior.png",
+    "style": {
+      "color": "#c69b6d"
+    },
+    "specs": [
+      {
+        "spec": "Arms",
+        "icone": "assets/imagens/specs/ability_warrior_savageblow.gif",
+        "style": {
+          "color": "#c69b6d",
+          "border": "1px solid #c69b6d"
+        }
+      },
+      {
+        "spec": "Fury",
+        "icone": "assets/imagens/specs/ability_warrior_innerrage.gif",
+        "style": {
+          "color": "#c69b6d",
+          "border": "1px solid #c69b6d"
+        }
+      },
+      {
+        "spec": "Protection",
+        "icone": "assets/imagens/specs/ability_warrior_defensivestance.gif",
+        "style": {
+          "color": "#c69b6d",
+          "border": "1px solid #c69b6d"
+        }
+      }
+    ]
+  },
+  {
+    "classe": "DEMON HUNTER",
+    "icone": "assets/imagens/classes/icon-demonhunter.png",
+    "style": {
+      "color": "#a330c9"
+    },
+    "specs": [
+      {
+        "spec": "Havo",
+        "icone": "assets/imagens/specs/ability_demonhunter_specdps.gif",
+        "style": {
+          "color": "#a330c9",
+          "border": "1px solid #a330c9"
+        }
+      },
+      {
+        "spec": "Vengeanc",
+        "icone": "assets/imagens/specs/ability_demonhunter_spectank.gif",
+        "style": {
+          "color": "#a330c9",
+          "border": "1px solid #a330c9"
+        }
+      }
+    ]
+  }
+]
+

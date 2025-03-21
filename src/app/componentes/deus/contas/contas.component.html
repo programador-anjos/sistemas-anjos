@@ -1,0 +1,72 @@
+
+<div class="mx-auto mt-3 w-6 shadow-4 fadein animation-duration-500">
+
+  <p-table #dt [value]="lista" [rows]="20" [globalFilterFields]="['nome']" dataKey="id" styleClass="p-datatable-sm"
+           selectionMode="single" [(selection)]="conta" responsiveLayout="scroll" [scrollable]="true">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="mt-1 mb-0">{{lista ? lista.length : 0 }} Contas</h5>
+        <button pButton type="button" tooltipPosition="left" pTooltip="Criar" size="small" icon="pi pi-plus"  (click)="abrir()"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Email</th>
+        <th>Perfil</th>
+        <th>Cadastro</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr *ngIf="carregando">
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
+      </tr>
+      <tr *ngIf="!carregando" (click)="passar(item)">
+        <td>{{item.email}}</td>
+        <td>{{item.perfil === 1 ? 'Usuário' : 'Administrador'}}</td>
+        <td>{{item.cadastro}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="janelaAberta" [dismissableMask]="true" [contentStyle]="{padding:'20px 20px 0px 20px'}"
+          header="{{conta.email ? 'Alterar usuário' : 'Criar usuário'}}" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="grid">
+      <div class="field col-6">
+        <span class="p-float-label">
+          <input type="text" pInputText id="email" [(ngModel)]="conta.email" />
+          <label for="email">Email</label>
+        </span>
+      </div>
+      <div class="field col-6">
+        <span class="p-float-label">
+<!--          <input type="text" pInputText id="senha" [(ngModel)]="conta.senha" />-->
+<!--          <label for="senha">Senha</label>-->
+        </span>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field col-6">
+        <span class="p-float-label">
+          <p-dropdown appendTo="body" [options]="perfis" [(ngModel)]="conta.perfil" optionLabel="label" optionValue="value"></p-dropdown>
+          <label>Perfil</label>
+        </span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+
+    <p-button pRipple label="Deletar" icon="pi pi-trash" styleClass="p-button-danger p-button-sm"
+              (click)="deletar(conta)" *ngIf="conta.email"></p-button>
+
+    <p-button pRipple label="Salvar" icon="pi pi-save" styleClass="p-button-primary p-button-sm"
+              [disabled]="!conta.email || !conta.perfil" (click)="salvar()"></p-button>
+
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '400px'}"></p-confirmDialog>
