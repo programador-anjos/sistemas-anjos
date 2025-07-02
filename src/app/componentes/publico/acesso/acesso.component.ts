@@ -11,8 +11,9 @@ import {Utils} from "../../../utils/Utils";
 import {AutenticacaoService} from "../../../services/firebase/AutenticacaoService";
 
 @Component({
-  selector: 'app-acesso',
-  templateUrl: './acesso.component.html'
+    selector: 'app-acesso',
+    templateUrl: './acesso.component.html',
+    standalone: false
 })
 export class AcessoComponent {
 

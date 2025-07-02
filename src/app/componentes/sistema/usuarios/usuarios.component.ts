@@ -8,8 +8,9 @@ import {Utils} from "../../../utils/Utils";
 import {Sistema} from "../../../models/Sistema";
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html'
+    selector: 'app-usuarios',
+    templateUrl: './usuarios.component.html',
+    standalone: false
 })
 export class UsuariosComponent implements OnInit {
 

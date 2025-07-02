@@ -3,8 +3,9 @@ import {Conta} from "../../../models/Conta";
 import {ArmazenamentoService} from "../../../services/ArmazenamentoService";
 
 @Component({
-  selector: 'app-conta',
-  templateUrl: './conta.component.html'
+    selector: 'app-conta',
+    templateUrl: './conta.component.html',
+    standalone: false
 })
 export class ContaComponent implements OnInit {
 

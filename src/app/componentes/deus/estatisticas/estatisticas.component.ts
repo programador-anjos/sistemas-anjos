@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-estatisticas',
-  templateUrl: './estatisticas.component.html'
+    selector: 'app-estatisticas',
+    templateUrl: './estatisticas.component.html',
+    standalone: false
 })
 export class EstatisticasComponent implements OnInit {
 

@@ -2,9 +2,10 @@ import {Component, HostListener} from '@angular/core';
 import {AparenciaService} from "../../../services/AparenciaService";
 
 @Component({
-  selector: 'app-aparencia',
-  templateUrl: './aparencia.component.html',
-  styleUrls: ['./aparencia.component.css']
+    selector: 'app-aparencia',
+    templateUrl: './aparencia.component.html',
+    styleUrls: ['./aparencia.component.css'],
+    standalone: false
 })
 export class AparenciaComponent {
 

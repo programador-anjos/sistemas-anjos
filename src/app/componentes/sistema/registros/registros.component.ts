@@ -5,9 +5,10 @@ import {RegistrosService} from "../../../services/firebase/RegistrosService";
 import {ConfirmationService} from "primeng/api";
 
 @Component({
-  selector: 'app-registros',
-  templateUrl: './registros.component.html',
-  styleUrl: './registros.component.css'
+    selector: 'app-registros',
+    templateUrl: './registros.component.html',
+    styleUrl: './registros.component.css',
+    standalone: false
 })
 export class RegistrosComponent implements OnInit {
   productDialog: boolean = false;

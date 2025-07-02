@@ -3,8 +3,9 @@ import {MessageService} from "primeng/api";
 import {AutenticacaoService} from "../../../services/firebase/AutenticacaoService";
 
 @Component({
-  selector: 'app-recuperar-senha',
-  templateUrl: './recuperar-senha.component.html'
+    selector: 'app-recuperar-senha',
+    templateUrl: './recuperar-senha.component.html',
+    standalone: false
 })
 export class RecuperarSenhaComponent {
 

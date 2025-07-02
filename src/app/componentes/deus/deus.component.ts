@@ -5,8 +5,9 @@ import {ArmazenamentoService} from "../../services/ArmazenamentoService";
 import {AutenticacaoService} from "../../services/firebase/AutenticacaoService";
 
 @Component({
-  selector: 'app-deus',
-  templateUrl: './deus.component.html'
+    selector: 'app-deus',
+    templateUrl: './deus.component.html',
+    standalone: false
 })
 export class DeusComponent {
 

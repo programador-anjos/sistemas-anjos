@@ -3,8 +3,9 @@ import {Acesso} from "../../../models/Acesso";
 import {AcessosService} from "../../../services/firebase/AcessosService";
 
 @Component({
-  selector: 'app-acessos',
-  templateUrl: './acessos.component.html'
+    selector: 'app-acessos',
+    templateUrl: './acessos.component.html',
+    standalone: false
 })
 export class AcessosComponent implements OnInit {
 

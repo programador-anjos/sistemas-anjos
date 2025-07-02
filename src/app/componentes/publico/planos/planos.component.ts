@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-planos',
-  templateUrl: './planos.component.html'
+    selector: 'app-planos',
+    templateUrl: './planos.component.html',
+    standalone: false
 })
 export class PlanosComponent {
 

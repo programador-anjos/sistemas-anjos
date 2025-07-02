@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Campo, Coluna, Formulario} from "../../../models/Formulario";
 
 @Component({
-  selector: 'app-teste',
-  templateUrl: './teste.component.html',
-  styleUrl: './teste.component.css'
+    selector: 'app-teste',
+    templateUrl: './teste.component.html',
+    styleUrl: './teste.component.css',
+    standalone: false
 })
 export class TesteComponent implements OnInit {
 

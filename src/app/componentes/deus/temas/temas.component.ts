@@ -2,9 +2,10 @@ import {Component, HostListener} from '@angular/core';
 import {AparenciaService} from "../../../services/AparenciaService";
 
 @Component({
-  selector: 'app-temas',
-  templateUrl: './temas.component.html',
-  styleUrls: ['./temas.component.css']
+    selector: 'app-temas',
+    templateUrl: './temas.component.html',
+    styleUrls: ['./temas.component.css'],
+    standalone: false
 })
 export class TemasComponent {
 

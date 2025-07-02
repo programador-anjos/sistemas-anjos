@@ -9,9 +9,10 @@ import {Utils} from "../../../utils/Utils";
 import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css'
+    selector: 'app-cadastro',
+    templateUrl: './cadastro.component.html',
+    styleUrl: './cadastro.component.css',
+    standalone: false
 })
 export class CadastroComponent {
 

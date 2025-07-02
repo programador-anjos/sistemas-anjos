@@ -8,8 +8,9 @@ import { Sistema } from '../../models/Sistema';
 import {AparenciaService} from "../../services/AparenciaService";
 
 @Component({
-  selector: 'app-sistema',
-  templateUrl: './sistema.component.html'
+    selector: 'app-sistema',
+    templateUrl: './sistema.component.html',
+    standalone: false
 })
 export class SistemaComponent implements OnInit {
 

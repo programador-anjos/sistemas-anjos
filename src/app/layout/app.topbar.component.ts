@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 
 @Component({
+  standalone: false,
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html'
 })

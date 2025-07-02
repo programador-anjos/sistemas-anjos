@@ -8,8 +8,9 @@ import {Utils} from "../../../utils/Utils";
 import {AutenticacaoService} from "../../../services/firebase/AutenticacaoService";
 
 @Component({
-  selector: 'app-contas',
-  templateUrl: './contas.component.html'
+    selector: 'app-contas',
+    templateUrl: './contas.component.html',
+    standalone: false
 })
 export class ContasComponent implements OnInit {
 

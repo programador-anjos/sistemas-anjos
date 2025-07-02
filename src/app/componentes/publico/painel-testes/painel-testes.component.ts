@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-painel-testes',
-  templateUrl: './painel-testes.component.html'
+    selector: 'app-painel-testes',
+    templateUrl: './painel-testes.component.html',
+    standalone: false
 })
 export class PainelTestesComponent implements OnInit {
 

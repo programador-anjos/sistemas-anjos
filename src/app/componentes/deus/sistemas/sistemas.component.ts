@@ -6,9 +6,10 @@ import {ToastService} from "../../../services/ToastService";
 import {RegistrosService} from "../../../services/firebase/RegistrosService";
 
 @Component({
-  selector: 'app-sistemas',
-  templateUrl: './sistemas.component.html',
-  styleUrl: './sistemas.component.css'
+    selector: 'app-sistemas',
+    templateUrl: './sistemas.component.html',
+    styleUrl: './sistemas.component.css',
+    standalone: false
 })
 export class SistemasComponent implements OnInit {
 

@@ -3,6 +3,7 @@ import { LayoutService } from '../service/app.layout.service';
 import { MenuService } from '../app.menu.service';
 
 @Component({
+  standalone: false,
     selector: 'app-config',
     templateUrl: './app.config.component.html',
 })

@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MessageService} from "primeng/api";
 
 @Component({
-  selector: 'app-painel',
-  templateUrl: './painel.component.html'
+    selector: 'app-painel',
+    templateUrl: './painel.component.html',
+    standalone: false
 })
 export class PainelComponent implements OnInit {
 
