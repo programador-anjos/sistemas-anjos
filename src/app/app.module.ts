@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {AppComponent} from "./app.component";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {NoCacheHeadersInterceptorService} from "./services/interceptors/NoCacheHeadersInterceptorService";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {ModuloSistema} from "./modulos/ModuloSistema";
 import {ModuloDeus} from "./modulos/ModuloDeus";
 import {ModuloPublico} from "./modulos/ModuloPublico";
