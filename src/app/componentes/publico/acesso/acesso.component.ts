@@ -1,85 +1,96 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {ToastService} from "../../../services/ToastService";
 import {ArmazenamentoService} from "../../../services/ArmazenamentoService";
-import {Conta, PERFIL} from "../../../models/Conta";
-import {ContasService} from "../../../services/firebase/ContasService";
+import {Usuario} from "../../../models/Usuario";
+import {SistemaService} from "../../../services/firebase/SistemaService";
 import {MessageService} from "primeng/api";
 import {AcessosService} from "../../../services/firebase/AcessosService";
-import {Acesso, RESULTADO} from "../../../models/Acesso";
-import {Utils} from "../../../utils/Utils";
-import {AutenticacaoService} from "../../../services/firebase/AutenticacaoService";
+import {RegistroDeAcesso, RESULTADO} from "../../../models/RegistroDeAcesso";
+import {Sistema} from "../../../models/Sistema";
 
 @Component({
-    selector: 'app-acesso',
-    templateUrl: './acesso.component.html',
-    standalone: false
+  selector: 'app-acesso',
+  templateUrl: './acesso.component.html',
+  standalone: false
 })
-export class AcessoComponent {
+export class AcessoComponent implements OnInit {
 
-  email: string = '';
-  senha: string = '';
+  sistemas: Sistema[] = [];
+  sistema: Sistema = new Sistema({});
+
+  nomeSistema: string = '';
+  codigoUsuario: string = '';
 
   carregando: boolean = false;
+  sistemaEncontrado: boolean = false;
 
   constructor(private router: Router,
               private acessosService: AcessosService,
               private messageService: MessageService,
-              private toastService: ToastService,
-              private autenticacaoService: AutenticacaoService,
+              // private autenticacaoService: AutenticacaoService,
               private armazenamentoService: ArmazenamentoService,
-              private contasService: ContasService) {
+              private sistemaService: SistemaService) {
+  }
+
+  ngOnInit(): void {
+    this.pesquisar();
+  }
+
+  pesquisar() {
+    this.carregando = false;
+    this.sistemaService.get().then(sistemas => {
+      this.sistemas = sistemas;
+      this.carregando = false;
+    });
   }
 
   entrar() {
     this.carregando = true;
-    this.autenticacaoService.signIn(this.email, this.senha)
-      .then(user => {
-        if (user.user && user.user.email) {
-          this.contasService.getPath(user.user.email)
-            .then(logado => {
-              this.autenticado(logado);
-              this.sucesso();
-            })
-            .catch(e => {
-              this.falha(e.code)
-            });
-        }
-      })
-      .catch(error => this.tratarErro(error)
-    ).finally(() => this.carregando = false);
+    this.sistemas.filter(sistema => {
+      if (sistema.nome === this.nomeSistema) {
+        this.sistema = sistema;
+        this.sistemaEncontrado = true;
+        this.armazenamentoService.armazenarSistema(this.sistema);
+      }
+    });
+    if (!this.sistemaEncontrado) {
+      alert('Sistema não encontrado')
+    }
   }
 
-  private autenticado(conta: Conta) {
-    this.armazenamentoService.armazenar(conta);
-    this.router.navigate([AcessoComponent.obterRota(conta)])
-      .catch(e => {
-        this.falha('Erro interno');
-        console.error('Erro no redirecionamento: ' + e.message);
-      });
+  entrarComUsuario() {
+    this.carregando = true;
+    this.sistema.usuarios.filter(usuario => {
+      if (usuario.codigo === this.codigoUsuario) {
+        this.armazenamentoService.armazenarUsuario(usuario);
+        this.router.navigate([this.obterRota(usuario)])
+          .catch(e => {
+            this.falha('Erro interno');
+            console.error('Erro no redirecionamento: ' + e.message);
+          });
+        this.sucesso();
+      }
+    })
   }
 
-  static obterRota(logado: Conta) {
+  private obterRota(logado: Usuario) {
     let rota = '';
-    if (logado.perfil === PERFIL.CRIADOR) {
+    if (logado.eCriador()) {
       rota = '/deus/estatisticas';
     }
-    else if (logado.perfil === PERFIL.ADMINISTRADOR) {
-      rota = `/${logado.sistema?.rota}/registros`;
-    }
-    else if (logado.perfil === PERFIL.USUARIO) {
-      rota = `/${logado.sistema?.rota}/registros`;
+    else {
+      rota = `/${this.sistema.rota}`;
     }
     return rota;
   }
 
   private sucesso() {
-    let acesso = new Acesso({id: Utils.gerarId(), sistema: 'sistema', email: this.email, resultado: RESULTADO.SUCESSO});
+    let acesso = new RegistroDeAcesso({sistema: 'sistema', usuario: this.nomeSistema, resultado: RESULTADO.SUCESSO});
     this.acessosService.post(acesso).catch(e => console.error(e.message));
   }
 
   private falha(causa?: string) {
-    let acesso = new Acesso({id: Utils.gerarId(), sistema: '', email: this.email, resultado: RESULTADO.FALHA});
+    let acesso = new RegistroDeAcesso({sistema: '', usuario: this.nomeSistema, resultado: RESULTADO.FALHA});
     this.acessosService.post(acesso)
       .then(res => this.messageService.add({severity: 'error', summary: causa, life: 4000}))
       .catch(e => console.error(e.message));

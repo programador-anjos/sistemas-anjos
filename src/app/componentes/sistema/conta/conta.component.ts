@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Conta} from "../../../models/Conta";
+import {Usuario} from "../../../models/Usuario";
 import {ArmazenamentoService} from "../../../services/ArmazenamentoService";
 
 @Component({
@@ -9,13 +9,13 @@ import {ArmazenamentoService} from "../../../services/ArmazenamentoService";
 })
 export class ContaComponent implements OnInit {
 
-  conta: Conta = new Conta();
+  conta: Usuario = new Usuario();
 
   constructor(private armazenamentoService: ArmazenamentoService) {
   }
 
   ngOnInit(): void {
-    let logado = this.armazenamentoService.logado();
+    let logado = this.armazenamentoService.usuario();
     if (logado) {
       this.conta = logado;
     }

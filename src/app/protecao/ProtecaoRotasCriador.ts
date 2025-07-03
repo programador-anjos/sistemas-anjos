@@ -6,7 +6,7 @@ export const ProtecaoRotasCriador: CanActivateFn = (activatedRouteSnapshot: Acti
                                                      routerStateSnapshot: RouterStateSnapshot) => {
 
   const armazenamentoService = inject(ArmazenamentoService);
-  let logado = armazenamentoService.logado();
+  let logado = armazenamentoService.usuario();
   if (logado && logado.eCriador()) {
     return true;
   }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/api";
-import {Conta} from "../../../models/Conta";
+import {Usuario} from "../../../models/Usuario";
 import {ToastService} from "../../../services/ToastService";
 import {RegistrosService} from "../../../services/firebase/RegistrosService";
 
@@ -27,9 +27,9 @@ export class SistemasComponent implements OnInit {
   carregando: boolean = false;
   visivel: boolean = false;
 
-  contas: Conta[] = [];
+  contas: Usuario[] = [];
 
-  item: Conta = new Conta();
+  item: Usuario = new Usuario();
 
   constructor(private router: Router,
               private toastService: ToastService,
@@ -49,7 +49,7 @@ export class SistemasComponent implements OnInit {
     });
   }
 
-  passar(item: Conta) {
+  passar(item: Usuario) {
     this.visivel = true;
     Object.assign(this.item, item);
   }

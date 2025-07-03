@@ -1,50 +1,54 @@
 
-<p-card header="Alterar a aparência do sistema" class="block mt-4 mx-auto w-10 shadow-4 fadein animation-duration-500">
+<p-card header="Alterar a aparência do sistema" class="block mt-6 mx-auto w-10/12 shadow-lg animate-fadein animate-duration-500">
 
-  <div class="grid">
-    <div class="col-12 sm:col-12 md:col-12 lg:col-7">
-      <h5 class="mb-4">Selecione uma aparência:</h5>
-      <h5 class="mb-4"></h5>
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-7">
+      <h5 class="mb-6">Selecione uma aparência:</h5>
+      <h5 class="mb-6"></h5>
       <img *ngFor="let item of lista" [src]="'assets/images/themes/' + item.label" [alt]="item.value"
            (click)="alterarAparencia(item.label)" />
     </div>
 
-    <p-divider layout="vertical" *ngIf="scrWidth > 991"></p-divider>
-    <p-divider layout="horizontal" *ngIf="scrWidth <= 991" class="w-full"></p-divider>
+    @if (scrWidth > 991) {
+    <p-divider layout="vertical"></p-divider>
+    }
+    @if (scrWidth <= 991) {
+    <p-divider layout="horizontal" class="w-full"></p-divider>
+    }
 
-    <div class="col-12 sm:col-12 md:col-12 lg:col-4">
-      <h5 class="mb-4">Prévia:</h5>
+    <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4">
+      <h5 class="mb-6">Prévia:</h5>
       <div class="field">
-        <p-floatLabel>
+        <p-floatlabel>
           <input id="username" type="text" pInputText class="w-full"/>
           <label for="username">Textos</label>
-        </p-floatLabel>
+        </p-floatlabel>
       </div>
       <div class="field">
-        <p-dropdown [options]="states" placeholder="Listas" styleClass="w-full"></p-dropdown>
+        <p-select [options]="states" placeholder="Listas" class="w-full"></p-select>
       </div>
       <div class="field">
-        <p-inputNumber [showButtons]="true" placeholder="Números" styleClass="w-full" class="w-full"></p-inputNumber>
+        <p-inputNumber [showButtons]="true" placeholder="Números" class="w-full" class="w-full"></p-inputNumber>
       </div>
       <div class="field">
-        <p-calendar [(ngModel)]="calendar" [showIcon]="true" dateFormat="dd/mm/yy" placeholder="Datas"
-                    styleClass="w-full"></p-calendar>
+        <p-datePicker [(ngModel)]="calendar" [showIcon]="true" dateFormat="dd/mm/yy" placeholder="Datas"
+                      class="w-full"></p-datePicker>
       </div>
       <div class="field">
-        <div class="flex flex-wrap gap-3 mt-3">
-          <div class="flex align-items-center">
+        <div class="flex flex-wrap gap-4 mt-4">
+          <div class="flex items-center">
             <p-checkbox binary="true" label="Teste" name="Exemplo" value="Exemplo" [(ngModel)]="check"></p-checkbox>
           </div>
-          <div class="flex align-items-center">
+          <div class="flex items-center">
             <p-checkbox binary="true" label="Teste 2" name="Exemplo" value="Exemplo" [(ngModel)]="check2"></p-checkbox>
           </div>
         </div>
-        <div class="flex flex-wrap gap-3 mt-3">
-          <div class="flex align-items-center">
+        <div class="flex flex-wrap gap-4 mt-4">
+          <div class="flex items-center">
             <p-radioButton name="Exemplo" value="Exemplo" [(ngModel)]="radio" inputId="Exemplo"></p-radioButton>
             <label for="Exemplo" class="ml-2">Teste</label>
           </div>
-          <div class="flex align-items-center">
+          <div class="flex items-center">
             <p-radioButton name="Exemplo2" value="Exemplo2" [(ngModel)]="radio" inputId="Exemplo2"></p-radioButton>
             <label for="Exemplo2" class="ml-2">Teste 2</label>
           </div>
@@ -52,26 +56,26 @@
       </div>
       <div class="field">
         <p-button type="button" icon="pi pi-check" iconPos="right" label="Primário"
-                  styleClass="w-5 mr-2" pRipple></p-button>
+                  styleClass="w-5/12 mr-2" pRipple></p-button>
         <p-button type="button" icon="pi pi-check" iconPos="right" label="Primário" [outlined]="true"
-                  styleClass="w-5" pRipple></p-button>
+                  styleClass="w-5/12" pRipple></p-button>
       </div>
       <div class="field">
         <p-button type="button" icon="pi pi-times" severity="secondary" iconPos="right" label="Secundário"
-                  styleClass="w-5 mr-2" pRipple></p-button>
+                  styleClass="w-5/12 mr-2" pRipple></p-button>
         <p-button type="button" icon="pi pi-times" severity="secondary" iconPos="right" label="Secundário"
-                  [outlined]="true" styleClass="w-5" pRipple></p-button>
+                  [outlined]="true" styleClass="w-5/12" pRipple></p-button>
       </div>
     </div>
 
   </div>
 
-<!--  <div class="grid mt-6">-->
-<!--    <div class="col-4">-->
+<!--  <div class="grid grid-cols-12 gap-4 mt-12">-->
+<!--    <div class="col-span-4">-->
 <!--      <p-button type="button" icon="pi pi-times" iconPos="right" label="Cancelar"-->
 <!--                styleClass="w-full" severity="secondary" [outlined]="true"></p-button>-->
 <!--    </div>-->
-<!--    <div class="col-8">-->
+<!--    <div class="col-span-8">-->
 <!--      <p-button type="button" icon="pi pi-save" iconPos="right" label="Salvar"-->
 <!--                styleClass="w-full" (click)="salvar()" pRipple></p-button>-->
 <!--    </div>-->

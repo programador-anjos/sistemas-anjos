@@ -1,9 +1,9 @@
-<div class="fadein animation-duration-500 mx-3 my-4 shadow-4">
+<div class="animate-fadein animate-duration-500 mx-4 my-6 shadow-lg">
 
   <p-table #dt [value]="contas" dataKey="_id" [globalFilterFields]="['sistema', 'login', 'senha', 'qtd', 'plano']" selectionMode="single"
-           styleClass="p-datatable-sm" responsiveLayout="scroll" [scrollable]="true" scrollHeight="700px">
+           class="p-datatable-sm" [scrollable]="true" scrollHeight="700px">
     <ng-template pTemplate="caption">
-      <div class="flex align-items-center justify-content-between">
+      <div class="flex items-center justify-between">
         <h5 class="mt-1 mb-0">{{contas ? contas.length : 0 }} Sistemas</h5>
         <p-columnFilter field="email" matchMode="contains" [showMenu]="false" [showClearButton]="false">
           <ng-template pTemplate="filter" let-resultado let-filter="filterCallback">
@@ -27,20 +27,24 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item>
-      <tr *ngIf="carregando">
+      @if (carregando) {
+      <tr>
         <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
         <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
         <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
         <td><p-skeleton width="100%" height="80px"></p-skeleton></td>
 <!--        <td><p-skeleton width="100%" height="80px"></p-skeleton></td>-->
       </tr>
-      <tr *ngIf="!carregando" (click)="passar(item)">
+      }
+      @if (!carregando) {
+      <tr (click)="passar(item)">
         <td>{{ item.sistema }}</td>
         <td>{{ item.plano }}</td>
         <td>{{ item.qtd }}</td>
         <td>{{ item.login }}</td>
 <!--        <td>{{ item.senha }}</td>-->
       </tr>
+      }
     </ng-template>
 <!--    <ng-template pTemplate="footer">-->
 <!--      <tr>-->
@@ -51,12 +55,12 @@
 <!--    </ng-template>-->
   </p-table>
 
-  <p-dialog [header]="'Informações de ' + item.sistema" [(visible)]="visivel"
+  <p-dialog [header]="'Informações de ' + item.nome" [(visible)]="visivel"
             [draggable]="true" [resizable]="false" [modal]="true" [dismissableMask]="true">
 
-    <div class="grid">
+    <div class="grid grid-cols-12 gap-4">
 
-<!--      <div class="col-6">-->
+<!--      <div class="col-span-6">-->
 <!--        <h3>Nome</h3>-->
 <!--        <p class="mt-0"><span class="font-bold">Nick:</span> {{ item.nome }}</p>-->
 <!--        <p><span class="font-bold">Item LVL:</span> {{ item.nome }}</p>-->
@@ -64,7 +68,7 @@
 <!--        <p><span class="font-bold">Especialização:</span> {{ item.nome }}</p>-->
 <!--      </div>-->
 
-<!--      <div class="col-6">-->
+<!--      <div class="col-span-6">-->
 <!--        <h3>Valor</h3>-->
 <!--        <p class="mt-0"><span class="font-bold">Nick:</span> {{ item.valor }}</p>-->
 <!--        <p><span class="font-bold">Item LVL:</span> {{ item.valor }}</p>-->
@@ -76,7 +80,7 @@
 
     <ng-template pTemplate="footer">
 
-      <p style="float: left" class="m-0 mt-3 p-0">Cadastrado em: {{ item }}</p>
+      <p style="float: left" class="m-0 mt-4 p-0">Cadastrado em: {{ item }}</p>
 
       <!--      <p-button label="Responder" iconPos="right" icon="pi pi-send"-->
       <!--                styleClass="p-button-info" (click)="respostaVisivel = true"></p-button>-->

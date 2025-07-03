@@ -1,70 +1,70 @@
-<p-card header="Monte o seu formulário" class="block mt-4 mx-auto w-10 shadow-4 fadein animation-duration-500">
+<p-card header="Monte o seu formulário" class="block mt-6 mx-auto w-10/12 shadow-lg animate-fadein animate-duration-500">
 
-  <div class="grid">
+  <div class="grid grid-cols-12 gap-4">
 
-    <div class="col-12 sm:col-12 md:col-12 lg:col-3">
-      <h5 class="mb-4">Campos:</h5>
-      <div class="mt-5">
-        <p-floatLabel pDraggable (onDragStart)="dragStart('Textos')" class="move">
+    <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-3">
+      <h5 class="mb-6">Campos:</h5>
+      <div class="mt-8">
+        <p-floatlabel pDraggable (onDragStart)="dragStart('Textos')" class="move">
           <input id="username" type="text" pInputText class="w-full" />
           <label for="username">Texto</label>
-        </p-floatLabel>
+        </p-floatlabel>
       </div>
-      <div class="mt-5">
-        <p-dropdown placeholder="Listas" styleClass="w-full move"
+      <div class="mt-8">
+        <p-select placeholder="Listas" class="w-full move"
                     pDraggable (onDragStart)="dragStart('Listas')" (onDragEnd)="dragEnd()">
-        </p-dropdown>
+        </p-select>
       </div>
-      <div class="mt-5">
-        <p-inputNumber placeholder="Número" styleClass="w-full" class="w-full" [maxlength]="6"
+      <div class="mt-8">
+        <p-inputNumber placeholder="Número" class="w-full" class="w-full" [maxlength]="6"
                        pDraggable (onDragStart)="dragStart('Números')" (onDragEnd)="dragEnd()">
         </p-inputNumber>
       </div>
-      <div class="mt-5">
+      <div class="mt-8">
         <p-inputNumber mode="currency" currency="BRL" locale="pt-BR" placeholder="Valor"
-                       styleClass="w-full" class="w-full" [maxlength]="12"
+                       class="w-full" class="w-full" [maxlength]="12"
                        pDraggable (onDragStart)="dragStart('Valor')" (onDragEnd)="dragEnd()">
         </p-inputNumber>
       </div>
-      <div class="mt-5">
-        <p-calendar dateFormat="dd/mm/yy" placeholder="Data"
-                    styleClass="w-full" pDraggable (onDragStart)="dragStart('Datas')" (onDragEnd)="dragEnd()">
-        </p-calendar>
+      <div class="mt-8">
+        <p-datePicker dateFormat="dd/mm/yy" placeholder="Data"
+                      class="w-full" pDraggable (onDragStart)="dragStart('Datas')" (onDragEnd)="dragEnd()">
+        </p-datePicker>
       </div>
-      <div class="mt-5">
+      <div class="mt-8">
         <p-button type="button" icon="pi pi-plus" iconPos="right" label="Adicionar coluna"
-                  styleClass="w-full" (click)="novaColuna()"></p-button>
+                  class="w-full" (click)="novaColuna()"></p-button>
       </div>
     </div>
 
-    <div class="col-12 sm:col-12 md:col-12 lg:col-9">
-      <h5 class="mb-4">Formulário:</h5>
-      <div class="grid">
-        <div *ngFor="let coluna of formulario.colunas" class="col h-20rem border-1 hover:border-bluegray-500"
+    <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-9">
+      <h5 class="mb-6">Formulário:</h5>
+      <div class="grid grid-cols-12 gap-4">
+        <div *ngFor="let coluna of formulario.colunas" class="col h-80 border hover:border-slate-500"
              pDroppable (onDrop)="drop(coluna)">
           <div *ngFor="let campo of coluna.campos" [ngSwitch]="campo.tipo">
-            <div class="mt-5" *ngSwitchCase="'Textos'">
-              <p-floatLabel>
+            <div class="mt-8" *ngSwitchCase="'Textos'">
+              <p-floatlabel>
                 <input type="text" [(ngModel)]="campo.rotulo" id="textos" pInputText class="w-full"/>
                 <label for="textos">{{campo.rotulo}}</label>
-              </p-floatLabel>
+              </p-floatlabel>
             </div>
-            <div class="mt-5" *ngSwitchCase="'Listas'">
-              <p-dropdown [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" styleClass="w-full">
-              </p-dropdown>
+            <div class="mt-8" *ngSwitchCase="'Listas'">
+              <p-select [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" class="w-full">
+              </p-select>
             </div>
-            <div class="mt-5" *ngSwitchCase="'Números'">
-              <p-inputNumber placeholder="Números" [(ngModel)]="campo.rotulo" styleClass="w-full" class="w-full" [maxlength]="6">
+            <div class="mt-8" *ngSwitchCase="'Números'">
+              <p-inputNumber placeholder="Números" [(ngModel)]="campo.rotulo" class="w-full" class="w-full" [maxlength]="6">
               </p-inputNumber>
             </div>
-            <div class="mt-5" *ngSwitchCase="'Valor'">
+            <div class="mt-8" *ngSwitchCase="'Valor'">
               <p-inputNumber [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" mode="currency" currency="BRL"
-                             locale="pt-BR" [maxlength]="12" styleClass="w-full" class="w-full">
+                             locale="pt-BR" [maxlength]="12" class="w-full" class="w-full">
               </p-inputNumber>
             </div>
-            <div class="mt-5" *ngSwitchCase="'Datas'">
-              <p-calendar [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" dateFormat="dd/mm/yy" styleClass="w-full">
-              </p-calendar>
+            <div class="mt-8" *ngSwitchCase="'Datas'">
+              <p-datePicker [placeholder]="campo.rotulo" [(ngModel)]="campo.rotulo" dateFormat="dd/mm/yy" class="w-full">
+              </p-datePicker>
             </div>
           </div>
         </div>

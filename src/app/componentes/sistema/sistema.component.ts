@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {Router} from "@angular/router";
 import {ArmazenamentoService} from "../../services/ArmazenamentoService";
-import {Conta} from "../../models/Conta";
+import {Usuario} from "../../models/Usuario";
 import {AutenticacaoService} from "../../services/firebase/AutenticacaoService";
 import { Sistema } from '../../models/Sistema';
 import {AparenciaService} from "../../services/AparenciaService";
@@ -17,7 +17,8 @@ export class SistemaComponent implements OnInit {
   menuPrincipal: MenuItem[] = [];
   menuSecundario: MenuItem[] = [];
 
-  logado: Conta | null = null;
+  usuario: Usuario | null = null;
+  sistema: Sistema | null = null;
   rotaSistema: string | undefined = '';
 
   constructor(private autenticacaoService: AutenticacaoService,
@@ -28,7 +29,8 @@ export class SistemaComponent implements OnInit {
 
   ngOnInit(): void {
     this.aparenciaService.carregarAparencia();
-    this.logado = this.armazenamentoService.logado();
+    this.usuario = this.armazenamentoService.usuario();
+    this.sistema = this.armazenamentoService.sistema();
     this.carregarMenus();
     // this.armazenamentoService.events.subscribe((logado: Conta | null) => this.carregarMenus(logado));
   }
@@ -36,12 +38,12 @@ export class SistemaComponent implements OnInit {
   private carregarMenus(): void {
     this.menuPrincipal = [];
     this.menuSecundario = [];
-    if (this.logado) {
-      this.rotaSistema = "/" + this.logado.sistema?.rota;
-      if(this.logado.eAdministrador()) {
+    if (this.usuario) {
+      this.rotaSistema = "/" + this.sistema?.rota;
+      if(this.usuario.eAdministrador()) {
         this.obterMenuAdministrador();
       }
-      else if(this.logado.eUsuario()) {
+      else if(this.usuario.eUsuario()) {
         this.obterMenuUsuario();
       }
     }

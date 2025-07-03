@@ -4,23 +4,26 @@
     <a [routerLink]="rotaSistema"><img src="assets/imagens/asas.jpg" height="35" alt="Sistemas Anjos"></a>
   </ng-template>
   <ng-template pTemplate="end">
-    <p-splitButton *ngIf="menuSecundario.length > 0" [model]="menuSecundario" (onClick)="irConta()"
-                   icon="pi pi-user" styleClass="p-button-secondary p-button-text"></p-splitButton>
-  </ng-template>
+    @if (menuSecundario.length > 0) {
+    <p-splitbutton [model]="menuSecundario" (onClick)="irConta()"
+                   icon="pi pi-user" class="p-button-secondary p-button-text"></p-splitbutton>
+    }
+      </ng-template>
 </p-menubar>
 
-<div class="bg-bluegray-900 text-gray-100 p-3 flex justify-content-between lg:justify-content-center align-items-center flex-wrap"
-     *ngIf="logado && logado.sistema?.eGratuito()">
-  <div class="font-bold mr-8">🔥 Teste Gratuito!</div>
-  <div class="align-items-center hidden lg:flex">
-    <span class="line-height-3">Seu acesso será desativado em 5 dias, confira nossos planos de assinatura</span>
+@if (sistema && sistema.eGratuito()) {
+<div class="bg-slate-900 text-gray-100 p-4 flex justify-between lg:justify-center items-center flex-wrap">
+  <div class="font-bold mr-20">🔥 Teste Gratuito!</div>
+  <div class="items-center hidden lg:flex">
+    <span class="leading-normal">Seu acesso será desativado em 5 dias, confira nossos planos de assinatura</span>
   </div>
-  <a class="flex align-items-center ml-2 mr-8">
+  <a class="flex items-center ml-2 mr-20">
     <a class="text-white" href="#"><span class="underline font-bold">clicando aqui.</span></a>
   </a>
-  <!--  <a pRipple class="flex align-items-center no-underline justify-content-center border-circle text-gray-50 hover:bg-bluegray-700 cursor-pointer transition-colors transition-duration-150" style="width:2rem; height: 2rem">-->
+  <!--  <a pRipple class="flex items-center no-underline justify-center rounded-full text-gray-50 hover:bg-slate-700 cursor-pointer transition-colors duration-150" style="width:2rem; height: 2rem">-->
   <!--    <i class="pi pi-times"></i>-->
   <!--  </a>-->
 </div>
+}
 
 <router-outlet></router-outlet>

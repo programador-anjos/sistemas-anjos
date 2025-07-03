@@ -2,48 +2,45 @@ import {Injectable} from '@angular/core';
 import {getFirestore, collection, doc, getDocs, setDoc, updateDoc, deleteDoc, query, where, getDoc} from "firebase/firestore";
 import {initializeApp} from "firebase/app";
 import { environment } from '../../../environments/environment';
-import {Conta} from "../../models/Conta";
-import firebase from "firebase/compat";
-import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
-import DocumentData = firebase.firestore.DocumentData;
+import {Sistema} from "../../models/Sistema";
 
 const app = initializeApp(environment.firebase);
 const firestore = getFirestore(app);
-const colecao = collection(firestore, "contas");
+const colecao = collection(firestore, "sistemas");
 
 @Injectable({
   providedIn: 'root',
 })
-export class ContasService {
+export class SistemaService {
 
   async get() {
     const querySnapshot = await getDocs(colecao);
-    return querySnapshot.docs.map(a => a.data() as Conta);
+    return querySnapshot.docs.map(a => a.data() as Sistema);
   }
 
   async getBy(campo: string, valor: string) {
     const res = query(colecao, where(campo, "==", valor));
     const querySnapshot = await getDocs(res);
-    return querySnapshot.docs.map(a => a.data() as Conta);
+    return querySnapshot.docs.map(a => a.data() as Sistema);
   }
 
   async getPath(path: string) {
     const documentSnapshot = await getDoc(doc(colecao, path));
-    return documentSnapshot.data() as Conta;
+    return documentSnapshot.data() as Sistema;
   }
 
-  async post(rec: Conta) {
-    let documento = doc(colecao, rec.email);
+  async post(rec: Sistema) {
+    let documento = doc(colecao, rec.nome);
     return await setDoc(documento, rec.json());
   }
 
-  async put(rec: Conta) {
-    let documento = doc(colecao, rec.email);
+  async put(rec: Sistema) {
+    let documento = doc(colecao, rec.nome);
     return await updateDoc(documento, rec.json());
   }
 
-  async delete(rec: Conta) {
-    let documento = doc(colecao, rec.email);
+  async delete(rec: Sistema) {
+    let documento = doc(colecao, rec.nome);
     return await deleteDoc(documento);
   }
 

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import CryptoJS from 'crypto-js';
-import {Conta} from "../models/Conta";
+import {Usuario} from "../models/Usuario";
 import {User} from "firebase/auth";
 import {Sistema} from "../models/Sistema";
 
@@ -12,29 +12,58 @@ export class ArmazenamentoService {
 
   private static readonly _key = "pabanjos";
 
-  private subject: Subject<Conta | null> = new Subject<Conta | null>();
-  private observable: Observable<Conta | null> = this.subject.asObservable();
+  private subjectSistema: Subject<Sistema | null> = new Subject<Sistema | null>();
+  private observableSistema: Observable<Sistema | null> = this.subjectSistema.asObservable();
 
-  public get events() {
-    return this.observable;
+  private subjectUsuario: Subject<Usuario | null> = new Subject<Usuario | null>();
+  private observableUsuario: Observable<Usuario | null> = this.subjectUsuario.asObservable();
+
+  public get observarSistema() {
+    return this.observableSistema;
   }
 
-  public armazenar(conta: Conta) {
-    let json = JSON.stringify(conta);
-    localStorage.setItem('logado', ArmazenamentoService.encrypt(json));
-    this.subject.next(conta);
+  public get observarUsuario() {
+    return this.observableUsuario;
   }
 
-  public logado(): Conta | null {
-    let logado = localStorage.getItem('logado');
-    if (logado) {
-      let stringJSON = ArmazenamentoService.decrypt(logado);
+  public armazenarSistema(sistema: Sistema) {
+    let json = JSON.stringify(sistema);
+    localStorage.setItem('sistema', ArmazenamentoService.encrypt(json));
+    this.subjectSistema.next(sistema);
+  }
+
+  public armazenarUsuario(usuario: Usuario) {
+    let json = JSON.stringify(usuario);
+    localStorage.setItem('usuario', ArmazenamentoService.encrypt(json));
+    this.subjectUsuario.next(usuario);
+  }
+
+  public sistema(): Sistema | null {
+    let dado = localStorage.getItem('sistema');
+    if (dado) {
+      let stringJSON = ArmazenamentoService.decrypt(dado);
       try {
-        let conta = new Conta(JSON.parse(stringJSON));
-        conta.sistema = new Sistema(conta.sistema);
-        return conta;
+        let sistema = new Sistema(JSON.parse(stringJSON));
+        sistema = new Sistema(sistema);
+        return sistema;
       } catch (e) {
-        alert('Falha ao recuperar seu login, limpe o cache do navegador e tente entrar novamente!');
+        alert('Falha ao recuperar seu sistema, limpe o cache do navegador e tente entrar novamente!');
+        return null;
+      }
+    }
+    return null;
+  }
+
+  public usuario(): Usuario | null {
+    let dado = localStorage.getItem('usuario');
+    if (dado) {
+      let stringJSON = ArmazenamentoService.decrypt(dado);
+      try {
+        let usuario = new Usuario(JSON.parse(stringJSON));
+        usuario = new Usuario(usuario);
+        return usuario;
+      } catch (e) {
+        alert('Falha ao recuperar seu usuario, limpe o cache do navegador e tente entrar novamente!');
         return null;
       }
     }
@@ -42,8 +71,8 @@ export class ArmazenamentoService {
   }
 
   public sair() {
-    localStorage.removeItem('logado');
-    this.subject.next(null);
+    localStorage.removeItem('usuario');
+    this.subjectUsuario.next(null);
   }
 
   private static encrypt(txt: any) {

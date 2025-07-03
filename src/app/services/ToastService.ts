@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from "rxjs";
-import {Message} from "primeng/api";
+import {ToastMessageOptions} from "primeng/api";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
 
-  private subject: Subject<Message> = new Subject<Message>();
-  private observable: Observable<Message> = this.subject.asObservable();
+  private subject: Subject<ToastMessageOptions> = new Subject<ToastMessageOptions>();
+  private observable: Observable<ToastMessageOptions> = this.subject.asObservable();
 
   /**
    * Fluxo de eventos para receber mensagens.

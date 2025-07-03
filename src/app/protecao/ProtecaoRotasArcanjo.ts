@@ -7,7 +7,7 @@ export const ProtecaoRotasArcanjo: CanActivateFn = (activatedRouteSnapshot: Acti
                                                      routerStateSnapshot: RouterStateSnapshot) => {
 
   const armazenamentoService = inject(ArmazenamentoService);
-  let logado = armazenamentoService.logado();
+  let logado = armazenamentoService.usuario();
   // if (logado && logado.eArcanjo()) {
     return true;
   // }

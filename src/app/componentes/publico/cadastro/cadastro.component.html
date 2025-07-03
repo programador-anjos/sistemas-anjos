@@ -1,100 +1,115 @@
-<div class="fadeinup animation-duration-500">
+<div class="animate-fadeinup animate-duration-500">
 
   <form [formGroup]="formGroup" (ngSubmit)="salvar()">
 
-    <p-card header="Novo cliente" styleClass="my-4 mx-auto max-w-max">
+    <p-card header="Novo cliente" class="my-6 mx-auto max-w-max">
 
       <ng-template pTemplate="header">
         <img alt="Card" src="assets/imagens/asas.jpg"
              style="max-height: 200px; border-radius: 7px 7px 0 0;"/>
       </ng-template>
 
-      <div class="grid">
+      <div class="grid grid-cols-12 gap-4">
 
-        <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+        <div class="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6">
           <h5 class="ml-2">Conta</h5>
 
-          <div class="mt-5">
-            <p-floatLabel>
+          <div class="mt-8">
+            <p-floatlabel>
               <input id="email" type="text" pInputText formControlName="email"/>
               <label for="email">Email*</label>
-            </p-floatLabel>
-            <small class="ml-2 text-red-400" id="email-help" *ngIf="showErro('email')">Email é necessário.</small>
-            <small class="ml-2 text-red-400" id="email-help2" *ngIf="showErroEmail('email')">Email inválido.</small>
+            </p-floatlabel>
+            @if (showErro('email')) {
+              <small class="ml-2 text-red-400" id="email-help">Email é necessário.</small>
+            }
+            @if (showErroEmail('email')) {
+              <small class="ml-2 text-red-400" id="email-help2">Email inválido.</small>
+            }
           </div>
 
-          <div class="mt-5">
-            <p-floatLabel class="mt-5">
-              <input id="senha" type="password" pInputText formControlName="senha" />
+          <div class="mt-8">
+            <p-floatlabel class="mt-8">
+              <input id="senha" type="password" pInputText formControlName="codigo"/>
               <label for="senha">Senha*</label>
-            </p-floatLabel>
-            <small class="ml-2 text-red-400" id="senha-help" *ngIf="showErro('senha')">Senha é necessária.</small>
-            <small *ngIf="formGroup.get('senha')?.touched && formGroup.get('senha')?.hasError('minlength')"
-                   class="ml-2 text-red-400" id="senha-help2">Senha precisa ser maior que 6 digitos.</small>
+            </p-floatlabel>
+            @if (showErro('senha')) {
+              <small class="ml-2 text-red-400" id="senha-help">Senha é necessária.</small>
+            }
+            @if (formGroup.get('senha')?.touched && formGroup.get('senha')?.hasError('minlength')) {
+              <small class="ml-2 text-red-400" id="senha-help2">Senha precisa ser maior que 6 digitos.</small>
+            }
           </div>
 
-          <div class="mt-5">
-            <p-floatLabel class="mt-5">
-              <p-dropdown
+          <div class="mt-8">
+            <p-floatlabel class="mt-8">
+              <p-select
                 [options]="perfis"
                 appendTo="body"
                 inputId="perfil"
-                styleClass="w-full"/>
+                class="w-full"/>
               <label for="perfil">Perfil*</label>
-            </p-floatLabel>
-            <small class="ml-2 text-red-400" id="perfil-help" *ngIf="showErro('perfil')">Perfil é necessário.</small>
+            </p-floatlabel>
+            @if (showErro('perfil')) {
+              <small class="ml-2 text-red-400" id="perfil-help">Perfil é necessário.</small>
+            }
           </div>
         </div>
 
-        <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+        <div class="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6">
           <h5 class="ml-2">Sistema</h5>
 
-          <div class="mt-5">
-            <p-floatLabel class="mt-5">
+          <div class="mt-8">
+            <p-floatlabel class="mt-8">
               <input id="sistema" type="text" pInputText formControlName="sistema"/>
               <label for="sistema">Nome do sistema*</label>
-            </p-floatLabel>
-            <small class="ml-2 text-red-400" id="sistema-help" *ngIf="showErro('sistema')">Nome do sistema é
-              necessário.</small>
+            </p-floatlabel>
+            @if (showErro('sistema')) {
+              <small class="ml-2 text-red-400" id="sistema-help">Nome do sistema é
+                necessário.</small>
+            }
           </div>
 
-          <div class="mt-5">
-            <p-floatLabel class="mt-5">
-              <p-dropdown
+          <div class="mt-8">
+            <p-floatlabel class="mt-8">
+              <p-select
                 [options]="modelos"
                 appendTo="body"
                 inputId="modelo"
                 formControlName="modelo"
-                styleClass="w-full"/>
+                class="w-full"/>
               <label for="modelo">Modelo do sistema*</label>
-            </p-floatLabel>
-            <small class="ml-2 text-red-400" id="modelo-help" *ngIf="showErro('modelo')">Modelo é necessário.</small>
+            </p-floatlabel>
+            @if (showErro('modelo')) {
+              <small class="ml-2 text-red-400" id="modelo-help">Modelo é necessário.</small>
+            }
           </div>
 
-          <div class="mt-5">
-            <p-floatLabel class="mt-5">
-              <p-dropdown
+          <div class="mt-8">
+            <p-floatlabel class="mt-8">
+              <p-select
                 [options]="modelos"
                 appendTo="body"
                 inputId="plano"
                 formControlName="plano"
-                styleClass="w-full"/>
+                class="w-full"/>
               <label for="plano">Plano*</label>
-            </p-floatLabel>
-            <small class="ml-2 text-red-400" id="plano-help" *ngIf="showErro('plano')">Plano é necessário.</small>
+            </p-floatlabel>
+            @if (showErro('plano')) {
+              <small class="ml-2 text-red-400" id="plano-help">Plano é necessário.</small>
+            }
           </div>
         </div>
 
       </div>
 
       <ng-template pTemplate="footer">
-        <div class="grid">
-          <div class="col-12 sm:col-12 md:col-4 lg:col-4 xl:col-4">
+        <div class="grid grid-cols-12 gap-4">
+          <div class="col-span-12 sm:col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-4">
             <p-button label="Limpar" iconPos="right" icon="pi pi-eraser" styleClass="p-button-secondary"
                       [outlined]="true"
                       (click)="limpar()"></p-button>
           </div>
-          <div class="col-12 sm:col-12 md:col-8 lg:col-8 xl:col-8">
+          <div class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8">
             <p-button type="submit" label="Salvar" iconPos="right" icon="pi pi-save"></p-button>
           </div>
         </div>

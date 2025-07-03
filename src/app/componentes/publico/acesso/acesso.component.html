@@ -1,27 +1,29 @@
-<p-card class="block my-8 m-auto max-w-24rem shadow-2 border-round fadein animation-duration-500">
+<p-card class="block my-20 m-auto max-w-96 shadow rounded-border animate-fadein animate-duration-500">
 
   <ng-template pTemplate="header">
     <img src="assets/imagens/asas.jpg" alt="asas">
   </ng-template>
 
-  <div class="text-center text-900 text-5xl font-medium mb-5">Sistemas Anjos</div>
-  <div class="text-center text-600 text-2xl font-medium mb-4">Acesse seu sistema</div>
-  <div class="p-fluid">
-    <span class="p-input-icon-right field">
-      <i class="pi pi-envelope"></i>
-      <input type="email" pInputText pAutoFocus placeholder="Digite seu email"
-             [(ngModel)]="email" [autofocus]="true">
-    </span>
-    <p-password [(ngModel)]="senha" [toggleMask]="true" [feedback]="false"
-            placeholder="Digite sua senha"></p-password>
-    <a routerLink="/recuperar-senha" rel="noopener noreferrer" class="block mt-3 text-right">Esqueceu sua senha ?</a>
-  </div>
+  <div class="text-center text-surface-900 text-3xl font-medium mb-8">Sistemas Anjos</div>
+<!--  <div class="text-center text-surface-600 text-xl font-medium mb-4">Acesse seu sistema</div>-->
 
-  <ng-template pTemplate="footer">
-    <p-button [disabled]="!email || !senha" (click)="entrar()" styleClass="w-full"
+  <div class="p-fluid">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-desktop"></i>
+      </p-inputgroup-addon>
+      <input pInputText [pAutoFocus]="true" [(ngModel)]="nomeSistema" placeholder="Digite o nome do sistema" />
+    </p-inputgroup>
+    <p-inputgroup class="mt-4">
+      <p-inputgroup-addon>
+        <i class="pi pi-lock"></i>
+      </p-inputgroup-addon>
+      <input pInputText [pAutoFocus]="true" [(ngModel)]="codigoUsuario" placeholder="Digite o código do usuário" />
+    </p-inputgroup>
+    <p-button [disabled]="!nomeSistema || !codigoUsuario || carregando" (click)="entrar()" styleClass="w-full mt-4"
               label="Acessar" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-sign-in'"
               iconPos="right" pRipple></p-button>
-    <p-messages></p-messages>
-  </ng-template>
+  </div>
+  <p-message></p-message>
 
 </p-card>

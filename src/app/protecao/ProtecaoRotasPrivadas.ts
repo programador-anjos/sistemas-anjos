@@ -6,7 +6,7 @@ export const ProtecaoRotasPrivadas: CanActivateFn = (activatedRouteSnapshot: Act
                                                      routerStateSnapshot: RouterStateSnapshot) => {
 
   const armazenamentoService = inject(ArmazenamentoService);
-  let logado = armazenamentoService.logado();
+  let logado = armazenamentoService.usuario();
   if (logado) {
     return true;
   }

@@ -14,12 +14,16 @@ import {ContasComponent} from "../componentes/deus/contas/contas.component";
 import {AparenciaComponent} from "../componentes/sistema/aparencia/aparencia.component";
 import {TemasComponent} from "../componentes/deus/temas/temas.component";
 import {TesteComponent} from "../componentes/deus/teste/teste.component";
+import {DatePicker} from "primeng/datepicker";
+import {Select} from "primeng/select";
 
 @NgModule({
   imports: [
     RouterModule.forRoot(DeusRotas),
     ModuloAngular,
     ModuloPrimeng,
+    DatePicker,
+    Select,
   ],
   declarations: [
     EstatisticasComponent,

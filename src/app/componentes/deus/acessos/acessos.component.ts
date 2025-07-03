@@ -1,5 +1,5 @@
 import {Component, OnInit } from "@angular/core";
-import {Acesso} from "../../../models/Acesso";
+import {RegistroDeAcesso} from "../../../models/RegistroDeAcesso";
 import {AcessosService} from "../../../services/firebase/AcessosService";
 
 @Component({
@@ -9,7 +9,7 @@ import {AcessosService} from "../../../services/firebase/AcessosService";
 })
 export class AcessosComponent implements OnInit {
 
-  lista: Acesso[] = [];
+  lista: RegistroDeAcesso[] = [];
   carregando = false;
 
   constructor(private acessosService: AcessosService) {

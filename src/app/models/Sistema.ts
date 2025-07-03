@@ -1,13 +1,19 @@
+import {Usuario} from "./Usuario";
 
 export class Sistema {
   nome: string = '';
   rota: string = '';
-  aparencia: string = '';
-  modelo?: MODELO = MODELO.PADRAO;
-  plano?: PLANO = PLANO.GRATUITO;
+  // TODO: formulario
+  modelo: MODELO = MODELO.PADRAO;
+  plano: PLANO = PLANO.GRATUITO;
+  usuarios: Usuario[] = [];
 
   constructor(model?: Partial<Sistema>) {
     Object.assign(this, model);
+  }
+
+  json(): any {
+    return JSON.parse(JSON.stringify(this));
   }
 
   eGratuito(): boolean {
@@ -18,16 +24,8 @@ export class Sistema {
     return this.plano === PLANO.ANJO
   }
 
-  eQuerubim(): boolean {
-    return this.plano === PLANO.QUERUBIM
-  }
-
   eArcanjo(): boolean {
     return this.plano === PLANO.ARCANJO
-  }
-
-  eDeus(): boolean {
-    return this.plano === PLANO.DEUS
   }
 
 }
@@ -39,7 +37,5 @@ export enum MODELO {
 export enum PLANO {
   GRATUITO = 1,
   ANJO = 2,
-  QUERUBIM = 3,
-  ARCANJO = 4,
-  DEUS = 9
+  ARCANJO = 3,
 }

@@ -1,13 +1,14 @@
-import {Sistema} from "./Sistema";
-
-export class Conta {
-  email: string = '';
-  senha: string = '';
+export class Usuario {
+  nome: string = '';
+  codigo: string = '';
+  desativado: boolean = false;
+  permissaoAlterarDados: boolean = false;
+  permissaoVerDashboard: boolean = false;
   perfil: PERFIL = PERFIL.ADMINISTRADOR;
-  sistema?: Sistema = new Sistema();
+  tema: TEMA = TEMA.CLARO;
   cadastro: string = new Date().toLocaleString().substring(0, 10);
 
-  constructor(model?: Partial<Conta>) {
+  constructor(model?: Partial<Usuario>) {
     Object.assign(this, model);
   }
 
@@ -32,5 +33,11 @@ export class Conta {
 export enum PERFIL {
   USUARIO = 1,
   ADMINISTRADOR = 2,
-  CRIADOR = 9
+  CRIADOR = 3
+}
+
+export enum TEMA {
+  CLARO = 1,
+  ESCURO = 2,
+  PERSONALIZADO = 3
 }

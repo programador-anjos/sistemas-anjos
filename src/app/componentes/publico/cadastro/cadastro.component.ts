@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Conta} from "../../../models/Conta";
-import {Sistema} from "../../../models/Sistema";
+import {PERFIL, TEMA, Usuario} from "../../../models/Usuario";
+import {MODELO, PLANO, Sistema} from "../../../models/Sistema";
 import {SelectItem} from "primeng/api";
-import {ContasService} from "../../../services/firebase/ContasService";
+import {SistemaService} from "../../../services/firebase/SistemaService";
 import {AutenticacaoService} from "../../../services/firebase/AutenticacaoService";
 import {ToastService} from "../../../services/ToastService";
 import {Utils} from "../../../utils/Utils";
@@ -37,22 +37,22 @@ export class CadastroComponent {
 
   formGroup = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email, this.emailValidator()]),
-    senha: new FormControl("", [Validators.required, Validators.minLength(6)]),
+    codigo: new FormControl("", [Validators.required, Validators.minLength(6)]),
     sistema: new FormControl("", [Validators.required]),
     perfil: new FormControl(1, [Validators.required]),
     modelo: new FormControl(1, [Validators.required]),
     plano: new FormControl(1, [Validators.required])
   });
 
-  constructor(private contasService: ContasService,
-              private toastService: ToastService,
-              private autenticacaoService: AutenticacaoService) {
+  constructor(private sistemaService: SistemaService,
+              // private autenticacaoService: AutenticacaoService,
+              private toastService: ToastService) {
   }
 
   limpar() {
     this.formGroup = new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email, this.emailValidator()]),
-      senha: new FormControl("", [Validators.required, Validators.minLength(6)]),
+      codigo: new FormControl("", [Validators.required, Validators.minLength(6)]),
       sistema: new FormControl("", [Validators.required]),
       perfil: new FormControl(1, [Validators.required]),
       modelo: new FormControl(1, [Validators.required]),
@@ -62,16 +62,16 @@ export class CadastroComponent {
 
   salvar() {
     if (this.validateForm()) {
-      let conta = this.criarConta();
-      this.autenticacaoService.criarConta(conta.email, conta.senha)
+      let sistema = this.criarSistema();
+      this.sistemaService.post(sistema)
         .then(() => {
-          this.contasService.post(conta)
+          this.sistemaService.post(sistema)
             .then(() => {
               this.toastService.sucesso('Sistema criado');
               this.limpar();
             })
             .catch(error => {
-              this.toastService.erro(error.code, 'Erro ao criar conta', 5000);
+              this.toastService.erro(error.code, 'Erro ao criar sistema', 5000);
             })
             .finally(() => this.carregando = false);
         })
@@ -85,20 +85,17 @@ export class CadastroComponent {
     }
   }
 
-  private criarConta() {
+  private criarSistema(): Sistema {
     let value = this.formGroup.value;
-    let conta = new Conta();
-    conta.email = value.email ? value.email : '';
-    conta.senha = value.senha ? value.senha : '';
-    conta.perfil = value.perfil ? value.perfil : 1;
-    let sistema = new Sistema();
-    sistema.nome = value.sistema ? value.sistema : '';
-    sistema.rota = Utils.criarRota(sistema.nome);
-    sistema.modelo = value.modelo ? value.modelo : 1;
-    sistema.plano = value.plano ? value.plano : 1;
-    sistema.aparencia = 'lara-light-blue';
-    conta.sistema = sistema;
-    return conta;
+    let usuario = new Usuario({
+      nome : value.email ? value.email : '',
+      codigo : value.codigo ? value.codigo : '',
+    });
+    return new Sistema({
+      nome: usuario.nome,
+      rota: Utils.criarRota(usuario.nome),
+      usuarios: [usuario],
+    });
   }
 
   validateForm(): boolean {
