@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { LayoutService } from "./service/app.layout.service";
+import {Component} from '@angular/core';
+import {LayoutService} from "./service/app.layout.service";
 
 @Component({
-  standalone: false,
-    selector: 'app-footer',
-    templateUrl: './app.footer.component.html'
+  selector: 'app-footer',
+  templateUrl: './app.footer.component.html',
+  standalone: false
 })
 export class AppFooterComponent {
-    constructor(public layoutService: LayoutService) { }
+  constructor(public layoutService: LayoutService) {
+  }
 }

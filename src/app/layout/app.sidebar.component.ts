@@ -1,12 +1,13 @@
-import { Component, ElementRef } from '@angular/core';
-import { LayoutService } from "./service/app.layout.service";
+import {Component, ElementRef} from '@angular/core';
+import {LayoutService} from "./service/app.layout.service";
 
 @Component({
-  standalone: false,
-    selector: 'app-sidebar',
-    templateUrl: './app.sidebar.component.html'
+  selector: 'app-sidebar',
+  templateUrl: './app.sidebar.component.html',
+  standalone: false
 })
 export class AppSidebarComponent {
-    constructor(public layoutService: LayoutService, public el: ElementRef) { }
+  constructor(public layoutService: LayoutService, public el: ElementRef) {
+  }
 }
 

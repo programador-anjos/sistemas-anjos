@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
-import {DeusRotas} from "../componentes/deus/DeusRotas";
+import {DeusRotas} from "../componentes/deus/deus.rotas";
 import {PagamentosComponent} from "../componentes/sistema/pagamentos/pagamentos.component";
 import {ModuloPrimeng} from "./ModuloPrimeng";
 import {EstatisticasComponent} from "../componentes/deus/estatisticas/estatisticas.component";
@@ -22,8 +22,6 @@ import {Select} from "primeng/select";
     RouterModule.forRoot(DeusRotas),
     ModuloAngular,
     ModuloPrimeng,
-    DatePicker,
-    Select,
   ],
   declarations: [
     EstatisticasComponent,

@@ -1,0 +1,77 @@
+<fieldset class="border border-gray-300 rounded-lg shadow-md p-3">
+  <legend class="ml-2 p-2 font-bold text-lg">Receituário</legend>
+  <div class="flex gap-4">
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="aro" [(ngModel)]="produto.aro" class="w-full"/>
+      <label for="aro">Aro</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="codigo" [(ngModel)]="produto.codigo" class="w-full"/>
+      <label for="codigo">Código</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="lente" [(ngModel)]="produto.lente" class="w-full"/>
+      <label for="lente">Lente</label>
+    </p-floatlabel>
+  </div>
+  <br>
+  <div class="grid grid-cols-7 gap-2 text-center font-semibold text-sm">
+    <div class="col-span-2"></div>
+    <div><span>ESF</span></div>
+    <div><span>CIL</span></div>
+    <div><span>EIXO</span></div>
+    <div><span>DNP</span></div>
+    <div><span>ALT</span></div>
+
+    <div class="col-span-1 row-span-2 content-center"><span>LONGE</span></div>
+    <div class="content-center"><span>OD</span></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l1c1"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l1c2"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l1c3"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l1c4"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l1c5"/></div>
+    <div class="content-center"><span>OE</span></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l2c1"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l2c2"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l2c3"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l2c4"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l2c5"/></div>
+
+    <p-divider class="col-span-7 my-1"></p-divider>
+
+    <div class="col-span-1 row-span-2 content-center"><span>PERTO</span></div>
+    <div class="content-center"><span>OD</span></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l3c1"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l3c2"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l3c3"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l3c4"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l3c5"/></div>
+    <div class="content-center"><span>OE</span></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l5c1"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l5c2"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l5c3"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l5c4"/></div>
+    <div><input pSize="small" type="text" pInputText class="w-full" [(ngModel)]="produto.l5c5"/></div>
+  </div>
+
+  <div class="flex justify-between gap-3 mt-6">
+    <p-floatlabel variant="on" class="w-1/2">
+      <input pSize="small" type="text" pInputText id="lente" [(ngModel)]="produto.adicao" class="w-full"/>
+      <label for="lente">Adição</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/2">
+      <p-datepicker size="small" [(ngModel)]="produto.dataVencimentoReceita" inputId="data" showIcon iconDisplay="input"
+                    styleClass="w-full" dateFormat="dd/mm/yy" [appendTo]="'body'" />
+      <label for="data">Vencimento da receita</label>
+    </p-floatlabel>
+  </div>
+
+  <textarea pInputTextarea [(ngModel)]="produto.observacoes" [autoResize]="true" maxlength="100" [rows]="2"
+            placeholder="Observação" class="w-full mt-6"></textarea>
+  @if (produto.observacoes?.length ?? 0 > 0) {
+    <small class="block text-right">
+      {{ 100 - (produto.observacoes?.length ?? 0) }} caracteres restantes
+    </small>
+  }
+
+</fieldset>

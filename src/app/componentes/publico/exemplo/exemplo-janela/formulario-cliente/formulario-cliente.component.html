@@ -1,0 +1,88 @@
+<fieldset class="border border-gray-300 shadow-md rounded-lg p-3">
+  <legend class="ml-2 p-2 font-bold text-lg">Identificação</legend>
+  <div class="flex gap-4">
+    <p-floatlabel variant="on" class="w-2/3">
+      <input pSize="small" type="text" pInputText id="name" [(ngModel)]="identificacao.nome" class="w-full"/>
+      <label for="name">Nome*</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <p-datepicker size="small" [(ngModel)]="identificacao.nascimento" inputId="data" showIcon iconDisplay="input"
+                    inputStyleClass="w-full" styleClass="p-0 m-0" dateFormat="dd/mm/yy" [appendTo]="'body'" />
+      <label for="data">Data</label>
+    </p-floatlabel>
+  </div>
+  <div class="flex gap-4 mt-4">
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="identidade" [(ngModel)]="identificacao.identidade" class="w-full"/>
+      <label for="identidade">Identidade</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <p-inputmask size="small" id="cpf" [(ngModel)]="identificacao.cpf" mask="999.999.999-99"
+                   styleClass="w-full"></p-inputmask>
+      <label for="cpf">CPF</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <p-select size="small" [options]="generos" [(ngModel)]="identificacao.genero" inputId="genero" styleClass="w-full"/>
+      <label for="genero">Gênero</label>
+    </p-floatlabel>
+  </div>
+</fieldset>
+
+<fieldset class="border border-gray-300 shadow-md rounded-lg mt-3 p-3">
+  <legend class="ml-2 p-2 font-bold text-lg">Endereço</legend>
+  <div class="flex gap-4">
+    <p-floatlabel variant="on" class="w-1/4">
+      <input pSize="small" type="text" pInputText id="cep" [(ngModel)]="endereco.cep"
+             (ngModelChange)="buscarEnderecoPorCEP()" class="w-full"/>
+      <label for="cep">CEP</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-2/4">
+      <input pSize="small" type="text" pInputText id="logradouro" [(ngModel)]="endereco.logradouro" class="w-full"/>
+      <label for="logradouro">Logradouro</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/4">
+      <input pSize="small" type="text" pInputText id="numero" [(ngModel)]="endereco.numero" class="w-full"/>
+      <label for="numero">Número</label>
+    </p-floatlabel>
+  </div>
+  <div class="flex gap-4 mt-4">
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="bairro" [(ngModel)]="endereco.bairro" class="w-full"/>
+      <label for="bairro">Bairro</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="cidade" [(ngModel)]="endereco.cidade" class="w-full"/>
+      <label for="cidade">Cidade</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="estado" [(ngModel)]="endereco.estado" class="w-full"/>
+      <label for="estado">Estado</label>
+    </p-floatlabel>
+  </div>
+</fieldset>
+
+<fieldset class="border border-gray-300 shadow-md rounded-lg mt-3 p-3"
+          (mouseover)="exibirBotoes = true" (mouseout)="exibirBotoes = false">
+  <legend class="ml-2 p-2 font-bold text-lg">Contato</legend>
+  <div class="flex gap-4">
+    <p-floatlabel variant="on" class="w-1/3">
+      <p-inputmask size="small" id="telefone" [(ngModel)]="contato.telefone" mask="(21) 99999-9999"
+                   styleClass="w-full"></p-inputmask>
+      <label for="telefone">Telefone</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-2/3">
+      <input pSize="small" type="email" pInputText id="email" [(ngModel)]="contato.email" class="w-full"/>
+      <label for="email">Email</label>
+    </p-floatlabel>
+  </div>
+  <div *ngIf="exibirBotoes" class="flex gap-4 mt-2 animate-fadeinup animate-duration-200">
+    <div class="w-1/3">
+      <p-button size="small" pRipple label="Whatsapp" [raised]="true" severity="success" (click)="abrirWhatsapp()"
+                styleClass="w-full mt-2" icon="pi pi-whatsapp" iconPos="right"/>
+    </div>
+    <div class="w-2/3">
+      <p-button size="small" pRipple label="Email" [raised]="true" severity="danger" (click)="abrirEmail()"
+                styleClass="w-full mt-2" icon="pi pi-envelope" iconPos="right"/>
+    </div>
+  </div>
+</fieldset>

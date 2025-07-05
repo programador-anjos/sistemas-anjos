@@ -1,5 +1,4 @@
 import {Routes} from '@angular/router';
-import {AparenciaComponent} from "../sistema/aparencia/aparencia.component";
 import {ProtecaoRotasPrivadas} from "../../protecao/ProtecaoRotasPrivadas";
 import {ProtecaoRotasCriador} from "../../protecao/ProtecaoRotasCriador";
 import {DeusComponent} from "./deus.component";

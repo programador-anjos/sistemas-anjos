@@ -39,6 +39,12 @@ import {DatePickerModule} from "primeng/datepicker";
 import {ToggleSwitchModule} from "primeng/toggleswitch";
 import {InputGroupModule} from "primeng/inputgroup";
 import {InputGroupAddonModule} from "primeng/inputgroupaddon";
+import {FieldsetModule} from "primeng/fieldset";
+import {ToastModule} from "primeng/toast";
+import {TooltipModule} from "primeng/tooltip";
+import {PopoverModule} from "primeng/popover";
+import {OverlayBadgeModule} from "primeng/overlaybadge";
+import {TextareaModule} from "primeng/textarea";
 
 @NgModule({
   imports: [
@@ -66,8 +72,8 @@ import {InputGroupAddonModule} from "primeng/inputgroupaddon";
     SpeedDialModule,
     SplitterModule,
     PasswordModule,
-    ChartModule,
     RadioButtonModule,
+    ToggleSwitchModule,
     EditorModule,
     ToggleButtonModule,
     AutoFocusModule,
@@ -78,8 +84,16 @@ import {InputGroupAddonModule} from "primeng/inputgroupaddon";
     IconFieldModule,
     InputIconModule,
     DividerModule,
-    InputGroupModule,
     InputGroupAddonModule,
+    TagModule,
+    OrderListModule,
+    InputGroupModule,
+    FieldsetModule,
+    ToastModule,
+    TooltipModule,
+    PopoverModule,
+    OverlayBadgeModule,
+    TextareaModule
   ],
   exports: [
     CheckboxModule,
@@ -106,13 +120,11 @@ import {InputGroupAddonModule} from "primeng/inputgroupaddon";
     SpeedDialModule,
     SplitterModule,
     PasswordModule,
-    ChartModule,
     RadioButtonModule,
     ToggleSwitchModule,
     EditorModule,
     ToggleButtonModule,
     AutoFocusModule,
-    MessageModule,
     MessageModule,
     FileUploadModule,
     DockModule,
@@ -120,10 +132,16 @@ import {InputGroupAddonModule} from "primeng/inputgroupaddon";
     IconFieldModule,
     InputIconModule,
     DividerModule,
+    InputGroupAddonModule,
     TagModule,
     OrderListModule,
     InputGroupModule,
-    InputGroupAddonModule,
+    FieldsetModule,
+    ToastModule,
+    TooltipModule,
+    PopoverModule,
+    OverlayBadgeModule,
+    TextareaModule
   ]
 })
 export class ModuloPrimeng {

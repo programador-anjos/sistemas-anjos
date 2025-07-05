@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
-import {SistemaRotas} from "../componentes/sistema/SistemaRotas";
+import {SistemaRotas} from "../componentes/sistema/sistema.rotas";
 import {PainelComponent} from "../componentes/sistema/painel/painel.component";
 import {RegistrosComponent} from "../componentes/sistema/registros/registros.component";
 import {UsuariosComponent} from "../componentes/sistema/usuarios/usuarios.component";

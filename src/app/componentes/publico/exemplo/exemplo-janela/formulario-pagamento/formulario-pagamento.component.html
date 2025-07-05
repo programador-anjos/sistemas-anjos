@@ -1,0 +1,92 @@
+<fieldset class="border border-gray-300 shadow-md rounded-lg p-3">
+  <legend class="ml-2 p-2 font-bold text-lg">Condições de pagamento</legend>
+
+  @if (telaPagamento || modoEdicao) {
+    @for (pagamento of pagamento.condicoes; track $index) {
+      <p class="font-semibold">Parcelas no {{ pagamento.formaDePagamento }}</p>
+
+      @for (parcela of pagamento.parcelas; track $index) {
+        <div class="flex gap-4 mt-4">
+          <p-floatlabel variant="on" class="w-4/12">
+            <p-inputnumber size="small" inputId="currency-pt" mode="currency" currency="BRL" locale="pt-BR"
+                           [(ngModel)]="parcela.valorParcela" [disabled]="true" styleClass="w-full"
+                           inputStyleClass="w-full"/>
+            <label for="valor">Valor</label>
+          </p-floatlabel>
+          <p-floatlabel variant="on" class="w-4/12">
+            <p-datepicker size="small" [(ngModel)]="parcela.dataParcela" inputId="data" showIcon iconDisplay="input"
+                          styleClass="w-full" dateFormat="dd/mm/yy"
+                          [disabled]="parcela.parcelaPaga" [appendTo]="'body'" />
+            <label for="data">Data</label>
+          </p-floatlabel>
+          <div class="w-4/12">
+            @if (parcela.parcelaPaga) {
+              <p-button size="small" pRipple label="Pago" iconPos="right" [icon]="'pi pi-check'"
+                        [raised]="true" [disabled]="true" severity="success"
+                        styleClass="w-full cursor-not-allowed"/>
+            } @else {
+              <p-button size="small" pRipple label="Pagar" [raised]="true" [outlined]="true" severity="success"
+                        styleClass="w-full" (click)="pagar(parcela)"/>
+            }
+          </div>
+        </div>
+      }
+      <p-divider/>
+    }
+
+    <div class="flex justify-around">
+      <h1 class="p-2 font-bold text-xl">Faltando: <span class="text-red-700">
+              {{ valorTotalNaoPago | currency }}</span></h1>
+      <h1 class="p-2 font-bold text-xl">Pago: <span class="text-green-700">
+              {{ valorTotalPago | currency }}</span></h1>
+    </div>
+  } @else {
+
+    <p-floatlabel variant="on">
+      <p-inputnumber inputId="currency-pt" mode="currency" currency="BRL" locale="pt-BR"
+                     [(ngModel)]="pagamento.valorTotal" (ngModelChange)="espelharValor()"
+                     styleClass="w-full"/>
+      <label for="valor">Valor total*</label>
+    </p-floatlabel>
+
+    <p-divider/>
+
+    @for (condicao of geradorDeCondicoes; track $index) {
+      <div class="flex items-center gap-2 mt-4">
+        <p-floatlabel variant="on" class="w-4/12">
+          <p-select size="small" id="formaDePagamento" styleClass="w-full" [options]="formasDePagamento"
+                    [(ngModel)]="condicao.formaDePagamento"/>
+          <label for="formaDePagamento">Forma</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on" class="w-3/12">
+          <p-inputnumber size="small" inputId="currency-pt" mode="currency" currency="BRL" locale="pt-BR"
+                         [(ngModel)]="condicao.valor" (ngModelChange)="condicao.gerarParcelamentosParaSelecao()"
+                         styleClass="w-full" inputStyleClass="w-full"></p-inputnumber>
+          <label for="valorTotal">Valor</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on" class="w-4/12">
+          <p-select size="small" id="parcelamento" [options]="condicao.parcelas"
+                    [(ngModel)]="condicao.parcelamento" styleClass="w-full"/>
+          <label for="parcelamento">Parcelamento</label>
+        </p-floatlabel>
+        <div class="w-1/12">
+          <p-button icon="pi pi-times" styleClass="w-full" [outlined]="true" severity="danger"
+                    (click)="geradorDeCondicoes.splice($index, 1)"/>
+        </div>
+      </div>
+    }
+
+    <div class="flex gap-2 mt-5">
+      <div class="w-1/2">
+        <p-button size="small" pRipple label="Adicionar forma de pagamento" [raised]="true" [outlined]="true"
+                  severity="secondary" styleClass="w-full" (click)="criarFormaDePagamento()"/>
+      </div>
+      <div class="w-1/2">
+        <p-button size="small" pRipple label="Gerar parcelas" [raised]="true"
+                  severity="primary" styleClass="w-full" [disabled]="btnGerarParcelasDisabled()"
+                  (click)="salvarFormasDePagamento()"/>
+      </div>
+    </div>
+  }
+
+</fieldset>

@@ -15,6 +15,7 @@ import {providePrimeNG} from "primeng/config";
 import {MessageModule} from "primeng/message";
 import Lara from '@primeuix/themes/lara';
 import {definePreset} from "@primeuix/themes";
+import {ExemploService} from "./componentes/publico/exemplo/service/exemplo.service";
 
 const LaraSky = definePreset(Lara, {
   semantic: {
@@ -83,6 +84,7 @@ const LaraSky = definePreset(Lara, {
     MessageService,
     MessageModule,
     ConfirmationService,
+    ExemploService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(),
     // provideRouter(routes),
