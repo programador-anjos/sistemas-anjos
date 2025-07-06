@@ -1,29 +1,41 @@
-<p-card class="block my-20 m-auto max-w-96 shadow rounded-border animate-fadein animate-duration-500">
+<div class="flex justify-center items-center h-screen">
 
-  <ng-template pTemplate="header">
-    <img src="assets/imagens/asas.jpg" alt="asas">
-  </ng-template>
+  <div class="w-90 animate-fadeinup animate-duration-500 bg-white p-4 rounded">
 
-  <div class="text-center text-surface-900 text-3xl font-medium mb-8">Sistemas Anjos</div>
-<!--  <div class="text-center text-surface-600 text-xl font-medium mb-4">Acesse seu sistema</div>-->
+    <div class="flex justify-start h-14">
+      <p-button label="voltar ao site" routerLink="/" link iconPos="left" icon="pi pi-arrow-left" />
+    </div>
 
-  <div class="p-fluid">
-    <p-inputgroup>
-      <p-inputgroup-addon>
-        <i class="pi pi-desktop"></i>
-      </p-inputgroup-addon>
-      <input pInputText [pAutoFocus]="true" [(ngModel)]="nomeSistema" placeholder="Digite o nome do sistema" />
-    </p-inputgroup>
-    <p-inputgroup class="mt-4">
-      <p-inputgroup-addon>
-        <i class="pi pi-lock"></i>
-      </p-inputgroup-addon>
-      <input pInputText [pAutoFocus]="true" [(ngModel)]="codigoUsuario" placeholder="Digite o código do usuário" />
-    </p-inputgroup>
-    <p-button [disabled]="!nomeSistema || !codigoUsuario || carregando" (click)="entrar()" styleClass="w-full mt-4"
-              label="Acessar" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-sign-in'"
-              iconPos="right" pRipple></p-button>
+    <div class="flex flex-col gap-4">
+
+      <img src="assets/imagens/asas.jpg" alt="asas" class="rounded-lg w-full">
+
+      <div class="text-center text-surface-900 text-3xl font-medium mb-2">Sistemas Anjos</div>
+
+      <p-inputgroup>
+        <p-inputgroup-addon>
+          <i class="pi pi-desktop"></i>
+        </p-inputgroup-addon>
+        <input pInputText [pAutoFocus]="true" [(ngModel)]="codigoSistema" placeholder="Digite o código do sistema"/>
+      </p-inputgroup>
+
+      <p-inputgroup>
+        <p-inputgroup-addon>
+          <i class="pi pi-lock"></i>
+        </p-inputgroup-addon>
+        <input pInputText [pAutoFocus]="true" [(ngModel)]="codigoUsuario" placeholder="Digite o código do usuário"/>
+      </p-inputgroup>
+
+      <p-button [disabled]="!codigoSistema || !codigoUsuario || carregando" (click)="entrar()" styleClass="w-full"
+                label="Acessar sistema" pRipple></p-button>
+
+      <hr class="text-gray-300">
+
+      <p-button label="Cadastrar sistema" variant="outlined" severity="info" routerLink="/cadastro"
+                styleClass="w-full"></p-button>
+
+    </div>
+
   </div>
-  <p-message></p-message>
 
-</p-card>
+</div>

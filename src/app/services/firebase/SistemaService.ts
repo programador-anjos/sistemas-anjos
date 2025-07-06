@@ -30,17 +30,17 @@ export class SistemaService {
   }
 
   async post(rec: Sistema) {
-    let documento = doc(colecao, rec.nome);
+    let documento = doc(colecao, rec.codigo);
     return await setDoc(documento, rec.json());
   }
 
   async put(rec: Sistema) {
-    let documento = doc(colecao, rec.nome);
+    let documento = doc(colecao, rec.codigo);
     return await updateDoc(documento, rec.json());
   }
 
   async delete(rec: Sistema) {
-    let documento = doc(colecao, rec.nome);
+    let documento = doc(colecao, rec.codigo);
     return await deleteDoc(documento);
   }
 

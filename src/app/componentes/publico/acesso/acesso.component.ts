@@ -7,6 +7,8 @@ import {MessageService} from "primeng/api";
 import {AcessosService} from "../../../services/firebase/AcessosService";
 import {RegistroDeAcesso, RESULTADO} from "../../../models/RegistroDeAcesso";
 import {Sistema} from "../../../models/Sistema";
+import {ToastService} from "../../../services/ToastService";
+import {v4 as uuidv4} from "uuid";
 
 @Component({
   selector: 'app-acesso',
@@ -18,7 +20,7 @@ export class AcessoComponent implements OnInit {
   sistemas: Sistema[] = [];
   sistema: Sistema = new Sistema({});
 
-  nomeSistema: string = '';
+  codigoSistema: string = '';
   codigoUsuario: string = '';
 
   carregando: boolean = false;
@@ -27,9 +29,9 @@ export class AcessoComponent implements OnInit {
   constructor(private router: Router,
               private acessosService: AcessosService,
               private messageService: MessageService,
-              // private autenticacaoService: AutenticacaoService,
               private armazenamentoService: ArmazenamentoService,
-              private sistemaService: SistemaService) {
+              private sistemaService: SistemaService,
+              private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -47,25 +49,27 @@ export class AcessoComponent implements OnInit {
   entrar() {
     this.carregando = true;
     this.sistemas.filter(sistema => {
-      if (sistema.nome === this.nomeSistema) {
+      if (sistema.codigo === this.codigoSistema) {
         this.sistema = sistema;
         this.sistemaEncontrado = true;
         this.armazenamentoService.armazenarSistema(this.sistema);
+        this.entrarComUsuario();
       }
     });
     if (!this.sistemaEncontrado) {
-      alert('Sistema não encontrado')
+      this.toastService.erro("Sistema não encontrado");
     }
   }
 
   entrarComUsuario() {
     this.carregando = true;
-    this.sistema.usuarios.filter(usuario => {
+    this.sistema.usuarios.filter(usu => {
+      let usuario = new Usuario(usu);
       if (usuario.codigo === this.codigoUsuario) {
         this.armazenamentoService.armazenarUsuario(usuario);
         this.router.navigate([this.obterRota(usuario)])
           .catch(e => {
-            this.falha('Erro interno');
+            this.toastService.erro(e.code, e, 5000);
             console.error('Erro no redirecionamento: ' + e.message);
           });
         this.sucesso();
@@ -85,28 +89,16 @@ export class AcessoComponent implements OnInit {
   }
 
   private sucesso() {
-    let acesso = new RegistroDeAcesso({sistema: 'sistema', usuario: this.nomeSistema, resultado: RESULTADO.SUCESSO});
+    let registro = { _id: uuidv4(), sistema: this.sistema.nome, usuario: this.codigoUsuario, resultado: RESULTADO.SUCESSO};
+    let acesso = new RegistroDeAcesso(registro);
     this.acessosService.post(acesso).catch(e => console.error(e.message));
   }
 
   private falha(causa?: string) {
-    let acesso = new RegistroDeAcesso({sistema: '', usuario: this.nomeSistema, resultado: RESULTADO.FALHA});
+    let acesso = new RegistroDeAcesso({ _id: uuidv4(), sistema: '', usuario: this.codigoSistema, resultado: RESULTADO.FALHA});
     this.acessosService.post(acesso)
       .then(res => this.messageService.add({severity: 'error', summary: causa, life: 4000}))
       .catch(e => console.error(e.message));
-  }
-
-  private tratarErro(error: any) {
-    if ("auth/invalid-email" == error.code) {
-      this.falha('Email inválido');
-    } else if ("auth/invalid-credential" == error.code) {
-      this.falha('Dados inválidos');
-    } else if ("auth/too-many-requests" == error.code) {
-      this.falha('Muitas tentativas, tente novamente mais tarde');
-    } else {
-      this.falha('Erro interno');
-      console.error('Erro ao entrar: ' + error.code);
-    }
   }
 
 }

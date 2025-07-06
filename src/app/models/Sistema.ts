@@ -2,6 +2,7 @@ import {Usuario} from "./Usuario";
 
 export class Sistema {
   nome: string = '';
+  codigo: string = '';
   rota: string = '';
   // TODO: formulario
   modelo: MODELO = MODELO.PADRAO;
