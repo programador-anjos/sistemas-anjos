@@ -1,14 +1,14 @@
-<div class="flex justify-center items-center h-screen">
+<div class="flex justify-center items-center h-screen fundo">
 
-  <div class="w-130 animate-fadeinup animate-duration-500 bg-white p-4 rounded">
+  <div class="w-130 animate-fadeinup animate-duration-500 shadow-2xl bg-white p-4 rounded-xl">
 
     <div class="flex justify-start h-14">
       <p-button label="voltar ao site" routerLink="/" link iconPos="left" icon="pi pi-arrow-left" />
     </div>
 
-    <img src="assets/imagens/asas.jpg" alt="asas" class="rounded-lg w-full"/>
+    <img src="assets/imagens/logo.jpg" alt="asas" class="rounded-lg w-full"/>
 
-    <div class="text-center text-surface-900 text-3xl font-medium my-4">Criar sistema e usuário</div>
+    <div class="text-center text-surface-900 text-3xl font-medium my-4">Criar sistema e administrador</div>
 
     <div class="flex gap-4">
 
@@ -16,26 +16,39 @@
         <legend class="ml-2 p-2 font-bold text-lg text-gray-600">Sistema</legend>
         <div class="flex flex-col gap-4">
           <p-floatlabel variant="on">
-            <input id="nome" type="text" pInputText [(ngModel)]="sistema.nome" class="w-full"/>
-            <label for="name">Nome do sistema*</label>
+            <input id="name" type="text" pInputText [(ngModel)]="sistema.nome" pSize="small" class="w-full"/>
+            <label for="name">Nome do sistema</label>
           </p-floatlabel>
           <p-floatlabel variant="on">
-            <input id="codigo" type="text" pInputText [(ngModel)]="sistema.codigo" class="w-full"/>
-            <label for="codigo">Código do sistema*</label>
+            <p-select
+              [options]="planos"
+              appendTo="body"
+              size="small"
+              inputId="planos"
+              class="w-full"/>
+            <label for="planos">Plano</label>
+          </p-floatlabel>
+          <p-floatlabel variant="on">
+            <input id="codigo" type="text" pInputText [(ngModel)]="sistema.codigo" pSize="small" class="w-full"/>
+            <label for="codigo">Código do sistema</label>
           </p-floatlabel>
         </div>
       </fieldset>
 
       <fieldset class="border border-gray-300 shadow-md rounded-lg p-3 w-1/2">
-        <legend class="ml-2 p-2 font-bold text-lg text-gray-600">Usuário</legend>
+        <legend class="ml-2 p-2 font-bold text-lg text-gray-600">Administrador</legend>
         <div class="flex flex-col gap-4">
           <p-floatlabel variant="on">
-            <input id="nome" type="text" pInputText [(ngModel)]="usuario.nome" class="w-full"/>
-            <label for="name">Nome do usuário*</label>
+            <input id="nome" type="text" pInputText [(ngModel)]="usuario.nome" pSize="small" class="w-full"/>
+            <label for="nome">Nome do admin</label>
           </p-floatlabel>
           <p-floatlabel variant="on">
-            <input id="codigo" type="text" pInputText [(ngModel)]="usuario.codigo" class="w-full"/>
-            <label for="codigo">Código do usuário*</label>
+            <input id="telefone" type="text" pInputText [(ngModel)]="usuario.telefone" pSize="small" class="w-full"/>
+            <label for="telefone">Telefone</label>
+          </p-floatlabel>
+          <p-floatlabel variant="on">
+            <input id="codigo" type="text" pInputText [(ngModel)]="usuario.codigo" pSize="small" class="w-full"/>
+            <label for="codigo">Código do admin</label>
           </p-floatlabel>
         </div>
       </fieldset>
@@ -48,8 +61,8 @@
 
     <div class="flex flex-col gap-4 mt-4">
       <p-button label="Cadastrar sistema" (click)="salvar()" [disabled]="desabilitarBotao()" class="w-full" ></p-button>
-      <hr class="text-gray-300">
-      <p-button label="Acessar sistema" variant="outlined" severity="info" routerLink="/acesso" class="w-full"></p-button>
+<!--      <hr class="text-gray-300">-->
+<!--      <p-button label="Acessar sistema" variant="outlined" severity="info" routerLink="/acesso" class="w-full"></p-button>-->
     </div>
 
   </div>

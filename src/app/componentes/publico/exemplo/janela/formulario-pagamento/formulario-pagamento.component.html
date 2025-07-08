@@ -54,23 +54,23 @@
     @for (condicao of geradorDeCondicoes; track $index) {
       <div class="flex items-center gap-2 mt-4">
         <p-floatlabel variant="on" class="w-4/12">
-          <p-select size="small" id="formaDePagamento" styleClass="w-full" [options]="formasDePagamento"
+          <p-select size="small" id="formaDePagamento" class="w-full" [options]="formasDePagamento"
                     [(ngModel)]="condicao.formaDePagamento"/>
           <label for="formaDePagamento">Forma</label>
         </p-floatlabel>
         <p-floatlabel variant="on" class="w-3/12">
           <p-inputnumber size="small" inputId="currency-pt" mode="currency" currency="BRL" locale="pt-BR"
                          [(ngModel)]="condicao.valor" (ngModelChange)="condicao.gerarParcelamentosParaSelecao()"
-                         styleClass="w-full" inputStyleClass="w-full"></p-inputnumber>
+                         class="w-full" inputStyleClass="w-full"></p-inputnumber>
           <label for="valorTotal">Valor</label>
         </p-floatlabel>
         <p-floatlabel variant="on" class="w-4/12">
           <p-select size="small" id="parcelamento" [options]="condicao.parcelas"
-                    [(ngModel)]="condicao.parcelamento" styleClass="w-full"/>
+                    [(ngModel)]="condicao.parcelamento" class="w-full"/>
           <label for="parcelamento">Parcelamento</label>
         </p-floatlabel>
         <div class="w-1/12">
-          <p-button icon="pi pi-times" styleClass="w-full" [outlined]="true" severity="danger"
+          <p-button icon="pi pi-times" styleClass="w-full" size="small" [outlined]="true" severity="danger"
                     (click)="geradorDeCondicoes.splice($index, 1)"/>
         </div>
       </div>

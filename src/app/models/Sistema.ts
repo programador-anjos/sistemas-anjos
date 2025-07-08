@@ -6,7 +6,7 @@ export class Sistema {
   rota: string = '';
   // TODO: formulario
   modelo: MODELO = MODELO.PADRAO;
-  plano: PLANO = PLANO.GRATUITO;
+  plano: PLANO = PLANO.ANJO;
   usuarios: Usuario[] = [];
 
   constructor(model?: Partial<Sistema>) {
@@ -15,10 +15,6 @@ export class Sistema {
 
   json(): any {
     return JSON.parse(JSON.stringify(this));
-  }
-
-  eGratuito(): boolean {
-    return this.plano === PLANO.GRATUITO
   }
 
   eAnjo(): boolean {
@@ -36,7 +32,6 @@ export enum MODELO {
 }
 
 export enum PLANO {
-  GRATUITO = 1,
-  ANJO = 2,
-  ARCANJO = 3,
+  ANJO = 1,
+  ARCANJO = 2,
 }

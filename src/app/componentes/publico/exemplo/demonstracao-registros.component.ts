@@ -1,29 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-import {SelectItem} from "primeng/api";
+import {MenuItem, SelectItem} from "primeng/api";
 import moment from 'moment';
 import {ToastService} from "../../../services/ToastService";
 import {StatusPagamento} from "./models/enums/StatusPagamento";
 import {Venda} from "./models/Venda";
 import {Pagamento} from "./models/classes/Pagamento";
 import {Parcela} from "./models/classes/Parcela";
-import {ExemploService} from "./service/exemplo.service";
+import {DemonstracaoService} from "./service/demonstracao.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-exemplo',
-  templateUrl: './exemplo.component.html',
+  selector: 'app-demonstracao-registros',
+  templateUrl: './demonstracao-registros.component.html',
   standalone: false
 })
-export class ExemploComponent implements OnInit {
+export class DemonstracaoRegistrosComponent implements OnInit {
 
   protected readonly ProximoPagamento = StatusPagamento;
-
   venda: Venda = new Venda({});
   exibirJanela = false;
   carregando = false;
   vendas: Venda[] = [];
   vendasFiltradas: Venda[] = [];
 
-  filtroNome: string = '';
+  palavraChave: string = '';
 
   filtrosStatus: SelectItem[] = [
     {label: 'Todos', value: StatusPagamento.TODOS},
@@ -34,7 +34,7 @@ export class ExemploComponent implements OnInit {
   ];
   filtroStatus: StatusPagamento = StatusPagamento.TODOS;
 
-  constructor(private vendaService: ExemploService,
+  constructor(private vendaService: DemonstracaoService,
               private toastService: ToastService) {
   }
 
@@ -45,7 +45,6 @@ export class ExemploComponent implements OnInit {
   pesquisar(): void {
     this.vendasFiltradas = [];
     this.carregando = true;
-    // setTimeout(() => {
     this.vendaService.read()
       .then((array: any[]) => {
         this.vendas = array;
@@ -56,18 +55,19 @@ export class ExemploComponent implements OnInit {
       })
       .catch((error: any): void => this.toastService.erro(error))
       .finally((): void => this.filtrar());
-    // }, 5000)
   }
 
   processarDatas(venda: Venda): void {
-    venda.produto.dataVencimentoReceita = moment(venda.produto.dataVencimentoReceita, "YYYY-MM-DD").toDate();
+    venda.produto.vencimento = moment(venda.produto.vencimento, "YYYY-MM-DD").toDate();
     venda.identificacao.nascimento = venda.identificacao.nascimento ?
       moment(venda.identificacao.nascimento, "YYYY-MM-DD").toDate() : undefined;
   }
 
   filtrar(): void {
     this.carregando = true;
-    this.vendasFiltradas = this.vendas.filter((venda: Venda) => venda.identificacao.nome?.toLowerCase().includes(this.filtroNome.toLowerCase()))
+    this.vendasFiltradas = this.vendas
+      .filter((venda: Venda) => venda.identificacao.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()) ||
+        venda.produto.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()))
       .filter((venda: Venda) => (StatusPagamento.TODOS === this.filtroStatus) || (venda.pagamento.statusPagamento === this.filtroStatus));
     this.carregando = false;
   }
@@ -98,11 +98,9 @@ export class ExemploComponent implements OnInit {
         .reduce((v1, v2) => v1 += v2);
       if (menorData.isBefore(hoje)) {
         pagamento.statusPagamento = StatusPagamento.ATRASADO;
-      }
-      else if (menorData.isSame(hoje)) {
+      } else if (menorData.isSame(hoje)) {
         pagamento.statusPagamento = StatusPagamento.HOJE;
-      }
-      else {
+      } else {
         pagamento.statusPagamento = StatusPagamento.AGUARDANDO;
       }
     }

@@ -1,0 +1,64 @@
+<fieldset class="border border-gray-300 rounded-lg shadow-md p-3">
+  <legend class="ml-2 p-2 font-bold text-lg">(Seu formulário de produto aqui)</legend>
+
+  <div class="flex gap-3">
+    <p-floatlabel variant="on" class="w-full">
+      <input pSize="small" type="text" pInputText id="nome" [(ngModel)]="produto.nome" class="w-full"/>
+      <label for="nome">Nome</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="flex gap-3 mt-4">
+    <p-floatlabel variant="on" class="w-1/2">
+      <input pSize="small" type="text" pInputText id="marca" [(ngModel)]="produto.marca" class="w-full"/>
+      <label for="marca">Marca</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/2">
+      <input pSize="small" type="text" pInputText id="modelo" [(ngModel)]="produto.modelo" class="w-full"/>
+      <label for="modelo">Modelo</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="flex gap-3 mt-4">
+    <p-floatlabel variant="on" class="w-1/3">
+      <p-inputnumber size="small" inputId="currency-pt" mode="currency" currency="BRL" locale="pt-BR"
+                     [(ngModel)]="produto.preco" class="w-full" inputStyleClass="w-full"></p-inputnumber>
+      <label for="preco">Preço</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="qtd" [(ngModel)]="produto.quantidade" class="w-full"/>
+      <label for="qtd">Quantidade</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/3">
+      <input pSize="small" type="text" pInputText id="estoque" [(ngModel)]="produto.estoque" class="w-full"/>
+      <label for="estoque">Estoque</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="flex gap-3 mt-4">
+    <p-floatlabel variant="on" class="w-1/2">
+      <p-select
+        [options]="categorias"
+        [(ngModel)]="produto.categoria"
+        appendTo="body"
+        size="small"
+        inputId="categorias"
+        class="w-full"/>
+      <label for="categoria">Categoria</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="w-1/2">
+      <p-datepicker size="small" [(ngModel)]="produto.vencimento" inputId="data" showIcon iconDisplay="input"
+                    styleClass="w-full" dateFormat="dd/mm/yy" [appendTo]="'body'" />
+      <label for="data">Vencimento</label>
+    </p-floatlabel>
+  </div>
+
+  <textarea pInputTextarea [(ngModel)]="produto.descricao" [autoResize]="true" maxlength="100" [rows]="2"
+            placeholder="Descrição" class="w-full mt-4"></textarea>
+  @if (produto.descricao?.length ?? 0 > 0) {
+    <small class="block text-right">
+      {{ 100 - (produto.descricao?.length ?? 0) }} caracteres restantes
+    </small>
+  }
+
+</fieldset>

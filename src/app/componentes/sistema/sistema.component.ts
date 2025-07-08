@@ -34,6 +34,9 @@ export class SistemaComponent implements OnInit {
     this.carregarMenus();
     // this.armazenamentoService.events.subscribe((logado: Conta | null) => this.carregarMenus(logado));
   }
+  gratuito() {
+    return true;
+  }
 
   private carregarMenus(): void {
     this.menuPrincipal = [];

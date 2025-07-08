@@ -4,7 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 import {ToastService} from "../../../../services/ToastService";
 import {Venda} from "../models/Venda";
 import {FormularioPagamentoComponent} from "./formulario-pagamento/formulario-pagamento.component";
-import {ExemploService} from "../service/exemplo.service";
+import {DemonstracaoService} from "../service/demonstracao.service";
 
 @Component({
   selector: 'app-exemplo-janela',
@@ -22,7 +22,7 @@ export class ExemploJanelaComponent {
   @ViewChild('pagamentoComponent') pagamentoComponent!: FormularioPagamentoComponent;
 
   constructor(private confirmationService: ConfirmationService,
-              private vendaService: ExemploService,
+              private vendaService: DemonstracaoService,
               private toastService: ToastService) {
   }
 

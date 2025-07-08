@@ -1,6 +1,7 @@
 export class Usuario {
   nome: string = '';
   codigo: string = '';
+  telefone: string = '';
   desativado: boolean = false;
   permissaoAlterarDados: boolean = false;
   permissaoVerDashboard: boolean = false;

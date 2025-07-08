@@ -4,7 +4,7 @@ import {Genero} from "../../models/enums/Genero";
 import {Identificacao} from "../../models/classes/Identificacao";
 import {Endereco} from "../../models/classes/Endereco";
 import {Contato} from "../../models/classes/Contato";
-import {ExemploService} from "../../service/exemplo.service";
+import {DemonstracaoService} from "../../service/demonstracao.service";
 
 @Component({
   selector: 'app-formulario-cliente',
@@ -23,7 +23,7 @@ export class FormularioClienteComponent {
     {label: 'Feminino', value: Genero.FEMININO}
   ];
 
-  constructor(private registroService: ExemploService) {
+  constructor(private registroService: DemonstracaoService) {
   }
 
   buscarEnderecoPorCEP(): void {

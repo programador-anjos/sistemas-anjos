@@ -1,7 +1,8 @@
 <p-dialog [(visible)]="exibirJanela"
           [style]="{width: '1700px'}"
-          [dismissableMask]="true"
+          [dismissableMask]="false"
           [draggable]="false"
+          [modal]="true"
           [header]="venda._id ? 'Alterar registro de venda' : 'Registrar venda'"
           (onHide)="fechar()"
           (onShow)="abrir()">
@@ -24,11 +25,14 @@
 
   <div class="flex justify-between mt-8">
     <div>
-      <p-button *ngIf="venda._id" size="small" pRipple label="Deletar registro" [raised]="true" severity="danger"
-                (click)="deletar()"/>
+      @if (venda._id) {
+        <p-button size="small" pRipple label="Deletar registro" [raised]="true" severity="danger" (click)="deletar()"/>
+      }
     </div>
     <div class="flex gap-3">
-      <p-button size="small" pRipple label="Fechar tela" [raised]="true" [outlined]="true" severity="secondary"
+      <p-message severity="error">Isso é apenas uma demonstração, o registro não será salvo!</p-message>
+
+      <p-button size="small" pRipple label="Cancelar" [raised]="true" [outlined]="true" severity="secondary"
                 (click)="fechar()"/>
       <p-button size="small" pRipple label="Salvar registro" [raised]="true"
                 [disabled]="!venda.identificacao.nome || venda.pagamento.condicoes.length == 0"

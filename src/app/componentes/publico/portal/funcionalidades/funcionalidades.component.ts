@@ -7,33 +7,36 @@ import {Component} from '@angular/core';
 })
 export class FuncionalidadesComponent {
 
-  planos: any[] = [
+  lista: any[] = [
     {
-      plano: 'Plano anjo',
-      descricao: 'Básico',
-      preco: 'R$100,00',
-      lista: [
-        'teste 1', 'teste 2', 'teste 3'
-      ]
+      icone: 'pi pi-dollar',
+      titulo: 'Gerencie suas vendas',
+      descricao: 'Registre os pagamentos efetuados e gerencie suas vendas'
     },
     {
-      plano: 'Plano querubim',
-      descricao: 'Intermediário',
-      preco: 'R$150,00',
-      lista: [
-        'Gerenciador de contas de acesso do seu sistema',
-        'Gerenciador de clientes, produtos e vendas'
-      ]
+      icone: 'pi pi-users',
+      titulo: 'Gerencie seus clientes',
+      descricao: 'Gerencie seus clientes e mantenha contato para eventuais promoções'
     },
     {
-      plano: 'Plano arcanjo',
-      descricao: 'Avançado',
-      preco: 'R$200,00',
-      lista: [
-        'Gerenciador de contas de acesso do seu sistema',
-        'Gerenciador de clientes, produtos e vendas',
-        'Painel com gráficos e estatísticas (acessível apenas para administradores)'
-      ]
+      icone: 'pi pi-gift',
+      titulo: 'Mantenha contato com seus clientes',
+      descricao: 'Visualize quais de seus clientes farão aniversário no mês'
+    },
+    {
+      icone: 'pi pi-palette',
+      titulo: 'Personalize seu sistema',
+      descricao: 'Personalize seu sistema com os temas claro ou escuro'
+    },
+    {
+      icone: 'pi pi-lock',
+      titulo: 'Gerencie os acessos',
+      descricao: 'Cadastre até 4 usuários para acessar seu sistema, além do administrador'
+    },
+    {
+      icone: 'pi pi-chart-bar',
+      titulo: 'Painel com gráficos e estatísticas',
+      descricao: 'Painel com gráficos e estatísticas para você ter uma visão geral do seu negócio'
     },
   ];
 

@@ -1,0 +1,39 @@
+<div class="px-2 py-20 md:px-6 lg:px-10 border-t border-t-primary-300 justify-items-center">
+  <div class="justify-items-center bg-white rounded-2xl py-8 border border-slate-300 shadow-lg w-3/4">
+    <div class="text-surface-900 dark:text-surface-0 font-bold text-4xl mb-6 text-center">Contato</div>
+    <div class="text-surface-700 dark:text-surface-100 text-xl mb-12 text-center leading-normal">
+      Precisa de um sistema mais adequado as suas necessidades ou tirar alguma dúvida? <br>
+      entre em contato conosco!
+    </div>
+    <div class="grid grid-cols-2 gap-5 w-4/5">
+      <div class="col-span-2 sm:col-span-1">
+        <p-floatlabel variant="on">
+          <input id="name" type="text" pInputText [(ngModel)]="contato.nome" class="w-full"/>
+          <label for="name">Nome</label>
+        </p-floatlabel>
+      </div>
+      <div class="col-span-2 sm:col-span-1">
+        <p-floatlabel variant="on">
+          <input id="email" type="email" pInputText [(ngModel)]="contato.email" class="w-full"/>
+          <label for="email">E-mail</label>
+        </p-floatlabel>
+      </div>
+      <div class="col-span-2">
+        <p-floatlabel variant="on">
+          <input id="assunto" type="text" pInputText [(ngModel)]="contato.assunto" class="w-full"/>
+          <label for="assunto">Assunto</label>
+        </p-floatlabel>
+      </div>
+      <div class="col-span-2">
+        <p-floatlabel variant="on">
+        <textarea pTextarea id="mensagem" [(ngModel)]="contato.mensagem" [autoResize]="true" [rows]="3"
+                  class="w-full"></textarea>
+          <label for="mensagem">Mensagem</label>
+        </p-floatlabel>
+      </div>
+      <div class="col-span-2">
+        <button pButton (click)="enviar()" pRipple class="font-bold w-full">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>

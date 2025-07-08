@@ -1,0 +1,76 @@
+<div class="animate-fadein animate-duration-500 mx-5 sm:mx-10 lg:mx-20 xl:mx-30 2xl:mx-50 shadow-lg rounded-xl">
+
+  <p-table #dt id="tabelaVendas" [value]="vendasFiltradas" [rows]="10" [paginator]="true"
+           dataKey="_id" [showCurrentPageReport]="true"
+           [loading]="carregando" [loadingIcon]="'pi pi-spin pi-spinner-dotted'"
+           [currentPageReportTemplate]="'Exibindo itens de {first} a {last} de um total de {totalRecords}'">
+
+    <ng-template #caption>
+
+      <div class="flex items-center justify-center font-bold text-2xl py-4 px-3 bg-logo rounded-t-xl">
+        <div>Registros de vendas</div>
+        <div class="absolute right-3">
+          <p-button size="small" icon="pi pi-plus" variant="text" showDelay="1000" (click)="abrirVendaDialog()"
+                    [raised]="true" severity="primary" tooltipPosition="left" pTooltip="Registrar venda"/>
+        </div>
+      </div>
+
+      <hr class="border-gray-200">
+
+      <div class="flex items-center justify-between p-3 ">
+        <p-iconfield>
+          <p-inputicon class="pi pi-search"/>
+          <input pSize="small" type="text" pInputText placeholder="Filtrar por cliente ou produto.." id="filtrar"
+                 class="w-80"
+                 [(ngModel)]="palavraChave" (ngModelChange)="filtrar()"/>
+        </p-iconfield>
+
+        <p-selectbutton [options]="filtrosStatus" size="small" [(ngModel)]="filtroStatus"
+                        (ngModelChange)="filtrar()"/>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th>Cliente</th>
+        <th>Produto</th>
+        <th>Forma(s) de pagamento</th>
+        <th>Valor total</th>
+        <th>Valor faltando</th>
+        <th class="flex justify-center">Próximo pagamento</th>
+        <th>Data de venda</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-venda>
+      <tr (click)="passar(venda)" class="bg-red-100 hover:!bg-sky-200 cursor-pointer"
+          [ngClass]="{'!bg-green-100': venda.pagamento.tudoPago}">
+        <td>{{ venda.identificacao.nome }}</td>
+        <td>{{ venda.produto.nome }}</td>
+        <td>{{ venda.pagamento.formaPagamento }}</td>
+        <td>{{ venda.pagamento.valorTotal | currency }}</td>
+        <td>{{ venda.pagamento.valorFaltando | currency }}</td>
+        <td>
+          <div class="flex justify-center"
+               [ngClass]="{'pulsarFraco': venda.pagamento.statusPagamento === ProximoPagamento.HOJE && !venda.pagamento.tudoPago,
+               'pulsaForte': venda.pagamento.statusPagamento === ProximoPagamento.ATRASADO && !venda.pagamento.tudoPago }">
+            @if (venda.pagamento.statusPagamento === ProximoPagamento.ATRASADO) {
+              <span>{{ venda.pagamento.dataProximoPagamento | date: 'dd/MM/yyyy' }}</span>
+              <span class="ml-2">({{ venda.pagamento.statusPagamento }})</span>
+            } @else if (venda.pagamento.statusPagamento === ProximoPagamento.AGUARDANDO) {
+              <span class="ml-2">{{ venda.pagamento.dataProximoPagamento | date: 'dd/MM/yyyy' }}</span>
+            } @else {
+              {{ venda.pagamento.statusPagamento }}
+            }
+          </div>
+        </td>
+        <td>{{ venda.dataVenda | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+  <app-exemplo-janela [exibirJanela]="exibirJanela" (fecharJanela)="fecharVendaDialog()" [venda]="venda"
+                      (atualizarTabela)="pesquisar()"/>
+
+</div>

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-exemplo-painel',
-    templateUrl: './exemplo-painel.component.html',
+    selector: 'app-demonstracao-painel',
+    templateUrl: './demonstracao-painel.component.html',
     standalone: false
 })
-export class ExemploPainelComponent implements OnInit {
+export class DemonstracaoPainelComponent implements OnInit {
 
   // carregando = true;
   //

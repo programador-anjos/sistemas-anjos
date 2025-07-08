@@ -1,7 +1,7 @@
 
 <p-menubar [model]="menuPrincipal">
   <ng-template pTemplate="start">
-    <a [routerLink]="rotaSistema"><img src="assets/imagens/asas.jpg" height="35" alt="Sistemas Anjos"></a>
+    <a [routerLink]="rotaSistema"><img src="assets/imagens/logo.jpg" height="35" alt="Sistemas Anjos"></a>
   </ng-template>
   <ng-template pTemplate="end">
     @if (menuSecundario.length > 0) {
@@ -11,7 +11,7 @@
       </ng-template>
 </p-menubar>
 
-@if (sistema && sistema.eGratuito()) {
+@if (gratuito()) {
 <div class="bg-slate-900 text-gray-100 p-4 flex justify-between lg:justify-center items-center flex-wrap">
   <div class="font-bold mr-20">🔥 Teste Gratuito!</div>
   <div class="items-center hidden lg:flex">

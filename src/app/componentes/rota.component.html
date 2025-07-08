@@ -1,0 +1,45 @@
+<div class="flex flex-col justify-between gap-2 h-full fundo">
+
+  <p-menubar [model]="items" class="bg-logo rounded-none shadow-lg">
+
+    <ng-template pTemplate="start">
+      <div class="flex gap-2 items-center text-lg">
+        (Sua logo aqui)
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="end">
+      <div class="flex gap-2">
+
+        <!--        <p-button size="small" icon="pi pi-bell" severity="warn" [outlined]="true"-->
+        <!--                  tooltipPosition="bottom" pTooltip="Notificações" showDelay="1000" (onClick)="alterarTema()"/>-->
+
+        <p-button size="small" icon="pi pi-cog" severity="secondary" [outlined]="true"
+                  tooltipPosition="bottom" pTooltip="Configurações" showDelay="1000"/>
+
+        <p-button size="small" [icon]="temaDark ? 'pi pi-moon' : 'pi pi-sun'"
+                  [severity]="temaDark ? 'contrast' : 'warn'" [outlined]="true"
+                  tooltipPosition="bottom" pTooltip="Alternar tema" showDelay="1000" (onClick)="alterarTema()"/>
+
+        <p-button size="small" icon="pi pi-expand" severity="help" [outlined]="true"
+                  tooltipPosition="bottom" pTooltip="Alternar tela cheia"
+                  showDelay="1000" (onClick)="alterarTela()"/>
+
+        <p-button icon="pi pi-times" tooltipPosition="left" pTooltip="Sair do sistema" showDelay="1000"
+                  [outlined]="true" size="small" severity="danger" (click)="sair()"/>
+
+      </div>
+
+    </ng-template>
+  </p-menubar>
+
+  <div class="absolute left-0 top-18">
+    <p-button label="voltar ao site" routerLink="/" link iconPos="left"
+              icon="pi pi-arrow-left" styleClass="text-white" />
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <app-rodape></app-rodape>
+
+</div>

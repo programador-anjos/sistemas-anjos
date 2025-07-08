@@ -28,7 +28,6 @@ export class CadastroComponent implements OnInit {
   ];
 
   planos: SelectItem[] = [
-    {label: 'Gratuito', value: PLANO.GRATUITO},
     {label: 'Anjo', value: PLANO.ANJO},
     {label: 'Arcanjo', value: PLANO.ARCANJO}
   ];
@@ -52,16 +51,12 @@ export class CadastroComponent implements OnInit {
   }
 
   desabilitarBotao() {
-    return !this.sistema.nome || !this.sistema.codigo || !this.usuario.nome || !this.usuario.codigo;
+    return !this.sistema.nome || !this.sistema.codigo ||
+      !this.usuario.nome || !this.usuario.codigo || !this.usuario.telefone;
   }
 
   limpar() {
-    this.formGroup = new FormGroup({
-      nomeUsuario: new FormControl("", [Validators.required]),
-      codigoUsuario: new FormControl("", [Validators.required, Validators.minLength(6)]),
-      nomeSistema: new FormControl("", [Validators.required]),
-      codigoSistema: new FormControl("", [Validators.required, Validators.minLength(6)]),
-    });
+    this.formGroup.reset()
   }
 
   salvar() {
@@ -71,16 +66,20 @@ export class CadastroComponent implements OnInit {
         this.toastService.erro('', 'Sistema já cadastrado');
       } else {
         this.sistema.rota = Utils.criarRota(this.usuario.nome);
-        this.sistema.usuarios.push(this.usuario);
-        this.sistemaService.post(this.sistema)
-          .then(() => {
-            this.toastService.sucesso('', 'Sistema criado');
-            this.limpar();
-          })
-          .catch(error => {
-            this.toastService.erro('', 'Erro ao criar sistema');
-          })
-          .finally(() => this.carregando = false);
+        if (!this.sistema.rota) {
+          this.toastService.erro('', 'Nome de sistema inválido');
+        } else {
+          this.sistema.usuarios.push(this.usuario);
+          this.sistemaService.post(this.sistema)
+            .then(() => {
+              this.toastService.sucesso('', 'Sistema criado');
+              this.limpar();
+            })
+            .catch(error => {
+              this.toastService.erro('', 'Erro ao criar sistema');
+            })
+            .finally(() => this.carregando = false);
+        }
       }
     });
   }
