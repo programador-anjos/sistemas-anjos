@@ -1,12 +1,10 @@
 export class Usuario {
+  senha: string = '';
   nome: string = '';
-  codigo: string = '';
   telefone: string = '';
-  desativado: boolean = false;
-  permissaoAlterarDados: boolean = false;
-  permissaoVerDashboard: boolean = false;
   perfil: PERFIL = PERFIL.ADMINISTRADOR;
   tema: TEMA = TEMA.CLARO;
+  desativado: boolean = false;
   cadastro: string = new Date().toLocaleString().substring(0, 10);
 
   constructor(model?: Partial<Usuario>) {

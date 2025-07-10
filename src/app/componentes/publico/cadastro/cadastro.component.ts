@@ -35,53 +35,27 @@ export class CadastroComponent implements OnInit {
   sistema: Sistema = new Sistema();
   usuario: Usuario = new Usuario();
 
-  formGroup = new FormGroup({
-    nomeUsuario: new FormControl("", [Validators.required]),
-    codigoUsuario: new FormControl("", [Validators.required, Validators.minLength(6)]),
-    nomeSistema: new FormControl("", [Validators.required]),
-    codigoSistema: new FormControl("", [Validators.required, Validators.minLength(6)]),
-  });
-
   constructor(private sistemaService: SistemaService,
               private toastService: ToastService) {
   }
 
   ngOnInit(): void {
-    this.limpar();
   }
 
   desabilitarBotao() {
-    return !this.sistema.nome || !this.sistema.codigo ||
-      !this.usuario.nome || !this.usuario.codigo || !this.usuario.telefone;
-  }
-
-  limpar() {
-    this.formGroup.reset()
+    return !this.sistema.codigo || !this.usuario.nome || !this.usuario.telefone || !this.usuario.senha;
   }
 
   salvar() {
-    let sistemaPromise = this.sistemaService.getPath(this.sistema.codigo);
-    sistemaPromise.then(sistema => {
-      if (sistema) {
-        this.toastService.erro('', 'Sistema já cadastrado');
-      } else {
-        this.sistema.rota = Utils.criarRota(this.usuario.nome);
-        if (!this.sistema.rota) {
-          this.toastService.erro('', 'Nome de sistema inválido');
-        } else {
-          this.sistema.usuarios.push(this.usuario);
-          this.sistemaService.post(this.sistema)
-            .then(() => {
-              this.toastService.sucesso('', 'Sistema criado');
-              this.limpar();
-            })
-            .catch(error => {
-              this.toastService.erro('', 'Erro ao criar sistema');
-            })
-            .finally(() => this.carregando = false);
-        }
-      }
-    });
+    this.sistema.usuarios.push(this.usuario);
+    this.sistemaService.post(this.sistema)
+      .then(() => {
+        this.toastService.sucesso('', 'Sistema criado');
+      })
+      .catch(error => {
+        this.toastService.erro('', 'Erro ao criar sistema');
+      })
+      .finally(() => this.carregando = false);
   }
 
 }

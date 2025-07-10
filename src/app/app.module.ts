@@ -1,4 +1,4 @@
-import {NgModule, provideZoneChangeDetection} from "@angular/core";
+import {DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule, provideZoneChangeDetection} from "@angular/core";
 import {AppComponent} from "./app.component";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {NoCacheHeadersInterceptorService} from "./services/interceptors/NoCacheHeadersInterceptorService";
@@ -15,7 +15,7 @@ import {providePrimeNG} from "primeng/config";
 import {MessageModule} from "primeng/message";
 import Lara from '@primeuix/themes/lara';
 import {definePreset} from "@primeuix/themes";
-import {DemonstracaoService} from "./componentes/publico/exemplo/service/demonstracao.service";
+import {DemonstracaoService} from "./componentes/publico/demonstracao/service/demonstracao.service";
 
 const LaraSky = definePreset(Lara, {
   semantic: {
@@ -116,7 +116,9 @@ const LaraSky = definePreset(Lara, {
       provide: HTTP_INTERCEPTORS,
       useClass: NoCacheHeadersInterceptorService,
       multi: true
-    }
+    },
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
+    // {provide: LOCALE_ID, useValue: "pt-BR"},
   ],
   bootstrap: [
     AppComponent

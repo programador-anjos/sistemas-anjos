@@ -2,11 +2,11 @@ import {Routes} from '@angular/router';
 import {PortalComponent} from "./portal/portal.component";
 import {AcessoComponent} from "./acesso/acesso.component";
 import {CadastroComponent} from "./cadastro/cadastro.component";
-import {DemonstracaoRegistrosComponent} from "./exemplo/demonstracao-registros.component";
-import {DemonstracaoPainelComponent} from "./exemplo/painel/demonstracao-painel.component";
+import {DemonstracaoRegistrosComponent} from "./demonstracao/demonstracao-registros.component";
+import {DemonstracaoPainelComponent} from "./demonstracao/painel/demonstracao-painel.component";
 import {RotaComponent} from "../rota.component";
-import {DemonstracaoClientesComponent} from "./exemplo/clientes/demonstracao-clientes.component";
-import {DemonstracaoProdutosComponent} from "./exemplo/produtos/demonstracao-produtos.component";
+import {DemonstracaoClientesComponent} from "./demonstracao/clientes/demonstracao-clientes.component";
+import {DemonstracaoProdutosComponent} from "./demonstracao/produtos/demonstracao-produtos.component";
 
 export const PublicasRotas: Routes = [
     {

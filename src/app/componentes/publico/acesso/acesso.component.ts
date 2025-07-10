@@ -58,6 +58,7 @@ export class AcessoComponent implements OnInit {
     });
     if (!this.sistemaEncontrado) {
       this.toastService.erro("Sistema não encontrado");
+      this.carregando = false;
     }
   }
 
@@ -65,7 +66,7 @@ export class AcessoComponent implements OnInit {
     this.carregando = true;
     this.sistema.usuarios.filter(usu => {
       let usuario = new Usuario(usu);
-      if (usuario.codigo === this.codigoUsuario) {
+      if (usuario.senha === this.codigoUsuario) {
         this.armazenamentoService.armazenarUsuario(usuario);
         this.router.navigate([this.obterRota(usuario)])
           .catch(e => {
@@ -83,15 +84,15 @@ export class AcessoComponent implements OnInit {
       rota = '/deus/estatisticas';
     }
     else {
-      rota = `/${this.sistema.rota}`;
+      rota = `/${this.sistema.codigo}`;
     }
     return rota;
   }
 
   private sucesso() {
-    let registro = { _id: uuidv4(), sistema: this.sistema.nome, usuario: this.codigoUsuario, resultado: RESULTADO.SUCESSO};
-    let acesso = new RegistroDeAcesso(registro);
-    this.acessosService.post(acesso).catch(e => console.error(e.message));
+    // let registro = { _id: uuidv4(), sistema: this.sistema.codigo, usuario: this.codigoUsuario, resultado: RESULTADO.SUCESSO};
+    // let acesso = new RegistroDeAcesso(registro);
+    // this.acessosService.post(acesso).catch(e => console.error(e.message));
   }
 
   private falha(causa?: string) {

@@ -42,7 +42,7 @@ export class SistemaComponent implements OnInit {
     this.menuPrincipal = [];
     this.menuSecundario = [];
     if (this.usuario) {
-      this.rotaSistema = "/" + this.sistema?.rota;
+      this.rotaSistema = "/" + this.sistema?.codigo;
       if(this.usuario.eAdministrador()) {
         this.obterMenuAdministrador();
       }

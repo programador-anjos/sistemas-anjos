@@ -10,22 +10,22 @@ import {RecuperarSenhaComponent} from "../componentes/publico/recuperar-senha/re
 import {ChamadaPraAcaoComponent} from "../componentes/publico/portal/chamada-pra-acao/chamada-pra-acao.component";
 import {FuncionalidadesComponent} from "../componentes/publico/portal/funcionalidades/funcionalidades.component";
 import {PlanosComponent} from "../componentes/publico/portal/planos/planos.component";
-import {DemonstracaoPainelComponent} from "../componentes/publico/exemplo/painel/demonstracao-painel.component";
-import {DemonstracaoRegistrosComponent} from "../componentes/publico/exemplo/demonstracao-registros.component";
-import {ExemploJanelaComponent} from "../componentes/publico/exemplo/janela/exemplo-janela.component";
+import {DemonstracaoPainelComponent} from "../componentes/publico/demonstracao/painel/demonstracao-painel.component";
+import {DemonstracaoRegistrosComponent} from "../componentes/publico/demonstracao/demonstracao-registros.component";
+import {ExemploJanelaComponent} from "../componentes/publico/demonstracao/janela/exemplo-janela.component";
 import {
   FormularioClienteComponent
-} from "../componentes/publico/exemplo/janela/formulario-cliente/formulario-cliente.component";
+} from "../componentes/publico/demonstracao/janela/formulario-cliente/formulario-cliente.component";
 import {
   FormularioProdutoComponent
-} from "../componentes/publico/exemplo/janela/formulario-produto/formulario-produto.component";
+} from "../componentes/publico/demonstracao/janela/formulario-produto/formulario-produto.component";
 import {
   FormularioPagamentoComponent
-} from "../componentes/publico/exemplo/janela/formulario-pagamento/formulario-pagamento.component";
+} from "../componentes/publico/demonstracao/janela/formulario-pagamento/formulario-pagamento.component";
 import {RodapeComponent} from "../componentes/publico/portal/rodape/rodape.component";
 import {ContatoComponent} from "../componentes/publico/portal/contato/contato.component";
-import {DemonstracaoClientesComponent} from "../componentes/publico/exemplo/clientes/demonstracao-clientes.component";
-import {DemonstracaoProdutosComponent} from "../componentes/publico/exemplo/produtos/demonstracao-produtos.component";
+import {DemonstracaoClientesComponent} from "../componentes/publico/demonstracao/clientes/demonstracao-clientes.component";
+import {DemonstracaoProdutosComponent} from "../componentes/publico/demonstracao/produtos/demonstracao-produtos.component";
 import {RotaComponent} from "../componentes/rota.component";
 
 @NgModule({

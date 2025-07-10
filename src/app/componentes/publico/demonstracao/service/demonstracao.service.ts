@@ -9,35 +9,34 @@ import {vendasMock} from "../models/vendasMock";
 })
 export class DemonstracaoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  buscarEndereco(cep: string): Observable<any>{
+  buscarEndereco(cep: string): Observable<any> {
     return this.http.get(`https://viacep.com.br/ws/${cep}/json/`);
   }
 
   create(venda: any): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve([])
+      return resolve(vendasMock)
     });
   }
 
   read(): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      // setTimeout(() => {
-        return resolve(vendasMock)
-      // }, 1000);
+      return resolve(vendasMock)
     });
   }
 
   update(venda: any): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve([])
+      return resolve(vendasMock)
     });
   }
 
   delete(venda: any): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve([])
+      return resolve(vendasMock)
     });
   }
 

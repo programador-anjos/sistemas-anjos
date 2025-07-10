@@ -1,13 +1,13 @@
-<div class="px-2 py-20 md:px-6 lg:px-10 border-t border-t-primary-300">
-  <div class="text-surface-900 dark:text-surface-0 font-bold text-4xl mb-6 text-center">Nossos planos</div>
-  <div class="text-surface-700 dark:text-surface-100 text-xl mb-12 text-center leading-normal">
+<div class="px-2 py-20 md:px-6 lg:px-10 border-t border-t-primary-500 bg-blue-950">
+  <div class="text-surface-0 font-bold text-4xl mb-6 text-center">Nossos planos</div>
+  <div class="text-surface-100 text-xl mb-12 text-center leading-normal">
     Escolha o plano ideal para o seu negócio e a um preço acessível:
   </div>
   <div class="grid grid-cols-12">
     @for (p of planos; track $index) {
       <div class="col-span-12 lg:col-span-6">
         <div class="p-4 h-full">
-          <div class="shadow p-4 h-full flex flex-col bg-surface-0 dark:bg-surface-900" style="border-radius: 6px">
+          <div class="p-4 h-full flex flex-col bg-surface-0 dark:bg-surface-900 rounded-md hover:shadow-lg hover:shadow-sky-100">
             <div class="text-surface-900 dark:text-surface-0 font-bold text-xl mb-2">{{ p.plano }}</div>
             <div class="text-surface-600 dark:text-surface-200">{{ p.descricao }}</div>
             <hr class="my-4 mx-0 border-t border-0 border-surface"/>

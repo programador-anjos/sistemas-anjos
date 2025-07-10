@@ -1,12 +1,12 @@
 import {Usuario} from "./Usuario";
+import {v4 as uuidv4} from "uuid";
 
 export class Sistema {
-  nome: string = '';
-  codigo: string = '';
-  rota: string = '';
+  codigo: string = uuidv4();
+  imagem: string = '';
   // TODO: formulario
   modelo: MODELO = MODELO.PADRAO;
-  plano: PLANO = PLANO.ANJO;
+  plano: PLANO = PLANO.GRATUITO;
   usuarios: Usuario[] = [];
 
   constructor(model?: Partial<Sistema>) {
@@ -32,6 +32,7 @@ export enum MODELO {
 }
 
 export enum PLANO {
-  ANJO = 1,
-  ARCANJO = 2,
+  GRATUITO = 1,
+  ANJO = 2,
+  ARCANJO = 3,
 }

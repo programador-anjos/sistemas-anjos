@@ -8,6 +8,7 @@ import {Pagamento} from "./models/classes/Pagamento";
 import {Parcela} from "./models/classes/Parcela";
 import {DemonstracaoService} from "./service/demonstracao.service";
 import {Router} from "@angular/router";
+import {vendasMock} from "./models/vendasMock";
 
 @Component({
   selector: 'app-demonstracao-registros',
@@ -45,6 +46,7 @@ export class DemonstracaoRegistrosComponent implements OnInit {
   pesquisar(): void {
     this.vendasFiltradas = [];
     this.carregando = true;
+    // window.setTimeout(() => {
     this.vendaService.read()
       .then((array: any[]) => {
         this.vendas = array;
@@ -52,9 +54,13 @@ export class DemonstracaoRegistrosComponent implements OnInit {
           this.processarDatas(venda);
           this.configurarPagamento(venda.pagamento)
         });
+        this.filtrar();
       })
       .catch((error: any): void => this.toastService.erro(error))
-      .finally((): void => this.filtrar());
+      .finally((): void => {
+        this.carregando = false
+      });
+    // }, 1000);
   }
 
   processarDatas(venda: Venda): void {
@@ -64,12 +70,10 @@ export class DemonstracaoRegistrosComponent implements OnInit {
   }
 
   filtrar(): void {
-    this.carregando = true;
     this.vendasFiltradas = this.vendas
       .filter((venda: Venda) => venda.identificacao.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()) ||
         venda.produto.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()))
       .filter((venda: Venda) => (StatusPagamento.TODOS === this.filtroStatus) || (venda.pagamento.statusPagamento === this.filtroStatus));
-    this.carregando = false;
   }
 
   passar(venda: any): void {

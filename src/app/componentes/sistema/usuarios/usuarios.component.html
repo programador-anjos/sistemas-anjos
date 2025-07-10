@@ -41,7 +41,7 @@
 </div>
 
 <p-dialog [(visible)]="janelaAberta" [dismissableMask]="true" [contentStyle]="{padding:'20px 20px 0px 20px'}"
-          header="{{conta.nome ? 'Alterar usuário' : 'Criar usuário'}}" [modal]="true" styleClass="p-fluid">
+          header="{{conta.codigo ? 'Alterar usuário' : 'Criar usuário'}}" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content">
     <div class="grid grid-cols-12 gap-4">
       <div class="field col-span-6">

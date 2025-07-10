@@ -9,6 +9,7 @@ import {FormaDePagamento} from "./enums/FormaDePagamento";
 import {StatusPagamento} from "./enums/StatusPagamento";
 import {Parcela} from "./classes/Parcela";
 import {Condicao} from "./classes/Condicao";
+import moment from "moment/moment";
 
 export const vendasMock: Venda[] = [
 
@@ -60,7 +61,7 @@ export const vendasMock: Venda[] = [
           parcelas: [
             new Parcela({ valorParcela: 333.33, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
             new Parcela({ valorParcela: 333.33, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: true })
           ]
         })
       ]
@@ -114,8 +115,8 @@ export const vendasMock: Venda[] = [
           parcelamento: '3x',
           parcelas: [
             new Parcela({ valorParcela: 666.67, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 666.67, dataParcela: new Date('2025-08-01'), parcelaPaga: false }),
-            new Parcela({ valorParcela: 666.67, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 666.67, dataParcela: new Date('2026-08-01'), parcelaPaga: false }),
+            new Parcela({ valorParcela: 666.67, dataParcela: new Date('2026-09-01'), parcelaPaga: false })
           ]
         })
       ]
@@ -159,7 +160,7 @@ export const vendasMock: Venda[] = [
       valorTotal: 3000,
       valorFaltando: 1000.0,
       formaPagamento: FormaDePagamento.CREDITO,
-      statusPagamento: StatusPagamento.AGUARDANDO,
+      statusPagamento: StatusPagamento.ATRASADO,
       dataProximoPagamento: new Date('2025-08-01'),
       tudoPago: false,
       condicoes: [
@@ -168,9 +169,9 @@ export const vendasMock: Venda[] = [
           valor: 3000,
           parcelamento: '3x',
           parcelas: [
-            new Parcela({ valorParcela: 1000.00, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 1000.00, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 1000.00, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 1000.00, dataParcela: new Date('2025-02-01'), parcelaPaga: true }),
+            new Parcela({ valorParcela: 1000.00, dataParcela: new Date('2025-03-01'), parcelaPaga: true }),
+            new Parcela({ valorParcela: 1000.00, dataParcela: new Date('2025-04-01'), parcelaPaga: false })
           ]
         })
       ]
@@ -224,8 +225,8 @@ export const vendasMock: Venda[] = [
           parcelamento: '3x',
           parcelas: [
             new Parcela({ valorParcela: 1333.33, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 1333.33, dataParcela: new Date('2025-08-01'), parcelaPaga: false }),
-            new Parcela({ valorParcela: 1333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 1333.33, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
+            new Parcela({ valorParcela: 1333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: true })
           ]
         })
       ]
@@ -280,7 +281,7 @@ export const vendasMock: Venda[] = [
           parcelas: [
             new Parcela({ valorParcela: 1666.67, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
             new Parcela({ valorParcela: 1666.67, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 1666.67, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 1666.67, dataParcela: new Date('2026-09-01'), parcelaPaga: false })
           ]
         })
       ]
@@ -334,8 +335,8 @@ export const vendasMock: Venda[] = [
           parcelamento: '3x',
           parcelas: [
             new Parcela({ valorParcela: 2000.00, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 2000.00, dataParcela: new Date('2025-08-01'), parcelaPaga: false }),
-            new Parcela({ valorParcela: 2000.00, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 2000.00, dataParcela: new Date('2026-08-01'), parcelaPaga: false }),
+            new Parcela({ valorParcela: 2000.00, dataParcela: new Date('2026-09-01'), parcelaPaga: false })
           ]
         })
       ]
@@ -390,7 +391,7 @@ export const vendasMock: Venda[] = [
           parcelas: [
             new Parcela({ valorParcela: 2333.33, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
             new Parcela({ valorParcela: 2333.33, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 2333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 2333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: true })
           ]
         })
       ]
@@ -434,7 +435,7 @@ export const vendasMock: Venda[] = [
       valorTotal: 8000,
       valorFaltando: 2666.6666666666665,
       formaPagamento: FormaDePagamento.DEBITO,
-      statusPagamento: StatusPagamento.ATRASADO,
+      statusPagamento: StatusPagamento.HOJE,
       dataProximoPagamento: new Date('2025-08-01'),
       tudoPago: false,
       condicoes: [
@@ -444,8 +445,8 @@ export const vendasMock: Venda[] = [
           parcelamento: '3x',
           parcelas: [
             new Parcela({ valorParcela: 2666.67, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 2666.67, dataParcela: new Date('2025-08-01'), parcelaPaga: false }),
-            new Parcela({ valorParcela: 2666.67, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 2666.67, dataParcela: moment().startOf('date').toDate(), parcelaPaga: false }),
+            new Parcela({ valorParcela: 2666.67, dataParcela: moment().startOf('date').toDate(), parcelaPaga: false })
           ]
         })
       ]
@@ -500,7 +501,7 @@ export const vendasMock: Venda[] = [
           parcelas: [
             new Parcela({ valorParcela: 3000.00, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
             new Parcela({ valorParcela: 3000.00, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 3000.00, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 3000.00, dataParcela: new Date('2026-09-01'), parcelaPaga: false })
           ]
         })
       ]
@@ -554,8 +555,8 @@ export const vendasMock: Venda[] = [
           parcelamento: '3x',
           parcelas: [
             new Parcela({ valorParcela: 3333.33, dataParcela: new Date('2025-07-01'), parcelaPaga: true }),
-            new Parcela({ valorParcela: 3333.33, dataParcela: new Date('2025-08-01'), parcelaPaga: false }),
-            new Parcela({ valorParcela: 3333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: false })
+            new Parcela({ valorParcela: 3333.33, dataParcela: new Date('2025-08-01'), parcelaPaga: true }),
+            new Parcela({ valorParcela: 3333.33, dataParcela: new Date('2025-09-01'), parcelaPaga: true })
           ]
         })
       ]
