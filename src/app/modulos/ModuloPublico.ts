@@ -27,6 +27,9 @@ import {ContatoComponent} from "../componentes/publico/portal/contato/contato.co
 import {DemonstracaoClientesComponent} from "../componentes/publico/demonstracao/clientes/demonstracao-clientes.component";
 import {DemonstracaoProdutosComponent} from "../componentes/publico/demonstracao/produtos/demonstracao-produtos.component";
 import {RotaComponent} from "../componentes/rota.component";
+import {LineChartComponent} from "../componentes/publico/demonstracao/painel/line/line-chart.component";
+import {PieChartComponent} from "../componentes/publico/demonstracao/painel/pie/pie-chart.component";
+import {BarChartComponent} from "../componentes/publico/demonstracao/painel/bar/bar-chart.component";
 
 @NgModule({
   imports: [
@@ -54,6 +57,9 @@ import {RotaComponent} from "../componentes/rota.component";
     DemonstracaoProdutosComponent,
     DemonstracaoPainelComponent,
     RotaComponent,
+    LineChartComponent,
+    PieChartComponent,
+    BarChartComponent,
   ]
 })
 export class ModuloPublico {

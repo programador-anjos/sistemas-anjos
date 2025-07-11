@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-between gap-2 h-full fundo">
+<div class="flex flex-col justify-between gap-2 h-dvh fundo">
 
   <p-menubar [model]="items" class="bg-logo rounded-none shadow-lg">
 
@@ -32,11 +32,6 @@
 
     </ng-template>
   </p-menubar>
-
-  <div class="absolute left-0 top-18">
-    <p-button label="voltar ao site" routerLink="/" link iconPos="left"
-              icon="pi pi-arrow-left" styleClass="text-white" />
-  </div>
 
   <router-outlet></router-outlet>
 

@@ -28,8 +28,8 @@ export class CadastroComponent implements OnInit {
   ];
 
   planos: SelectItem[] = [
-    {label: 'Anjo', value: PLANO.ANJO},
-    {label: 'Arcanjo', value: PLANO.ARCANJO}
+    {label: 'Arcanjo', value: PLANO.ARCANJO},
+    {label: 'Querubim', value: PLANO.QUERUBIM},
   ];
 
   sistema: Sistema = new Sistema();

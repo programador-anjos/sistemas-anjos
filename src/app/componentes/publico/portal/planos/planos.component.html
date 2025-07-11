@@ -7,29 +7,70 @@
     @for (p of planos; track $index) {
       <div class="col-span-12 lg:col-span-6">
         <div class="p-4 h-full">
-          <div class="p-4 h-full flex flex-col bg-surface-0 dark:bg-surface-900 rounded-md hover:shadow-lg hover:shadow-sky-100">
-            <div class="text-surface-900 dark:text-surface-0 font-bold text-xl mb-2">{{ p.plano }}</div>
-            <div class="text-surface-600 dark:text-surface-200">{{ p.descricao }}</div>
-            <hr class="my-4 mx-0 border-t border-0 border-surface"/>
-            <div class="flex items-center">
-<!--              <span>7 dias de uso gratuito, depois disso: </span>-->
-              <span class="font-bold text-2xl text-surface-900 dark:text-surface-0">{{ p.preco }}</span>
-              <span class="ml-2 font-medium text-surface-600 dark:text-surface-200">por mês</span>
-            </div>
+          <div class="p-4 h-full flex flex-col bg-surface-0 rounded-md hover:shadow-lg hover:shadow-sky-100">
+            <div class="text-surface-900 font-bold text-xl mb-2">{{ p.plano }}</div>
+            <div class="text-surface-600">{{ p.descricao }}</div>
             <hr class="my-4 mx-0 border-t border-0 border-surface"/>
             <ul class="list-none p-0 m-0 grow">
               @for (i of p.lista; track $index) {
                 <li class="flex items-center mb-4">
                   <i class="pi pi-check-circle text-green-500 mr-2"></i>
-                  <span class="text-surface-900 dark:text-surface-0">{{ i }}</span>
+                  <span class="text-surface-900">{{ i }}</span>
                 </li>
               }
             </ul>
-            <hr class="mb-4 mx-0 border-t border-0 border-surface mt-auto"/>
-            <button pButton pRipple class="font-bold p-4 w-full mt-auto" routerLink="/cadastro">Assinar</button>
+            <hr class="my-4 mx-0 border-t border-0 border-surface"/>
+            <div class="flex items-center">
+              <!--              <span>7 dias de uso gratuito, depois disso: </span>-->
+              <span class="font-bold text-2xl text-surface-900">{{ p.preco }}</span>
+              <span class="ml-2 font-medium text-surface-600">por mês</span>
+
+            </div>
+<!--            <hr class="mb-4 mx-0 border-t border-0 border-surface mt-auto"/>-->
+<!--            <button pButton pRipple class="font-bold p-4 w-full mt-auto" routerLink="/cadastro">Assinar</button>-->
           </div>
         </div>
       </div>
     }
   </div>
+
+  <div class="col-span-12 mt-4">
+    <div class="p-4">
+      <div class="bg-white p-4 rounded-lg hover:shadow-lg hover:shadow-sky-100">
+        <h2 class="text-xl mb-4 font-bold">Receba descontos na sua assinatura com o nosso Programa de Indicação:</h2>
+        <ul>
+          <li class="mb-2">
+            <i class="pi pi-thumbs-up text-blue-500 mr-1"></i>
+            Indique alguém para a plataforma
+            <span class="font-bold">Sistemas Anjos</span> e ganhe descontos na sua assinatura.
+          </li>
+          <li class="mb-2">
+            <i class="pi pi-angle-up text-green-500 mr-1"></i>
+            Se o seu indicado assinar o
+            <span class="font-bold">Plano Arcanjo</span>
+            você ganha
+            <span class="font-bold">20%</span>
+            de desconto.
+          </li>
+          <li class="mb-2">
+            <i class="pi pi-angle-double-up text-green-500 mr-1"></i>
+            Se o seu indicado assinar o
+            <span class="font-bold">Plano Querubim</span>
+            você ganha
+            <span class="font-bold">40%</span>
+            de desconto.
+          </li>
+          <li class="mb-2">
+            <i class="pi pi-clock text-yellow-500 mr-1"></i>
+            Enquanto o seu indicado manter a assinante dele você mantém o desconto na sua assinatura.
+          </li>
+          <li>
+            <i class="pi pi-ban text-red-500 mr-1"></i>
+            Se o seu indicado cancelar a assinatura dele você perde o desconto na sua assinatura.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>

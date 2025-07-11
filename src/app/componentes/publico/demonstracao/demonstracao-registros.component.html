@@ -1,4 +1,4 @@
-<div class="animate-fadein animate-duration-500 mx-5 sm:mx-10 lg:mx-20 xl:mx-30 2xl:mx-50 shadow-lg rounded-xl">
+<div class="animate-fadein animate-duration-500 px-10 shadow-lg rounded-xl">
 
   <p-table #dt id="tabelaVendas" [value]="vendasFiltradas" [rows]="10" [paginator]="true"
            dataKey="_id" [showCurrentPageReport]="true"
@@ -7,9 +7,15 @@
 
     <ng-template #caption>
 
-      <div class="flex items-center justify-center font-bold text-2xl py-4 px-3 bg-logo rounded-t-xl">
-        <div>Registros de vendas</div>
-        <div class="absolute right-3">
+      <div class="flex items-center justify-between font-bold text-2xl py-4 pr-3 bg-logo rounded-t-xl">
+        <div class="w-48">
+          <p-button label="voltar ao site" routerLink="/" link iconPos="left"
+                    icon="pi pi-arrow-left" />
+        </div>
+        <div>
+          Registros de vendas
+        </div>
+        <div class="w-48 flex justify-end">
           <p-button size="small" icon="pi pi-plus" variant="text" showDelay="1000" (click)="abrirVendaDialog()"
                     [raised]="true" severity="primary" tooltipPosition="left" pTooltip="Registrar venda"/>
         </div>
@@ -17,7 +23,7 @@
 
       <hr class="border-gray-200">
 
-      <div class="flex items-center justify-between p-3 ">
+      <div class="flex items-center justify-between p-3">
         <p-iconfield>
           <p-inputicon class="pi pi-search"/>
           <input pSize="small" type="text" pInputText placeholder="Filtrar por cliente ou produto.." id="filtrar"

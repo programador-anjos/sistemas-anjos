@@ -34,12 +34,12 @@
       <p-divider/>
     }
 
-    <div class="flex justify-around">
-      <h1 class="p-2 font-bold text-xl">Faltando: <span class="text-red-700">
-              {{ valorTotalNaoPago | currency }}</span></h1>
-      <h1 class="p-2 font-bold text-xl">Pago: <span class="text-green-700">
-              {{ valorTotalPago | currency }}</span></h1>
+    <div class="flex justify-between">
+      <h1 class="p-2 font-bold">Total: <span>{{ pagamento.valorTotal | currency }}</span></h1>
+      <h1 class="p-2 font-bold">Faltando: <span class="text-red-700">{{ valorTotalNaoPago | currency }}</span></h1>
+      <h1 class="p-2 font-bold">Pago: <span class="text-green-700">{{ valorTotalPago | currency }}</span></h1>
     </div>
+
   } @else {
 
     <p-floatlabel variant="on">

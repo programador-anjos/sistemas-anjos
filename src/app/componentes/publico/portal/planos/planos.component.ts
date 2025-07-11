@@ -9,9 +9,10 @@ export class PlanosComponent {
 
   planos: any[] = [
     {
-      plano: 'Plano anjo',
-      descricao: 'Sistema básico',
+      plano: 'Sistema básico',
+      descricao: 'Plano arcanjo',
       preco: 'R$40,00',
+      precoPromocional: 'R$30,00',
       lista: [
         '7 dias de uso gratuito',
         'Registre os pagamentos efetuados e gerencie suas vendas',
@@ -21,14 +22,15 @@ export class PlanosComponent {
       ]
     },
     {
-      plano: 'Plano arcanjo',
-      descricao: 'Sistema completo',
+      plano: 'Sistema completo',
+      descricao: 'Plano querubim',
       preco: 'R$80,00',
+      precoPromocional: 'R$60,00',
       lista: [
-        'Todos os recursos do plano anjo',
-        // 'Temas claro, escuro ou personalizado',
+        'Todos os recursos do plano arcanjo e mais...',
+        // 'Personalize seu sistema com qualquer cor',
         'Cadastre até 4 usuários para acessar seu sistema, além do administrador',
-        'Painel com gráficos e estatísticas para você ter uma visão geral de como está indo o seu negócio',
+        'Painel com gráficos e estatísticas para você ter uma visão geral do seu negócio',
       ]
     },
   ];

@@ -17,12 +17,12 @@ export class Sistema {
     return JSON.parse(JSON.stringify(this));
   }
 
-  eAnjo(): boolean {
-    return this.plano === PLANO.ANJO
-  }
-
   eArcanjo(): boolean {
     return this.plano === PLANO.ARCANJO
+  }
+
+  eQuerubim(): boolean {
+    return this.plano === PLANO.QUERUBIM
   }
 
 }
@@ -33,6 +33,6 @@ export enum MODELO {
 
 export enum PLANO {
   GRATUITO = 1,
-  ANJO = 2,
-  ARCANJO = 3,
+  ARCANJO = 2,
+  QUERUBIM = 3,
 }
