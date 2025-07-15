@@ -3,7 +3,7 @@ export class Usuario {
   nome: string = '';
   telefone: string = '';
   perfil: PERFIL = PERFIL.ADMINISTRADOR;
-  tema: TEMA = TEMA.CLARO;
+  temaEscuro: boolean = false;
   desativado: boolean = false;
   cadastro: string = new Date().toLocaleString().substring(0, 10);
 

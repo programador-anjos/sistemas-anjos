@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {SelectItem} from 'primeng/api';
 import {Genero} from "../../models/enums/Genero";
 import {Identificacao} from "../../models/classes/Identificacao";
@@ -23,12 +23,25 @@ export class FormularioClienteComponent {
     {label: 'Feminino', value: Genero.FEMININO}
   ];
 
-  constructor(private registroService: DemonstracaoService) {
+  demonstracaoService = inject(DemonstracaoService);
+
+  lista: Identificacao[] = [
+    new Identificacao({nome: 'qwe', genero: 'm'}),
+    new Identificacao({nome: 'asd', genero: 'm'}),
+    new Identificacao({nome: 'zxc', genero: 'm'}),
+    new Identificacao({nome: 'qaz', genero: 'm'}),
+    new Identificacao({nome: 'wsx', genero: 'm'}),
+    new Identificacao({nome: 'edc', genero: 'm'}),
+  ];
+  listaFiltrada: Identificacao[] = [];
+
+  filtrar(event: any) {
+    this.listaFiltrada = this.lista.filter(item => item.nome?.includes(event.query));
   }
 
   buscarEnderecoPorCEP(): void {
     if (this.endereco.cep && this.endereco.cep.length > 7) {
-      this.registroService.buscarEndereco(this.endereco.cep).subscribe((cep: any) => {
+      this.demonstracaoService.buscarEndereco(this.endereco.cep).subscribe((cep: any) => {
         this.endereco.cidade = cep.localidade;
         this.endereco.logradouro = cep.logradouro;
         this.endereco.numero = cep.numero;

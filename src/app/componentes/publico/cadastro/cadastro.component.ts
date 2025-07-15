@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {PERFIL, TEMA, Usuario} from "../../../models/Usuario";
 import {MODELO, PLANO, Sistema} from "../../../models/Sistema";
 import {SelectItem} from "primeng/api";
@@ -35,9 +35,8 @@ export class CadastroComponent implements OnInit {
   sistema: Sistema = new Sistema();
   usuario: Usuario = new Usuario();
 
-  constructor(private sistemaService: SistemaService,
-              private toastService: ToastService) {
-  }
+  sistemaService = inject(SistemaService);
+  toastService = inject(ToastService);
 
   ngOnInit(): void {
   }

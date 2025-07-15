@@ -13,58 +13,8 @@ import {AparenciaComponent} from "./componentes/sistema/aparencia/aparencia.comp
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import {providePrimeNG} from "primeng/config";
 import {MessageModule} from "primeng/message";
-import Lara from '@primeuix/themes/lara';
-import {definePreset} from "@primeuix/themes";
 import {DemonstracaoService} from "./componentes/publico/demonstracao/service/demonstracao.service";
-
-const LaraSky = definePreset(Lara, {
-  semantic: {
-    primary: {
-      50: '{sky.50}',
-      100: '{sky.100}',
-      200: '{sky.200}',
-      300: '{sky.300}',
-      400: '{sky.400}',
-      500: '{sky.500}',
-      600: '{sky.600}',
-      700: '{sky.700}',
-      800: '{sky.800}',
-      900: '{sky.900}',
-      950: '{sky.950}'
-    },
-    colorScheme: {
-      light: {
-        primary: {
-          color: '{sky.500}',
-          inverseColor: '#ffffff',
-          hoverColor: '{sky.600}',
-          activeColor: '{sky.700}'
-        },
-        highlight: {
-          background: '{sky.500}',
-          focusBackground: '{sky.600}',
-          color: '#ffffff',
-          focusColor: '#ffffff'
-        }
-      },
-      dark: {
-        primary: {
-          color: '{sky.50}',
-          inverseColor: '{sky.950}',
-          hoverColor: '{sky.100}',
-          activeColor: '{sky.200}'
-        },
-        highlight: {
-          background: 'rgba(250, 250, 250, .16)',
-          focusBackground: 'rgba(250, 250, 250, .24)',
-          color: 'rgba(255,255,255,.87)',
-          focusColor: 'rgba(255,255,255,.87)'
-        }
-      }
-    }
-  }
-});
-
+import {LaraSky} from "./tema";
 
 
 @NgModule({
@@ -85,7 +35,7 @@ const LaraSky = definePreset(Lara, {
     MessageModule,
     ConfirmationService,
     DemonstracaoService,
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideZoneChangeDetection({eventCoalescing: true}),
     provideHttpClient(),
     // provideRouter(routes),
     provideAnimationsAsync(),
@@ -104,7 +54,7 @@ const LaraSky = definePreset(Lara, {
       theme: {
         preset: LaraSky,
         options: {
-          darkModeSelector: '.p-dark',
+          darkModeSelector: '.dark',
           cssLayer: {
             name: 'primeng',
             order: 'theme, base, primeng'

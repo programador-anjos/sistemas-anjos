@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ArmazenamentoService} from "../../../services/ArmazenamentoService";
 import {Usuario} from "../../../models/Usuario";
@@ -26,13 +26,12 @@ export class AcessoComponent implements OnInit {
   carregando: boolean = false;
   sistemaEncontrado: boolean = false;
 
-  constructor(private router: Router,
-              private acessosService: AcessosService,
-              private messageService: MessageService,
-              private armazenamentoService: ArmazenamentoService,
-              private sistemaService: SistemaService,
-              private toastService: ToastService) {
-  }
+  router = inject(Router);
+  acessosService = inject(AcessosService);
+  messageService = inject(MessageService);
+  armazenamentoService = inject(ArmazenamentoService);
+  sistemaService = inject(SistemaService);
+  toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.pesquisar();
@@ -82,8 +81,7 @@ export class AcessoComponent implements OnInit {
     let rota = '';
     if (logado.eCriador()) {
       rota = '/deus/estatisticas';
-    }
-    else {
+    } else {
       rota = `/${this.sistema.codigo}`;
     }
     return rota;
@@ -96,7 +94,12 @@ export class AcessoComponent implements OnInit {
   }
 
   private falha(causa?: string) {
-    let acesso = new RegistroDeAcesso({ _id: uuidv4(), sistema: '', usuario: this.codigoSistema, resultado: RESULTADO.FALHA});
+    let acesso = new RegistroDeAcesso({
+      _id: uuidv4(),
+      sistema: '',
+      usuario: this.codigoSistema,
+      resultado: RESULTADO.FALHA
+    });
     this.acessosService.post(acesso)
       .then(res => this.messageService.add({severity: 'error', summary: causa, life: 4000}))
       .catch(e => console.error(e.message));

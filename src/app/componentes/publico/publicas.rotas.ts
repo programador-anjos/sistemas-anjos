@@ -7,6 +7,7 @@ import {DemonstracaoPainelComponent} from "./demonstracao/painel/demonstracao-pa
 import {RotaComponent} from "../rota.component";
 import {DemonstracaoClientesComponent} from "./demonstracao/clientes/demonstracao-clientes.component";
 import {DemonstracaoProdutosComponent} from "./demonstracao/produtos/demonstracao-produtos.component";
+import {ConfiguracoesComponent} from "./demonstracao/configuracoes/configuracoes.component";
 
 export const PublicasRotas: Routes = [
     {
@@ -32,6 +33,10 @@ export const PublicasRotas: Routes = [
         {
           path: 'produtos',
           component: DemonstracaoProdutosComponent
+        },
+        {
+          path: 'configuracoes',
+          component: ConfiguracoesComponent
         },
         {
           path: "**",

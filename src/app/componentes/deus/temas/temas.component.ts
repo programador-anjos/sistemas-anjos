@@ -1,5 +1,4 @@
 import {Component, HostListener} from '@angular/core';
-import {AparenciaService} from "../../../services/AparenciaService";
 
 @Component({
     selector: 'app-temas',
@@ -9,7 +8,7 @@ import {AparenciaService} from "../../../services/AparenciaService";
 })
 export class TemasComponent {
 
-  constructor(private aparenciaService: AparenciaService) {
+  constructor() {
     this.getScreenSize();
   }
 
@@ -35,7 +34,7 @@ export class TemasComponent {
   calendar: any;
 
   alterarAparencia(theme: string) {
-    this.aparenciaService.alterarAparencia(theme.substring(0, theme.length - 4));
+    // this.aparenciaService.alterarAparencia(theme.substring(0, theme.length - 4));
   }
 
   lista: {label: string, value: string}[] = [

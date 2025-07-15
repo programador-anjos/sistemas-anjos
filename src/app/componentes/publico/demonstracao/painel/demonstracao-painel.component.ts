@@ -9,7 +9,7 @@ export class DemonstracaoPainelComponent implements OnInit {
 
   carregando = true;
 
-  mesSelecionado: Date[] | undefined;
+  mesSelecionado: Date = new Date();
 
   clientesCadastradosNoMes: number = 123;
   servicosFeitosNoMes: number = 123;

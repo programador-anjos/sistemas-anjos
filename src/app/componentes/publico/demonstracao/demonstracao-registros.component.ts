@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MenuItem, SelectItem} from "primeng/api";
 import moment from 'moment';
 import {ToastService} from "../../../services/ToastService";
@@ -7,8 +7,6 @@ import {Venda} from "./models/Venda";
 import {Pagamento} from "./models/classes/Pagamento";
 import {Parcela} from "./models/classes/Parcela";
 import {DemonstracaoService} from "./service/demonstracao.service";
-import {Router} from "@angular/router";
-import {vendasMock} from "./models/vendasMock";
 
 @Component({
   selector: 'app-demonstracao-registros',
@@ -35,9 +33,8 @@ export class DemonstracaoRegistrosComponent implements OnInit {
   ];
   filtroStatus: StatusPagamento = StatusPagamento.TODOS;
 
-  constructor(private vendaService: DemonstracaoService,
-              private toastService: ToastService) {
-  }
+  vendaService = inject(DemonstracaoService);
+  toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.pesquisar();
@@ -72,7 +69,7 @@ export class DemonstracaoRegistrosComponent implements OnInit {
   filtrar(): void {
     this.vendasFiltradas = this.vendas
       .filter((venda: Venda) => venda.identificacao.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()) ||
-        venda.produto.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()))
+        venda.produto.produto?.toLowerCase().includes(this.palavraChave.toLowerCase()))
       .filter((venda: Venda) => (StatusPagamento.TODOS === this.filtroStatus) || (venda.pagamento.statusPagamento === this.filtroStatus));
   }
 

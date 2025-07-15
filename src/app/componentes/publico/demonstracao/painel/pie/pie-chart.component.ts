@@ -1,6 +1,7 @@
-import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { ChartModule } from 'primeng/chart';
+import {isPlatformBrowser} from '@angular/common';
+import {ChangeDetectorRef, Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {ArmazenamentoService} from "../../../../../services/ArmazenamentoService";
+
 // import { AppConfigService } from '@/service/appconfigservice';
 
 @Component({
@@ -29,39 +30,55 @@ export class PieChartComponent implements OnInit {
   //   }
   // });
 
+  armazenamentoService = inject(ArmazenamentoService);
+
   ngOnInit() {
-    this.initChart();
+    this.carregarGrafico();
+    this.armazenamentoService.observarTema.subscribe(temaEscuro => this.alterarOpcoes(temaEscuro));
   }
 
-  initChart() {
+  carregarGrafico() {
     if (isPlatformBrowser(this.platformId)) {
       const documentStyle = getComputedStyle(document.documentElement);
-      const textColor = documentStyle.getPropertyValue('--text-color');
-
       this.data = {
-        labels: ['Produto 1', 'Produto 2', 'Produto 3'],
+        labels: ['Produto 1', 'Produto 2', 'Produto 3', 'Produto 4', 'Produto 5'],
         datasets: [
           {
-            data: [540, 325, 702],
-            backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-            hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
+            data: [15, 20, 30, 40, 45],
+            backgroundColor: [
+              documentStyle.getPropertyValue('--p-amber-500'),
+              documentStyle.getPropertyValue('--p-cyan-500'),
+              documentStyle.getPropertyValue('--p-rose-500'),
+              documentStyle.getPropertyValue('--p-lime-500'),
+              documentStyle.getPropertyValue('--p-indigo-500')
+            ],
+            hoverBackgroundColor: [
+              documentStyle.getPropertyValue('--p-amber-500'),
+              documentStyle.getPropertyValue('--p-cyan-500'),
+              documentStyle.getPropertyValue('--p-rose-500'),
+              documentStyle.getPropertyValue('--p-lime-500'),
+              documentStyle.getPropertyValue('--p-indigo-500')
+            ]
           }
         ]
       };
-
-      this.options = {
-        plugins: {
-          legend: {
-            labels: {
-              usePointStyle: true,
-              color: textColor
-            }
-          }
-        }
-      };
-      this.cd.markForCheck()
+      this.alterarOpcoes(false);
     }
 
   }
 
+  private alterarOpcoes(temaEscuro: boolean) {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue(temaEscuro ? '--p-sky-50' : '--p-sky-950');
+    this.options = {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            color: textColor
+          }
+        }
+      }
+    };
+  }
 }

@@ -3,8 +3,8 @@
 
   <div class="flex gap-3">
     <p-floatlabel variant="on" class="w-full">
-      <input pSize="small" type="text" pInputText id="nome" [(ngModel)]="produto.nome" class="w-full"/>
-      <label for="nome">Nome</label>
+      <input pSize="small" type="text" pInputText id="produto" [(ngModel)]="produto.produto" class="w-full"/>
+      <label for="produto">Produto</label>
     </p-floatlabel>
   </div>
 
@@ -47,18 +47,22 @@
       <label for="categoria">Categoria</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/2">
-      <p-datepicker size="small" [(ngModel)]="produto.vencimento" inputId="data" showIcon iconDisplay="input"
+      <p-datepicker size="small" [(ngModel)]="produto.vencimento" inputId="vencimento" showIcon iconDisplay="input"
                     styleClass="w-full" dateFormat="dd/mm/yy" [appendTo]="'body'" />
-      <label for="data">Vencimento</label>
+      <label for="vencimento">Vencimento</label>
     </p-floatlabel>
   </div>
 
-  <textarea pInputTextarea [(ngModel)]="produto.descricao" [autoResize]="true" maxlength="100" [rows]="2"
+<!--  <p-floatlabel variant="on" class="mt-4">-->
+  <textarea pTextarea [(ngModel)]="produto.descricao" id="descricao" [autoResize]="true" maxlength="100" [rows]="2"
             placeholder="Descrição" class="w-full mt-4"></textarea>
+<!--    <label for="descricao">Descrição</label>-->
+<!--  </p-floatlabel>-->
   @if (produto.descricao?.length ?? 0 > 0) {
     <small class="block text-right">
       {{ 100 - (produto.descricao?.length ?? 0) }} caracteres restantes
     </small>
+
   }
 
 </fieldset>

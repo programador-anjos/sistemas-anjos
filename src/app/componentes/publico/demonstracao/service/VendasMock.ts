@@ -1,17 +1,17 @@
-import { Venda } from './Venda';
-import {Identificacao} from "./classes/Identificacao";
-import {Genero} from "./enums/Genero";
-import {Endereco} from "./classes/Endereco";
-import {Produto} from "./classes/Produto";
-import {Contato} from "./classes/Contato";
-import {Pagamento} from "./classes/Pagamento";
-import {FormaDePagamento} from "./enums/FormaDePagamento";
-import {StatusPagamento} from "./enums/StatusPagamento";
-import {Parcela} from "./classes/Parcela";
-import {Condicao} from "./classes/Condicao";
+import { Venda } from './../models/Venda';
+import {Identificacao} from "./../models/classes/Identificacao";
+import {Genero} from "./../models/enums/Genero";
+import {Endereco} from "./../models/classes/Endereco";
+import {Produto} from "./../models/classes/Produto";
+import {Contato} from "./../models/classes/Contato";
+import {Pagamento} from "./../models/classes/Pagamento";
+import {FormaDePagamento} from "./../models/enums/FormaDePagamento";
+import {StatusPagamento} from "./../models/enums/StatusPagamento";
+import {Parcela} from "./../models/classes/Parcela";
+import {Condicao} from "./../models/classes/Condicao";
 import moment from "moment/moment";
 
-export const vendasMock: Venda[] = [
+export const VendasMock: Venda[] = [
 
   new Venda({
     _id: 'v001',
@@ -36,7 +36,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente1@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 1',
+      produto: 'Produto 1',
       preco: '1000',
       marca: 'Marca 1',
       modelo: 'Modelo 1',
@@ -91,7 +91,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente2@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 2',
+      produto: 'Produto 2',
       preco: '2000',
       marca: 'Marca 2',
       modelo: 'Modelo 2',
@@ -146,7 +146,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente3@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 3',
+      produto: 'Produto 3',
       preco: '3000',
       marca: 'Marca 3',
       modelo: 'Modelo 3',
@@ -201,7 +201,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente4@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 4',
+      produto: 'Produto 4',
       preco: '4000',
       marca: 'Marca 4',
       modelo: 'Modelo 4',
@@ -256,7 +256,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente5@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 5',
+      produto: 'Produto 5',
       preco: '5000',
       marca: 'Marca 5',
       modelo: 'Modelo 5',
@@ -311,7 +311,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente6@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 6',
+      produto: 'Produto 6',
       preco: '6000',
       marca: 'Marca 6',
       modelo: 'Modelo 6',
@@ -366,7 +366,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente7@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 7',
+      produto: 'Produto 7',
       preco: '7000',
       marca: 'Marca 7',
       modelo: 'Modelo 7',
@@ -421,7 +421,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente8@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 8',
+      produto: 'Produto 8',
       preco: '8000',
       marca: 'Marca 8',
       modelo: 'Modelo 8',
@@ -476,7 +476,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente9@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 9',
+      produto: 'Produto 9',
       preco: '9000',
       marca: 'Marca 9',
       modelo: 'Modelo 9',
@@ -531,7 +531,7 @@ export const vendasMock: Venda[] = [
       email: 'cliente10@email.com'
     }),
     produto: new Produto({
-      nome: 'Produto 10',
+      produto: 'Produto 10',
       preco: '10000',
       marca: 'Marca 10',
       modelo: 'Modelo 10',

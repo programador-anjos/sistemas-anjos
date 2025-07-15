@@ -1,16 +1,16 @@
-<div class="px-3 animate-fadein animate-duration-500">
+<div class="conteudo animate-fadein animate-duration-500">
 
-  <div class="grid grid-cols-12 gap-3">
+  <div class="grid grid-cols-12 gap-5">
 
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="bg-surface-0 shadow-lg p-4 h-35 rounded-border">
+      <div class="bg-surface-0 dark:bg-gray-900 shadow-lg p-4 h-35 rounded-lg">
         <div class="flex justify-between mb-4">
           <div>
             <span class="block text-yellow-700 font-medium mb-4">Selecione o mês:</span>
             <p-datepicker [(ngModel)]="mesSelecionado" view="month" dateFormat="mm/yy" [readonlyInput]="true"
-                          class="w-2/3"/>
+                          placeholder="Mês" class="w-4/5"/>
           </div>
-          <div class="flex items-center justify-center bg-yellow-100 rounded-border" style="width:2.5rem;height:2.5rem">
+          <div class="flex items-center justify-center bg-yellow-100 rounded-lg" style="width:2.5rem;height:2.5rem">
             <i class="pi pi-calendar text-yellow-700 text-xl"></i>
           </div>
         </div>
@@ -18,14 +18,14 @@
     </div>
 
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="bg-surface-0 shadow-lg p-4 rounded-border">
+      <div class="bg-surface-0 dark:bg-gray-900 dark:hover:bg-blue-950 hover:bg-blue-50 shadow-lg p-4 rounded-lg">
         <div class="flex justify-between mb-4">
           <div>
             <span class="block text-blue-700 font-medium mb-4">Clientes cadastrados</span>
             <div class="text-blue-700 font-medium text-xl">{{ clientesCadastradosNoMes }}
               <span class="text-sm text-surface-500">/ mês</span></div>
           </div>
-          <div class="flex items-center justify-center bg-blue-100 rounded-border" style="width:2.5rem;height:2.5rem">
+          <div class="flex items-center justify-center bg-blue-100 rounded-lg" style="width:2.5rem;height:2.5rem">
             <i class="pi pi-user text-blue-700 text-xl"></i>
           </div>
         </div>
@@ -35,14 +35,14 @@
     </div>
 
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="bg-surface-0 shadow-lg p-4 rounded-border">
+      <div class="bg-surface-0 dark:bg-gray-900 dark:hover:bg-red-950 hover:bg-red-50 shadow-lg p-4 rounded-lg">
         <div class="flex justify-between mb-4">
           <div>
             <span class="block text-red-700 font-medium mb-4">Produtos vendidos</span>
             <div class="text-red-700 font-medium text-xl">{{ servicosFeitosNoMes }}
               <span class="text-sm text-surface-500">/ mês</span></div>
           </div>
-          <div class="flex items-center justify-center bg-red-100 rounded-border" style="width:2.5rem; height:2.5rem">
+          <div class="flex items-center justify-center bg-red-100 rounded-lg" style="width:2.5rem; height:2.5rem">
             <i class="pi pi-box text-red-700 text-xl"></i>
           </div>
         </div>
@@ -52,14 +52,14 @@
     </div>
 
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="bg-surface-0 shadow-lg p-4 rounded-border">
+      <div class="bg-surface-0 dark:bg-gray-900 dark:hover:bg-green-950 hover:bg-green-50 shadow-lg p-4 rounded-lg">
         <div class="flex justify-between mb-4">
           <div>
-            <span class="block text-green-700 font-medium mb-4">Valor mensal</span>
+            <span class="block text-green-700 font-medium mb-4">Valores recebidos</span>
             <div class="text-green-700 font-medium text-xl">{{ valorDoMes | currency: 'BRL' }}
               <span class="text-sm text-surface-500">/ mês</span></div>
           </div>
-          <div class="flex items-center justify-center bg-green-100 rounded-border" style="width:2.5rem;height:2.5rem">
+          <div class="flex items-center justify-center bg-green-100 rounded-lg" style="width:2.5rem;height:2.5rem">
             <i class="pi pi-dollar text-green-500 text-xl"></i>
           </div>
         </div>
@@ -68,26 +68,27 @@
       </div>
     </div>
 
-    <div class="col-span-12 lg:col-span-4">
-      <div class="bg-surface-0 shadow-lg p-4 rounded-border pb-10">
-        <h2 class="text-center text-lg font-bold">Produtos mais vendidos</h2>
+    <div class="col-span-12 lg:col-span-3 mt-1">
+      <div class="bg-surface-0 dark:bg-gray-900 shadow-lg p-4 rounded-lg pb-10">
+        <h2 class="text-center dark:text-light text-lg font-bold">Produtos mais vendidos</h2>
         <app-pie-chart></app-pie-chart>
       </div>
     </div>
 
-    <div class="col-span-12 lg:col-span-8">
-      <div class="bg-surface-0 shadow-lg p-4 rounded-border">
-        <h2 class="text-center text-lg font-bold">Quantidade de vendas por trimestre</h2>
+    <div class="col-span-12 lg:col-span-9 mt-1">
+      <div class="bg-surface-0 dark:bg-gray-900 shadow-lg p-4 rounded-lg">
+        <h2 class="text-center dark:text-light text-lg font-bold">Total em pagamentos</h2>
         <app-bar-chart></app-bar-chart>
       </div>
     </div>
 
-    <div class="col-span-12">
-      <div class="bg-surface-0 shadow-lg p-4 rounded-border">
-        <h2 class="text-center text-lg font-bold">Valores mensais</h2>
-        <app-line-chart></app-line-chart>
-      </div>
-    </div>
+<!--    <div class="col-span-12 mt-1">-->
+<!--      <div class="bg-surface-0 dark:bg-gray-900 shadow-lg p-4 rounded-lg">-->
+<!--        <h2 class="text-center dark:text-light text-lg font-bold">Valores mensais</h2>-->
+<!--        <app-line-chart></app-line-chart>-->
+<!--      </div>-->
+<!--    </div>-->
+
   </div>
 
 </div>

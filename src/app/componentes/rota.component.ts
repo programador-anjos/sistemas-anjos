@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {Router} from "@angular/router";
+import {ArmazenamentoService} from "../services/ArmazenamentoService";
 
 @Component({
   selector: 'app-rota',
@@ -9,7 +10,7 @@ import {Router} from "@angular/router";
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RotaComponent {
+export class RotaComponent implements OnInit {
 
   items: MenuItem[] = [
     {
@@ -29,18 +30,31 @@ export class RotaComponent {
     },
     {
       label: 'Registros',
-      icon: 'pi pi-pen-to-square',
+      icon: 'pi pi-list-check',
       routerLink: '/demonstracao/registros'
     },
   ];
 
-  temaDark = false;
+  temaEscuro = false;
 
-  constructor(private router: Router) {
+  router = inject(Router);
+
+  armazenamentoService = inject(ArmazenamentoService);
+
+  ngOnInit(): void {
+    // this.temaEscuro = this.armazenamentoService.usuario()?.temaEscuro ?? false;
   }
 
-  alterarTema() {
-    this.temaDark = !this.temaDark;
+  abrirConfiguracoes() {
+    this.router.navigate(['/demonstracao/configuracoes']);
+  }
+
+  trocarTema() {
+    this.temaEscuro = !this.temaEscuro;
+    this.armazenamentoService.alterarTema(this.temaEscuro);
+    const element = document.getElementById('tema');
+    // @ts-ignore
+    element.classList.toggle('dark');
   }
 
   alterarTela(): void {

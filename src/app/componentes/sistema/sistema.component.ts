@@ -5,7 +5,6 @@ import {ArmazenamentoService} from "../../services/ArmazenamentoService";
 import {Usuario} from "../../models/Usuario";
 import {AutenticacaoService} from "../../services/firebase/AutenticacaoService";
 import { Sistema } from '../../models/Sistema';
-import {AparenciaService} from "../../services/AparenciaService";
 
 @Component({
     selector: 'app-sistema',
@@ -23,12 +22,11 @@ export class SistemaComponent implements OnInit {
 
   constructor(private autenticacaoService: AutenticacaoService,
               private armazenamentoService: ArmazenamentoService,
-              private aparenciaService: AparenciaService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.aparenciaService.carregarAparencia();
+    // this.aparenciaService.carregarAparencia();
     this.usuario = this.armazenamentoService.usuario();
     this.sistema = this.armazenamentoService.sistema();
     this.carregarMenus();

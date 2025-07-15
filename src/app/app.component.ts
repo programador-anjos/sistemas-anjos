@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MessageService} from "primeng/api";
 import {ToastService} from "./services/ToastService";
 
@@ -10,9 +10,8 @@ import {ToastService} from "./services/ToastService";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private toastService: ToastService,
-              private messageService: MessageService) {
-  }
+  toastService = inject(ToastService);
+  messageService = inject(MessageService);
 
   ngOnInit(): void {
 

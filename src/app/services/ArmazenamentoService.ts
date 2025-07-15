@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import CryptoJS from 'crypto-js';
 import {Usuario} from "../models/Usuario";
 import {User} from "firebase/auth";
@@ -12,11 +12,18 @@ export class ArmazenamentoService {
 
   private static readonly _key = "pabanjos";
 
-  private subjectSistema: Subject<Sistema | null> = new Subject<Sistema | null>();
+  private subjectSistema: BehaviorSubject<Sistema | null> = new BehaviorSubject<Sistema | null>(null);
   private observableSistema: Observable<Sistema | null> = this.subjectSistema.asObservable();
 
-  private subjectUsuario: Subject<Usuario | null> = new Subject<Usuario | null>();
+  private subjectUsuario: BehaviorSubject<Usuario | null> = new BehaviorSubject<Usuario | null>(null);
   private observableUsuario: Observable<Usuario | null> = this.subjectUsuario.asObservable();
+
+  private subjectTema: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private observableTema: Observable<boolean> = this.subjectTema.asObservable();
+
+  public get observarTema() {
+    return this.observableTema;
+  }
 
   public get observarSistema() {
     return this.observableSistema;
@@ -36,6 +43,17 @@ export class ArmazenamentoService {
     let json = JSON.stringify(usuario);
     localStorage.setItem('usuario', ArmazenamentoService.encrypt(json));
     this.subjectUsuario.next(usuario);
+  }
+
+  public alterarTema(temaEscuro: boolean) {
+    // let usuario = this.usuario();
+    // if (usuario) {
+    //   usuario.temaEscuro = temaEscuro;
+    //   this.armazenarUsuario(usuario);
+    //   this.subjectTema.next(usuario.temaEscuro);
+    // }
+    // console.log(temaEscuro);
+    this.subjectTema.next(temaEscuro);
   }
 
   public sistema(): Sistema | null {

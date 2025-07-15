@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {SelectItem} from 'primeng/api';
 import {ToastService} from "../../../../../services/ToastService";
 import {Pagamento} from "../../models/classes/Pagamento";
@@ -30,8 +30,7 @@ export class FormularioPagamentoComponent {
     {label: 'Cartão de crédito', value: FormaDePagamento.CREDITO},
   ];
 
-  constructor(private toastService: ToastService) {
-  }
+  toastService = inject(ToastService);
 
   espelharValor(): void {
     if (this.geradorDeCondicoes.length === 1 && this.pagamento.valorTotal > 0) {

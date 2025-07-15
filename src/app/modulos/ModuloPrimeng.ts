@@ -45,6 +45,7 @@ import {TooltipModule} from "primeng/tooltip";
 import {PopoverModule} from "primeng/popover";
 import {OverlayBadgeModule} from "primeng/overlaybadge";
 import {TextareaModule} from "primeng/textarea";
+import {AutoCompleteModule} from "primeng/autocomplete";
 
 @NgModule({
   imports: [
@@ -141,7 +142,8 @@ import {TextareaModule} from "primeng/textarea";
     TooltipModule,
     PopoverModule,
     OverlayBadgeModule,
-    TextareaModule
+    TextareaModule,
+    AutoCompleteModule
   ]
 })
 export class ModuloPrimeng {

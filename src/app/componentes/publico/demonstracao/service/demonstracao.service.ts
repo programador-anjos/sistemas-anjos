@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Venda} from "../models/Venda";
-import {vendasMock} from "../models/vendasMock";
+import {VendasMock} from "./VendasMock";
 
 @Injectable({
   providedIn: 'root'
@@ -18,25 +18,25 @@ export class DemonstracaoService {
 
   create(venda: any): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve(vendasMock)
+      return resolve(VendasMock)
     });
   }
 
   read(): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve(vendasMock)
+      return resolve(VendasMock)
     });
   }
 
   update(venda: any): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve(vendasMock)
+      return resolve(VendasMock)
     });
   }
 
   delete(venda: any): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
-      return resolve(vendasMock)
+      return resolve(VendasMock)
     });
   }
 

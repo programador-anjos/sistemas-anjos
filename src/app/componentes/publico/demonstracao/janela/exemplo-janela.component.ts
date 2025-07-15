@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output, ViewChild} from '@angular/core';
 import {ConfirmationService, MessageService} from "primeng/api";
 import {v4 as uuidv4} from 'uuid';
 import {ToastService} from "../../../../services/ToastService";
@@ -21,10 +21,9 @@ export class ExemploJanelaComponent {
 
   @ViewChild('pagamentoComponent') pagamentoComponent!: FormularioPagamentoComponent;
 
-  constructor(private confirmationService: ConfirmationService,
-              private vendaService: DemonstracaoService,
-              private toastService: ToastService) {
-  }
+  confirmationService = inject(ConfirmationService);
+  vendaService = inject(DemonstracaoService);
+  toastService = inject(ToastService);
 
   abrir() {
     this.pagamentoComponent.criarFormaDePagamento();

@@ -1,5 +1,5 @@
 export class Produto {
-  nome?: string;
+  produto?: string;
   preco?: string;
 
   marca?: string;
