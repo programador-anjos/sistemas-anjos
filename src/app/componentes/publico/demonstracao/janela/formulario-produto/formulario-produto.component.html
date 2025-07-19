@@ -3,8 +3,10 @@
 
   <div class="flex gap-3">
     <p-floatlabel variant="on" class="w-full">
-      <input pSize="small" type="text" pInputText id="produto" [(ngModel)]="produto.produto" class="w-full"/>
-      <label for="produto">Produto</label>
+      <p-autocomplete [(ngModel)]="produto.produto" [suggestions]="produtosFiltrados" size="small"
+                      (completeMethod)="filtrar($event)" optionLabel="produto"
+                      class="w-full" inputStyleClass="w-full" (onSelect)="selecionarProduto($event)" />
+      <label for="produto">Produto*</label>
     </p-floatlabel>
   </div>
 

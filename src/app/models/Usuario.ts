@@ -3,8 +3,9 @@ export class Usuario {
   nome: string = '';
   telefone: string = '';
   perfil: PERFIL = PERFIL.ADMINISTRADOR;
+  permissoes: string[] = [];
   temaEscuro: boolean = false;
-  desativado: boolean = false;
+  ativo: boolean = true;
   cadastro: string = new Date().toLocaleString().substring(0, 10);
 
   constructor(model?: Partial<Usuario>) {

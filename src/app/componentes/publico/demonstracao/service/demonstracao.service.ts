@@ -3,6 +3,12 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Venda} from "../models/Venda";
 import {VendasMock} from "./VendasMock";
+import {ProdutosMock} from "./ProdutosMock";
+import {Produto} from "../models/classes/Produto";
+import {Cliente} from "../models/classes/Cliente";
+import {ClientesMock} from "./ClientesMock";
+import {SistemaUsuariosMock} from "./SistemaUsuariosMock";
+import {Sistema} from "../../../../models/Sistema";
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +28,27 @@ export class DemonstracaoService {
     });
   }
 
-  read(): Promise<Venda[]> {
+  readProdutos(): Promise<Produto[]> {
+    return new Promise<Produto[]>(async (resolve, reject) => {
+      return resolve(ProdutosMock)
+    });
+  }
+
+  readClientes(): Promise<Cliente[]> {
+    return new Promise<Cliente[]>(async (resolve, reject) => {
+      return resolve(ClientesMock)
+    });
+  }
+
+  readVendas(): Promise<Venda[]> {
     return new Promise<Venda[]>(async (resolve, reject) => {
       return resolve(VendasMock)
+    });
+  }
+
+  readSistemaUsuario(): Promise<Sistema> {
+    return new Promise<Sistema>(async (resolve, reject) => {
+      return resolve(SistemaUsuariosMock)
     });
   }
 

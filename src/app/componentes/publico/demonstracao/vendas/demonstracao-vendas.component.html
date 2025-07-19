@@ -48,7 +48,7 @@
     <ng-template #body let-venda>
       <tr (click)="passar(venda)" class="bg-red-100 hover:!bg-sky-200 cursor-pointer"
           [ngClass]="{'!bg-green-100': venda.pagamento.tudoPago}">
-        <td>{{ venda.identificacao.nome }}</td>
+        <td>{{ venda.cliente.identificacao.nome }}</td>
         <td>{{ venda.produto.produto }}</td>
         <td>{{ venda.pagamento.formaPagamento }}</td>
         <td>{{ venda.pagamento.valorTotal | currency }}</td>

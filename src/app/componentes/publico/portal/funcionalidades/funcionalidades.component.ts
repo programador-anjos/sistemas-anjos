@@ -9,19 +9,19 @@ export class FuncionalidadesComponent {
 
   lista: any[] = [
     {
-      icone: 'pi pi-dollar',
-      titulo: 'Gerencie suas vendas',
-      descricao: 'Registre os pagamentos efetuados e gerencie suas vendas'
-    },
-    {
       icone: 'pi pi-users',
       titulo: 'Gerencie seus clientes',
-      descricao: 'Gerencie seus clientes e mantenha contato para eventuais promoções'
+      descricao: 'Cadastre e gerencie seus clientes e mantenha contato para eventuais promoções'
     },
     {
-      icone: 'pi pi-gift',
-      titulo: 'Mantenha contato com seus clientes',
-      descricao: 'Visualize quais de seus clientes farão aniversário no mês'
+      icone: 'pi pi-tags',
+      titulo: 'Gerencie seus produtos',
+      descricao: 'Cadastre e gerencie seus produtos para registrar suas vendas rapidamente'
+    },
+    {
+      icone: 'pi pi-dollar',
+      titulo: 'Gerencie suas vendas',
+      descricao: 'Registre suas vendas e seja notificado dos pagamentos atrasados'
     },
     {
       icone: 'pi pi-palette',

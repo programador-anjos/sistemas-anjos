@@ -1,16 +1,19 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {Router} from "@angular/router";
-import {ArmazenamentoService} from "../services/ArmazenamentoService";
+import {ArmazenamentoService} from "../../../services/ArmazenamentoService";
+import {Sistema} from "../../../models/Sistema";
+import {DemonstracaoService} from "./service/demonstracao.service";
+import {Usuario} from "../../../models/Usuario";
 
 @Component({
-  selector: 'app-rota',
-  templateUrl: './rota.component.html',
+  selector: 'app-pagina',
+  templateUrl: './demonstracao.component.html',
   standalone: false,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RotaComponent implements OnInit {
+export class DemonstracaoComponent implements OnInit {
 
   items: MenuItem[] = [
     {
@@ -29,28 +32,47 @@ export class RotaComponent implements OnInit {
       routerLink: '/demonstracao/produtos'
     },
     {
-      label: 'Registros',
-      icon: 'pi pi-list-check',
-      routerLink: '/demonstracao/registros'
+      label: 'Vendas',
+      icon: 'pi pi-dollar',
+      routerLink: '/demonstracao/vendas'
     },
   ];
 
+  titulo = '(Titulo do sistema)';
   temaEscuro = false;
 
-  router = inject(Router);
+  sistema: Sistema = new Sistema();
+  usuario: Usuario = new Usuario();
 
+  router = inject(Router);
   armazenamentoService = inject(ArmazenamentoService);
+  demonstracaoService = inject(DemonstracaoService);
 
   ngOnInit(): void {
-    // this.temaEscuro = this.armazenamentoService.usuario()?.temaEscuro ?? false;
+    this.demonstracaoService.readSistemaUsuario().then((sistema: Sistema) => {
+      this.sistema = sistema;
+      this.armazenamentoService.armazenarSistema(sistema);
+      let usuario = sistema.usuarios[0];
+      this.usuario = usuario;
+      this.armazenamentoService.armazenarUsuario(usuario);
+      this.titulo = sistema.titulo;
+      this.temaEscuro = usuario.temaEscuro;
+      if (this.temaEscuro) {
+        this.trocarTema();
+      }
+    })
   }
 
   abrirConfiguracoes() {
     this.router.navigate(['/demonstracao/configuracoes']);
   }
 
-  trocarTema() {
+  alternarTema() {
     this.temaEscuro = !this.temaEscuro;
+    this.trocarTema();
+  }
+
+  trocarTema() {
     this.armazenamentoService.alterarTema(this.temaEscuro);
     const element = document.getElementById('tema');
     // @ts-ignore

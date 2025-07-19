@@ -1,15 +1,28 @@
-<div class="flex flex-col justify-between h-dvh fundo" id="tema">
+<div class="flex flex-col justify-between h-dvh" id="tema">
 
   <p-menubar [model]="items" class="bg-logo rounded-none shadow-lg dark:text-light">
 
     <ng-template pTemplate="start">
-      <div class="flex gap-2 items-center text-lg">
-        (Sua logo aqui)
-      </div>
+      @if (usuario.eAdministrador()) {
+        <p-inplace>
+          <ng-template #display>
+            <span class="font-bold">{{ titulo }}</span>
+          </ng-template>
+          <ng-template #content let-closeCallback="closeCallback">
+            <input type="text" size="small" pInputText [(ngModel)]="titulo" [pAutoFocus]="true"
+                   class="w-42" (blur)="closeCallback($event)"/>
+          </ng-template>
+        </p-inplace>
+      } @else {
+        <span class="font-bold">{{ titulo }}</span>
+      }
     </ng-template>
 
     <ng-template pTemplate="end">
       <div class="flex gap-2">
+
+<!--        <p-button size="small" icon="pi pi-bell" severity="warn" [outlined]="true"-->
+<!--                  tooltipPosition="bottom" pTooltip="Notificações" showDelay="1000"/>-->
 
         <p-button size="small" icon="pi pi-cog" severity="secondary" [outlined]="true"
                   tooltipPosition="bottom" pTooltip="Configurações" showDelay="1000"
@@ -17,7 +30,7 @@
 
         <p-button size="small" [icon]="temaEscuro ? 'pi pi-moon' : 'pi pi-sun'"
                   [severity]="temaEscuro ? 'contrast' : 'warn'" [outlined]="true"
-                  tooltipPosition="bottom" pTooltip="Alternar tema" showDelay="1000" (click)="trocarTema()"/>
+                  tooltipPosition="bottom" pTooltip="Alternar tema" showDelay="1000" (click)="alternarTema()"/>
 
         <p-button size="small" icon="pi pi-expand" severity="help" [outlined]="true"
                   tooltipPosition="bottom" pTooltip="Alternar tela cheia"

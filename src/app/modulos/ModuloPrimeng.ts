@@ -46,6 +46,10 @@ import {PopoverModule} from "primeng/popover";
 import {OverlayBadgeModule} from "primeng/overlaybadge";
 import {TextareaModule} from "primeng/textarea";
 import {AutoCompleteModule} from "primeng/autocomplete";
+import {TabsModule} from "primeng/tabs";
+import {StepperModule} from "primeng/stepper";
+import {InplaceModule} from "primeng/inplace";
+import {AccordionModule} from "primeng/accordion";
 
 @NgModule({
   imports: [
@@ -143,7 +147,11 @@ import {AutoCompleteModule} from "primeng/autocomplete";
     PopoverModule,
     OverlayBadgeModule,
     TextareaModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    TabsModule,
+    StepperModule,
+    InplaceModule,
+    AccordionModule
   ]
 })
 export class ModuloPrimeng {

@@ -92,6 +92,18 @@ export const LaraSky = definePreset(Lara, {
             },
           }
         },
+        multiselect: {
+          root: {
+            background: 'black',
+            color: 'white',
+            borderColor: 'gray',
+            hoverBorderColor: 'lightgray',
+            focusBorderColor: 'white',
+            focusRing: {
+              shadow: '0 0 0 0.1rem white'
+            },
+          }
+        },
         floatlabel: {
           root: {
             color: 'gray',

@@ -11,8 +11,8 @@ import {ChamadaPraAcaoComponent} from "../componentes/publico/portal/chamada-pra
 import {FuncionalidadesComponent} from "../componentes/publico/portal/funcionalidades/funcionalidades.component";
 import {PlanosComponent} from "../componentes/publico/portal/planos/planos.component";
 import {DemonstracaoPainelComponent} from "../componentes/publico/demonstracao/painel/demonstracao-painel.component";
-import {DemonstracaoRegistrosComponent} from "../componentes/publico/demonstracao/demonstracao-registros.component";
-import {ExemploJanelaComponent} from "../componentes/publico/demonstracao/janela/exemplo-janela.component";
+import {DemonstracaoVendasComponent} from "../componentes/publico/demonstracao/vendas/demonstracao-vendas.component";
+import {JanelaFormularioComponent} from "../componentes/publico/demonstracao/janela/janela-formulario.component";
 import {
   FormularioClienteComponent
 } from "../componentes/publico/demonstracao/janela/formulario-cliente/formulario-cliente.component";
@@ -26,24 +26,30 @@ import {RodapeComponent} from "../componentes/publico/portal/rodape/rodape.compo
 import {ContatoComponent} from "../componentes/publico/portal/contato/contato.component";
 import {DemonstracaoClientesComponent} from "../componentes/publico/demonstracao/clientes/demonstracao-clientes.component";
 import {DemonstracaoProdutosComponent} from "../componentes/publico/demonstracao/produtos/demonstracao-produtos.component";
-import {RotaComponent} from "../componentes/rota.component";
 import {LineChartComponent} from "../componentes/publico/demonstracao/painel/line/line-chart.component";
 import {PieChartComponent} from "../componentes/publico/demonstracao/painel/pie/pie-chart.component";
 import {BarChartComponent} from "../componentes/publico/demonstracao/painel/bar/bar-chart.component";
+import {DemonstracaoComponent} from "../componentes/publico/demonstracao/demonstracao.component";
+import {ConfiguracoesComponent} from "../componentes/publico/demonstracao/configuracoes/configuracoes.component";
+import {
+  ConfiguracaoAcessosComponent
+} from "../componentes/publico/demonstracao/configuracoes/configuracao-acessos/configuracao-acessos.component";
+import {TemPermissaoDiretiva} from "../utils/temPermissaoDiretiva";
 
 @NgModule({
   imports: [
     RouterModule.forRoot(PublicasRotas),
     ModuloAngular,
     ModuloPrimeng,
+    TemPermissaoDiretiva,
   ],
   declarations: [
     PortalComponent,
     ChamadaPraAcaoComponent,
     PlanosComponent,
     FuncionalidadesComponent,
-    DemonstracaoRegistrosComponent,
-    ExemploJanelaComponent,
+    DemonstracaoVendasComponent,
+    JanelaFormularioComponent,
     DemonstracaoPainelComponent,
     FormularioClienteComponent,
     FormularioProdutoComponent,
@@ -56,10 +62,12 @@ import {BarChartComponent} from "../componentes/publico/demonstracao/painel/bar/
     DemonstracaoClientesComponent,
     DemonstracaoProdutosComponent,
     DemonstracaoPainelComponent,
-    RotaComponent,
+    DemonstracaoComponent,
     LineChartComponent,
     PieChartComponent,
     BarChartComponent,
+    ConfiguracoesComponent,
+    ConfiguracaoAcessosComponent
   ]
 })
 export class ModuloPublico {

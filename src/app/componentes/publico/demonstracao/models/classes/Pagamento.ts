@@ -2,6 +2,8 @@ import {Condicao} from './Condicao';
 import {StatusPagamento} from '../enums/StatusPagamento';
 
 export class Pagamento {
+  _id?: string;
+
   valorTotal: number = 0;
   valorFaltando: number = 0;
   condicoes: Condicao[] = [];

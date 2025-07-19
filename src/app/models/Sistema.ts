@@ -3,11 +3,11 @@ import {v4 as uuidv4} from "uuid";
 
 export class Sistema {
   codigo: string = uuidv4();
-  imagem: string = '';
-  // TODO: formulario
+  titulo: string = '';
   modelo: MODELO = MODELO.PADRAO;
   plano: PLANO = PLANO.GRATUITO;
   usuarios: Usuario[] = [];
+  // TODO: formulario
 
   constructor(model?: Partial<Sistema>) {
     Object.assign(this, model);

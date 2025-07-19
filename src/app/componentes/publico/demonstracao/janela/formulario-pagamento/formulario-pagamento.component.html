@@ -9,14 +9,12 @@
         <div class="flex gap-4 mt-4">
           <p-floatlabel variant="on" class="w-4/12">
             <p-inputnumber size="small" inputId="currency-pt" mode="currency" currency="BRL" locale="pt-BR"
-                           [(ngModel)]="parcela.valorParcela" [disabled]="true" styleClass="w-full"
-                           inputStyleClass="w-full"/>
+              [(ngModel)]="parcela.valorParcela" [disabled]="true" styleClass="w-full" inputStyleClass="w-full"/>
             <label for="valor">Valor</label>
           </p-floatlabel>
           <p-floatlabel variant="on" class="w-4/12">
             <p-datepicker size="small" [(ngModel)]="parcela.dataParcela" inputId="data" showIcon iconDisplay="input"
-                          styleClass="w-full" dateFormat="dd/mm/yy"
-                          [disabled]="parcela.parcelaPaga" [appendTo]="'body'" />
+                          styleClass="w-full" dateFormat="dd/mm/yy" [disabled]="parcela.parcelaPaga" appendTo="body" />
             <label for="data">Data</label>
           </p-floatlabel>
           <div class="w-4/12">
@@ -55,7 +53,7 @@
       <div class="flex items-center gap-2 mt-4">
         <p-floatlabel variant="on" class="w-4/12">
           <p-select size="small" id="formaDePagamento" class="w-full" [options]="formasDePagamento"
-                    [(ngModel)]="condicao.formaDePagamento"/>
+                    [(ngModel)]="condicao.formaDePagamento" appendTo="body"/>
           <label for="formaDePagamento">Forma</label>
         </p-floatlabel>
         <p-floatlabel variant="on" class="w-3/12">
@@ -66,7 +64,7 @@
         </p-floatlabel>
         <p-floatlabel variant="on" class="w-4/12">
           <p-select size="small" id="parcelamento" [options]="condicao.parcelas"
-                    [(ngModel)]="condicao.parcelamento" class="w-full"/>
+                    [(ngModel)]="condicao.parcelamento" class="w-full" appendTo="body" />
           <label for="parcelamento">Parcelamento</label>
         </p-floatlabel>
         <div class="w-1/12">

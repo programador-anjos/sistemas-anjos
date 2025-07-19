@@ -1,19 +1,20 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {MenuItem, SelectItem} from "primeng/api";
+import {SelectItem} from "primeng/api";
 import moment from 'moment';
-import {ToastService} from "../../../services/ToastService";
-import {StatusPagamento} from "./models/enums/StatusPagamento";
-import {Venda} from "./models/Venda";
-import {Pagamento} from "./models/classes/Pagamento";
-import {Parcela} from "./models/classes/Parcela";
-import {DemonstracaoService} from "./service/demonstracao.service";
+import {Venda} from "../models/Venda";
+import {StatusPagamento} from "../models/enums/StatusPagamento";
+import {DemonstracaoService} from "../service/demonstracao.service";
+import {ToastService} from "../../../../services/ToastService";
+import {Pagamento} from "../models/classes/Pagamento";
+import {Parcela} from "../models/classes/Parcela";
+
 
 @Component({
   selector: 'app-demonstracao-registros',
-  templateUrl: './demonstracao-registros.component.html',
+  templateUrl: './demonstracao-vendas.component.html',
   standalone: false
 })
-export class DemonstracaoRegistrosComponent implements OnInit {
+export class DemonstracaoVendasComponent implements OnInit {
 
   protected readonly ProximoPagamento = StatusPagamento;
   venda: Venda = new Venda({});
@@ -33,7 +34,7 @@ export class DemonstracaoRegistrosComponent implements OnInit {
   ];
   filtroStatus: StatusPagamento = StatusPagamento.TODOS;
 
-  vendaService = inject(DemonstracaoService);
+  demonstracaoService = inject(DemonstracaoService);
   toastService = inject(ToastService);
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class DemonstracaoRegistrosComponent implements OnInit {
     this.vendasFiltradas = [];
     this.carregando = true;
     // window.setTimeout(() => {
-    this.vendaService.read()
+    this.demonstracaoService.readVendas()
       .then((array: any[]) => {
         this.vendas = array;
         this.vendas.forEach(venda => {
@@ -62,13 +63,13 @@ export class DemonstracaoRegistrosComponent implements OnInit {
 
   processarDatas(venda: Venda): void {
     venda.produto.vencimento = moment(venda.produto.vencimento, "YYYY-MM-DD").toDate();
-    venda.identificacao.nascimento = venda.identificacao.nascimento ?
-      moment(venda.identificacao.nascimento, "YYYY-MM-DD").toDate() : undefined;
+    venda.cliente.identificacao.nascimento = venda.cliente.identificacao.nascimento ?
+      moment(venda.cliente.identificacao.nascimento, "YYYY-MM-DD").toDate() : undefined;
   }
 
   filtrar(): void {
     this.vendasFiltradas = this.vendas
-      .filter((venda: Venda) => venda.identificacao.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()) ||
+      .filter((venda: Venda) => venda.cliente.identificacao.nome?.toLowerCase().includes(this.palavraChave.toLowerCase()) ||
         venda.produto.produto?.toLowerCase().includes(this.palavraChave.toLowerCase()))
       .filter((venda: Venda) => (StatusPagamento.TODOS === this.filtroStatus) || (venda.pagamento.statusPagamento === this.filtroStatus));
   }

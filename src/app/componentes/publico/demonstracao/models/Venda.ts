@@ -1,16 +1,12 @@
-import {Endereco} from './classes/Endereco';
-import {Contato} from './classes/Contato';
-import {Identificacao} from './classes/Identificacao';
 import {Produto} from './classes/Produto';
 import {Pagamento} from './classes/Pagamento';
+import {Cliente} from "./classes/Cliente";
 
 export class Venda {
   _id?: string;
   dataVenda: Date = new Date();
 
-  identificacao: Identificacao = new Identificacao({});
-  endereco: Endereco = new Endereco({});
-  contato: Contato = new Contato({});
+  cliente: Cliente = new Cliente({});
 
   produto: Produto = new Produto({});
 

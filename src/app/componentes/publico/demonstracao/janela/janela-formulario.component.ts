@@ -8,16 +8,18 @@ import {DemonstracaoService} from "../service/demonstracao.service";
 
 @Component({
   selector: 'app-exemplo-janela',
-  templateUrl: './exemplo-janela.component.html',
+  templateUrl: './janela-formulario.component.html',
   standalone: false
 })
-export class ExemploJanelaComponent {
+export class JanelaFormularioComponent {
 
   @Input() venda: Venda = new Venda({});
   @Input() exibirJanela: boolean = false;
   @Output() fecharJanela = new EventEmitter<any>();
   @Output() atualizarTabela = new EventEmitter<any>();
   carregando: boolean = false;
+
+  etapaAtiva: number = 1;
 
   @ViewChild('pagamentoComponent') pagamentoComponent!: FormularioPagamentoComponent;
 
@@ -26,6 +28,7 @@ export class ExemploJanelaComponent {
   toastService = inject(ToastService);
 
   abrir() {
+    this.etapaAtiva = 1;
     this.pagamentoComponent.criarFormaDePagamento();
     this.pagamentoComponent.calcularValores();
   }

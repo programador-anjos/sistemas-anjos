@@ -2,28 +2,33 @@
   <legend class="ml-2 p-2 font-bold text-lg">Identificação</legend>
   <div class="flex gap-3">
     <p-floatlabel variant="on" class="w-2/3">
-        <p-autocomplete [(ngModel)]="identificacao.nome" [suggestions]="listaFiltrada" size="small"
-                        (completeMethod)="filtrar($event)" optionLabel="nome" class="w-full" inputStyleClass="w-full" />
+      <p-autocomplete [(ngModel)]="cliente.identificacao.nome" [suggestions]="clientesFiltrados" size="small"
+                      (completeMethod)="filtrar($event)" optionLabel="identificacao.nome"
+                      class="w-full" inputStyleClass="w-full" (onSelect)="selecionarCliente($event)"/>
       <label for="name">Nome*</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/3">
-      <p-datepicker size="small" [(ngModel)]="identificacao.nascimento" inputId="nascimento" showIcon iconDisplay="input"
-                    inputStyleClass="w-full" styleClass="p-0 m-0" dateFormat="dd/mm/yy" [appendTo]="'body'" class="w-full" />
+      <p-datepicker size="small" [(ngModel)]="cliente.identificacao.nascimento" inputId="nascimento" showIcon
+                    iconDisplay="input"
+                    inputStyleClass="w-full" styleClass="p-0 m-0" dateFormat="dd/mm/yy" [appendTo]="'body'"
+                    class="w-full"/>
       <label for="nascimento">Nascimento</label>
     </p-floatlabel>
   </div>
   <div class="flex gap-3 mt-4">
     <p-floatlabel variant="on" class="w-1/3">
-      <input pSize="small" type="text" pInputText id="identidade" [(ngModel)]="identificacao.identidade" class="w-full"/>
+      <input pSize="small" type="text" pInputText id="identidade" [(ngModel)]="cliente.identificacao.identidade"
+             class="w-full"/>
       <label for="identidade">Identidade</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/3">
-      <p-inputmask size="small" id="cpf" [(ngModel)]="identificacao.cpf" mask="999.999.999-99"
+      <p-inputmask size="small" id="cpf" [(ngModel)]="cliente.identificacao.cpf" mask="999.999.999-99"
                    styleClass="w-full"></p-inputmask>
       <label for="cpf">CPF</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/3">
-      <p-select size="small" [options]="generos" [(ngModel)]="identificacao.genero" inputId="genero" class="w-full"/>
+      <p-select size="small" [options]="generos" [(ngModel)]="cliente.identificacao.genero" inputId="genero"
+                class="w-full"/>
       <label for="genero">Gênero</label>
     </p-floatlabel>
   </div>
@@ -33,57 +38,58 @@
   <legend class="ml-2 p-2 font-bold text-lg">Endereço</legend>
   <div class="flex gap-3">
     <p-floatlabel variant="on" class="w-1/4">
-      <input pSize="small" type="text" pInputText id="cep" [(ngModel)]="endereco.cep"
+      <input pSize="small" type="text" pInputText id="cep" [(ngModel)]="cliente.endereco.cep"
              (ngModelChange)="buscarEnderecoPorCEP()" class="w-full"/>
       <label for="cep">CEP</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-2/4">
-      <input pSize="small" type="text" pInputText id="logradouro" [(ngModel)]="endereco.logradouro" class="w-full"/>
+      <input pSize="small" type="text" pInputText id="logradouro" [(ngModel)]="cliente.endereco.logradouro"
+             class="w-full"/>
       <label for="logradouro">Logradouro</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/4">
-      <input pSize="small" type="text" pInputText id="numero" [(ngModel)]="endereco.numero" class="w-full"/>
+      <input pSize="small" type="text" pInputText id="numero" [(ngModel)]="cliente.endereco.numero" class="w-full"/>
       <label for="numero">Número</label>
     </p-floatlabel>
   </div>
   <div class="flex gap-3 mt-4">
     <p-floatlabel variant="on" class="w-1/3">
-      <input pSize="small" type="text" pInputText id="bairro" [(ngModel)]="endereco.bairro" class="w-full"/>
+      <input pSize="small" type="text" pInputText id="bairro" [(ngModel)]="cliente.endereco.bairro" class="w-full"/>
       <label for="bairro">Bairro</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/3">
-      <input pSize="small" type="text" pInputText id="cidade" [(ngModel)]="endereco.cidade" class="w-full"/>
+      <input pSize="small" type="text" pInputText id="cidade" [(ngModel)]="cliente.endereco.cidade" class="w-full"/>
       <label for="cidade">Cidade</label>
     </p-floatlabel>
     <p-floatlabel variant="on" class="w-1/3">
-      <input pSize="small" type="text" pInputText id="estado" [(ngModel)]="endereco.estado" class="w-full"/>
+      <input pSize="small" type="text" pInputText id="estado" [(ngModel)]="cliente.endereco.estado" class="w-full"/>
       <label for="estado">Estado</label>
     </p-floatlabel>
   </div>
 </fieldset>
 
-<fieldset class="border border-gray-300 shadow-md rounded-lg mt-3 p-3"
-          (mouseover)="exibirBotoes = true" (mouseout)="exibirBotoes = false">
+<fieldset class="border border-gray-300 shadow-md rounded-lg mt-3 p-3">
   <legend class="ml-2 p-2 font-bold text-lg">Contato</legend>
   <div class="flex gap-3">
-    <p-floatlabel variant="on" class="w-1/3">
-      <p-inputmask size="small" id="telefone" [(ngModel)]="contato.telefone" mask="(21) 99999-9999"
-                   styleClass="w-full"></p-inputmask>
-      <label for="telefone">Telefone</label>
-    </p-floatlabel>
-    <p-floatlabel variant="on" class="w-2/3">
-      <input pSize="small" type="email" pInputText id="email" [(ngModel)]="contato.email" class="w-full"/>
-      <label for="email">Email</label>
-    </p-floatlabel>
-  </div>
-  <div *ngIf="exibirBotoes" class="flex gap-4 mt-2 animate-fadeinup animate-duration-200">
-    <div class="w-1/3">
-      <p-button size="small" pRipple label="Whatsapp" [raised]="true" severity="success" (click)="abrirWhatsapp()"
-                styleClass="w-full mt-2" icon="pi pi-whatsapp" iconPos="right"/>
-    </div>
-    <div class="w-2/3">
-      <p-button size="small" pRipple label="Email" [raised]="true" severity="danger" (click)="abrirEmail()"
-                styleClass="w-full mt-2" icon="pi pi-envelope" iconPos="right"/>
-    </div>
+    <p-inputgroup class="w-2/5">
+      <p-floatlabel variant="on">
+        <p-inputmask size="small" id="telefone" [(ngModel)]="cliente.contato.telefone" mask="(21) 99999-9999"
+                     styleClass="w-full" class="w-full"></p-inputmask>
+<!--        <input pSize="small" type="text" pInputText id="telefone" [(ngModel)]="cliente.contato.telefone" class="w-full"/>-->
+        <label for="telefone">Telefone</label>
+      </p-floatlabel>
+      <p-inputgroup-addon>
+        <p-button icon="pi pi-whatsapp" size="small" severity="success" variant="text" (click)="abrirWhatsapp()" />
+      </p-inputgroup-addon>
+    </p-inputgroup>
+    <p-inputgroup class="w-3/5">
+      <p-floatlabel variant="on">
+        <input pSize="small" type="email" pInputText id="email" [(ngModel)]="cliente.contato.email" class="w-full"/>
+        <label for="email">Email</label>
+      </p-floatlabel>
+      <p-inputgroup-addon>
+        <p-button icon="pi pi-envelope" size="small" severity="danger" variant="text" (click)="abrirEmail()" />
+      </p-inputgroup-addon>
+    </p-inputgroup>
   </div>
 </fieldset>

@@ -1,0 +1,90 @@
+<p-dialog [(visible)]="exibirJanela"
+          [style]="{width: '600px'}"
+          [dismissableMask]="false"
+          [draggable]="false"
+          [modal]="true"
+          [header]="venda._id ? 'Alterar registro de venda' : 'Registrar venda'"
+          (onHide)="fechar()"
+          (onShow)="abrir()"
+          [maximizable]="true">
+
+  <p-stepper [(value)]="etapaAtiva">
+    <p-step-list>
+      <p-step [value]="1">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2 cursor-pointer" (click)="activateCallback()">
+            <span class="rounded-full border-2 w-10 h-10 inline-flex items-center justify-center"
+              [ngClass]="{'bg-primary text-primary-contrast border-primary': value <= etapaAtiva,
+                    'border-surface': value > etapaAtiva}">
+                <i class="pi pi-user"></i>
+            </span>
+          </button>
+          <span [ngClass]="{'text-primary': value <= etapaAtiva, 'border-surface': value > etapaAtiva}">Cliente</span>
+        </ng-template>
+      </p-step>
+      <p-step [value]="2">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2 cursor-pointer" (click)="activateCallback()">
+            <span class="rounded-full border-2 w-10 h-10 inline-flex items-center justify-center"
+                  [ngClass]="{'bg-primary text-primary-contrast border-primary': value <= etapaAtiva,
+                    'border-surface': value > etapaAtiva}">
+                <i class="pi pi-box"></i>
+            </span>
+          </button>
+          <span [ngClass]="{'text-primary': value <= etapaAtiva, 'border-surface': value > etapaAtiva}">Produto</span>
+        </ng-template>
+      </p-step>
+      <p-step [value]="3">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2 cursor-pointer" (click)="activateCallback()">
+            <span class="rounded-full border-2 w-10 h-10 inline-flex items-center justify-center"
+                  [ngClass]="{'bg-primary text-primary-contrast border-primary': value <= etapaAtiva,
+                    'border-surface': value > etapaAtiva}">
+                <i class="pi pi-dollar"></i>
+            </span>
+          </button>
+          <span [ngClass]="{'text-primary': value <= etapaAtiva, 'border-surface': value > etapaAtiva}">Pagamento</span>
+        </ng-template>
+      </p-step>
+    </p-step-list>
+    <p-step-panels class="p-0">
+      <p-step-panel [value]="1">
+        <ng-template #content let-activateCallback="activateCallback">
+          <app-formulario-cliente [cliente]="venda.cliente"></app-formulario-cliente>
+        </ng-template>
+      </p-step-panel>
+
+      <p-step-panel [value]="2">
+        <ng-template #content let-activateCallback="activateCallback">
+          <app-formulario-produto [produto]="venda.produto"></app-formulario-produto>
+        </ng-template>
+      </p-step-panel>
+
+      <p-step-panel [value]="3">
+        <ng-template #content let-activateCallback="activateCallback">
+          <app-formulario-pagamento #pagamentoComponent
+                                    [pagamento]="venda.pagamento" [modoEdicao]="!!venda._id"></app-formulario-pagamento>
+        </ng-template>
+      </p-step-panel>
+    </p-step-panels>
+  </p-stepper>
+
+  <div class="flex justify-between mt-6">
+    <div>
+      @if (venda._id) {
+        <p-button size="small" pRipple label="Deletar registro" [raised]="true" [outlined]="true" severity="danger"
+                  (click)="deletar()"/>
+      }
+    </div>
+    <div>
+      <p-button size="small" pRipple label="Cancelar" [raised]="true" [outlined]="true" severity="secondary"
+                (click)="fechar()" class="mr-3"/>
+
+      <p-button size="small" pRipple label="Salvar registro" [raised]="true" severity="primary" (click)="salvar()"
+                [disabled]="!venda.cliente.identificacao.nome || !venda.produto.produto || venda.pagamento.condicoes.length == 0"/>
+    </div>
+  </div>
+
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

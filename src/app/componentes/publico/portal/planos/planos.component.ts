@@ -17,7 +17,7 @@ export class PlanosComponent {
         '7 dias de uso gratuito',
         'Registre os pagamentos efetuados e gerencie suas vendas',
         'Gerencie seus clientes e mantenha contato para eventuais promoções',
-        'Visualize quais de seus clientes farão aniversário no mês',
+        'Gerencie seus produtos e registre suas vendas rapidamente',
         'Personalize seu sistema com os temas claro ou escuro',
       ]
     },

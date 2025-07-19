@@ -2,12 +2,12 @@ import {Routes} from '@angular/router';
 import {PortalComponent} from "./portal/portal.component";
 import {AcessoComponent} from "./acesso/acesso.component";
 import {CadastroComponent} from "./cadastro/cadastro.component";
-import {DemonstracaoRegistrosComponent} from "./demonstracao/demonstracao-registros.component";
+import {DemonstracaoVendasComponent} from "./demonstracao/vendas/demonstracao-vendas.component";
 import {DemonstracaoPainelComponent} from "./demonstracao/painel/demonstracao-painel.component";
-import {RotaComponent} from "../rota.component";
 import {DemonstracaoClientesComponent} from "./demonstracao/clientes/demonstracao-clientes.component";
 import {DemonstracaoProdutosComponent} from "./demonstracao/produtos/demonstracao-produtos.component";
 import {ConfiguracoesComponent} from "./demonstracao/configuracoes/configuracoes.component";
+import {DemonstracaoComponent} from "./demonstracao/demonstracao.component";
 
 export const PublicasRotas: Routes = [
     {
@@ -16,11 +16,11 @@ export const PublicasRotas: Routes = [
     },
     {
       path: 'demonstracao',
-      component: RotaComponent,
+      component: DemonstracaoComponent,
       children: [
         {
-          path: 'registros',
-          component: DemonstracaoRegistrosComponent
+          path: 'vendas',
+          component: DemonstracaoVendasComponent
         },
         {
           path: 'painel',

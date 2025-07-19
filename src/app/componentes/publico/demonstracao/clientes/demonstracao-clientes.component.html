@@ -1,1 +1,55 @@
-<p-message severity="info" class="absolute left-2 top-20">Em desenvolvimento..</p-message>
+<div class="animate-fadein animate-duration-500 m-10 shadow-lg rounded-xl">
+
+  <p-table #dt id="tabelaClientes" [value]="clientesFiltrados" [rows]="10" [paginator]="true"
+           dataKey="_id" [showCurrentPageReport]="true" paginatorStyleClass="dark:bg-dark dark:text-white"
+           [loading]="carregando" [loadingIcon]="'pi pi-spin pi-spinner-dotted'"
+           [currentPageReportTemplate]="'Exibindo itens de {first} a {last} de um total de {totalRecords}'">
+
+    <ng-template #caption>
+
+      <div class="flex items-center justify-between text-2xl p-3 bg-logo rounded-t-xl">
+        <div class="w-48">
+          <p-iconfield>
+            <p-inputicon class="pi pi-search"/>
+            <input pSize="small" type="text" pInputText placeholder="Filtrar por nome.." id="filtrar"
+                   class="w-80" [(ngModel)]="palavraChave" (ngModelChange)="filtrar()"/>
+          </p-iconfield>
+        </div>
+        <div class="font-bold">
+          Clientes
+        </div>
+        <div class="w-48 flex justify-end">
+          <p-button size="small" icon="pi pi-plus" iconPos="right" label="Novo cliente" severity="primary"
+                    *temPermissao="['CADASTRAR_CLIENTE']" />
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th>Nome</th>
+        <th>Nascimento</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Telefone</th>
+        <th>Email</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-cliente>
+      <tr (click)="passar(cliente)">
+        <td>{{ cliente.identificacao.nome }}</td>
+        <td>{{ cliente.identificacao.nascimento | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ cliente.endereco.cidade }}</td>
+        <td>{{ cliente.endereco.estado }}</td>
+        <td>{{ cliente.contato.telefone }}</td>
+        <td>{{ cliente.contato.email }}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+  <!--  <app-exemplo-janela [exibirJanela]="exibirJanela" (fecharJanela)="fecharVendaDialog()" [venda]="venda"-->
+  <!--                      (atualizarTabela)="pesquisar()"/>-->
+
+</div>
