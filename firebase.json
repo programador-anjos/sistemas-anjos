@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist\\sistemas-anjos\\browser",
+    "public": "dist\\sistemas-anjos",
     "ignore": [
       "firebase.json",
       "**/.*",

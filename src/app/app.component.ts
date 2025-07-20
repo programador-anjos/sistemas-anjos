@@ -1,6 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {MessageService} from "primeng/api";
 import {ToastService} from "./services/ToastService";
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent implements OnInit {
   messageService = inject(MessageService);
 
   ngOnInit(): void {
+
+    console.log(environment.apiUrl); // valor muda dependendo do build
 
     this.toastService.events.subscribe(m => this.messageService.add(m));
 
