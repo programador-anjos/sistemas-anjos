@@ -14,7 +14,7 @@
           "builder": "@angular/build:application",
           "options": {
             "allowedCommonJsDependencies": ["moment","quill","crypto-js","reflect-metadata"],
-            "outputPath": "dist/sistemas-anjos/browser",
+            "outputPath": "dist/sistemas-anjos",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
