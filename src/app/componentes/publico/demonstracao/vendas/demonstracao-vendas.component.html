@@ -9,14 +9,15 @@
 
       <div class="flex items-center justify-between font-bold text-2xl py-4 pr-3 bg-logo rounded-t-xl">
         <div class="w-48">
-          <p-button label="voltar ao site" routerLink="/" link iconPos="left"
-                    icon="pi pi-arrow-left" styleClass="text-blue-500 dark:text-light" />
+<!--          <p-button label="voltar ao site" routerLink="/" link iconPos="left"-->
+<!--                    icon="pi pi-arrow-left" styleClass="text-blue-500 dark:text-light" />-->
         </div>
         <div>
           Registros de vendas
         </div>
         <div class="w-48 flex justify-end">
-          <p-button size="small" icon="pi pi-plus" iconPos="right" label="Novo registro" (click)="abrirVendaDialog()" severity="primary" />
+          <p-button size="small" icon="pi pi-plus" iconPos="right" label="Novo registro" severity="primary"
+                    *temPermissao="['CADASTRAR_VENDAS']" (click)="abrirVendaDialog()" />
         </div>
       </div>
 

@@ -73,7 +73,7 @@
     <div>
       @if (venda._id) {
         <p-button size="small" pRipple label="Deletar registro" [raised]="true" [outlined]="true" severity="danger"
-                  (click)="deletar()"/>
+                  (click)="deletar()" *temPermissao="['DELETAR_VENDAS']"/>
       }
     </div>
     <div>
@@ -81,7 +81,8 @@
                 (click)="fechar()" class="mr-3"/>
 
       <p-button size="small" pRipple label="Salvar registro" [raised]="true" severity="primary" (click)="salvar()"
-                [disabled]="!venda.cliente.identificacao.nome || !venda.produto.produto || venda.pagamento.condicoes.length == 0"/>
+                [disabled]="!venda.cliente.identificacao.nome || !venda.produto.produto || venda.pagamento.condicoes.length == 0"
+                *temPermissao="['ALTERAR_VENDAS']"/>
     </div>
   </div>
 

@@ -31,9 +31,6 @@ import {PieChartComponent} from "../componentes/publico/demonstracao/painel/pie/
 import {BarChartComponent} from "../componentes/publico/demonstracao/painel/bar/bar-chart.component";
 import {DemonstracaoComponent} from "../componentes/publico/demonstracao/demonstracao.component";
 import {ConfiguracoesComponent} from "../componentes/publico/demonstracao/configuracoes/configuracoes.component";
-import {
-  ConfiguracaoAcessosComponent
-} from "../componentes/publico/demonstracao/configuracoes/configuracao-acessos/configuracao-acessos.component";
 import {TemPermissaoDiretiva} from "../utils/temPermissaoDiretiva";
 
 @NgModule({
@@ -66,8 +63,7 @@ import {TemPermissaoDiretiva} from "../utils/temPermissaoDiretiva";
     LineChartComponent,
     PieChartComponent,
     BarChartComponent,
-    ConfiguracoesComponent,
-    ConfiguracaoAcessosComponent
+    ConfiguracoesComponent
   ]
 })
 export class ModuloPublico {

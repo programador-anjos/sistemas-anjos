@@ -50,6 +50,7 @@ import {TabsModule} from "primeng/tabs";
 import {StepperModule} from "primeng/stepper";
 import {InplaceModule} from "primeng/inplace";
 import {AccordionModule} from "primeng/accordion";
+import {DrawerModule} from "primeng/drawer";
 
 @NgModule({
   imports: [
@@ -151,7 +152,8 @@ import {AccordionModule} from "primeng/accordion";
     TabsModule,
     StepperModule,
     InplaceModule,
-    AccordionModule
+    AccordionModule,
+    DrawerModule
   ]
 })
 export class ModuloPrimeng {

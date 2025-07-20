@@ -8,6 +8,7 @@ import {DemonstracaoClientesComponent} from "./demonstracao/clientes/demonstraca
 import {DemonstracaoProdutosComponent} from "./demonstracao/produtos/demonstracao-produtos.component";
 import {ConfiguracoesComponent} from "./demonstracao/configuracoes/configuracoes.component";
 import {DemonstracaoComponent} from "./demonstracao/demonstracao.component";
+import {ProtecaoRotasAdministrador} from "../../protecao/ProtecaoRotasAdministrador";
 
 export const PublicasRotas: Routes = [
     {
@@ -36,7 +37,8 @@ export const PublicasRotas: Routes = [
         },
         {
           path: 'configuracoes',
-          component: ConfiguracoesComponent
+          component: ConfiguracoesComponent,
+          canActivate: [ProtecaoRotasAdministrador]
         },
         {
           path: "**",

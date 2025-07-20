@@ -1,13 +1,17 @@
 import {Usuario} from "./Usuario";
 import {v4 as uuidv4} from "uuid";
+import 'reflect-metadata';
+import { Type } from 'class-transformer';
+
 
 export class Sistema {
   codigo: string = uuidv4();
   titulo: string = '';
   modelo: MODELO = MODELO.PADRAO;
   plano: PLANO = PLANO.GRATUITO;
+
+  @Type(() => Usuario)
   usuarios: Usuario[] = [];
-  // TODO: formulario
 
   constructor(model?: Partial<Sistema>) {
     Object.assign(this, model);

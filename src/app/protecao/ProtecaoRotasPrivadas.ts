@@ -12,6 +12,7 @@ export const ProtecaoRotasPrivadas: CanActivateFn = (activatedRouteSnapshot: Act
   }
 
   const router = inject(Router);
-  return router.navigateByUrl('/acesso').then(() => false);
+  router.navigateByUrl('/acesso');
+  return false;
 
 };

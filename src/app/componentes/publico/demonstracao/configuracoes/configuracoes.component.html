@@ -1,10 +1,68 @@
 <div class="conteudo animate-fadein animate-duration-500">
 
-  <div class="p-5 w-300 shadow-lg rounded-xl bg-white dark:bg-dark dark:text-white">
+  <div class="p-5 w-250 shadow-lg rounded-xl bg-white dark:bg-dark dark:text-white">
 
-    <h1 class="flex justify-center font-bold text-2xl mb-8">Configurações</h1>
+    <h1 class="flex justify-center font-bold text-2xl mb-6">Configurar usuários do sistema</h1>
 
-    <app-configuracao-acessos></app-configuracao-acessos>
+    <fieldset class="border border-gray-300 shadow-md rounded-lg p-3">
+      <legend class="ml-2 p-2 font-bold text-lg">Usuários</legend>
+
+      @for (usuario of sistema.usuarios; track $index) {
+
+        <div class="flex gap-2 rounded-lg">
+          <p-floatlabel variant="on" class="w-4/12">
+            <input type="text" pInputText [id]="'nome' + $index" [(ngModel)]="usuario.nome" class="w-full"/>
+            <label [for]="'nome' + $index">Nome</label>
+          </p-floatlabel>
+
+          <p-floatlabel variant="on" class="w-2/12">
+            <input type="password" pInputText [id]="'senha' + $index" [(ngModel)]="usuario.senha" class="w-full"/>
+            <label [for]="'senha' + $index">Senha</label>
+          </p-floatlabel>
+
+          @if (usuario.eUsuario()) {
+            <p-floatlabel variant="on" class="w-3/12">
+              <p-iconfield>
+                <p-inputicon class="pi pi-whatsapp hover:text-green-500 cursor-pointer"
+                             (click)="abrirWhatsapp(usuario.telefone)"/>
+                <input pInputText [id]="'telefone' + $index" [(ngModel)]="usuario.telefone" class="w-full"/>
+
+              </p-iconfield>
+              <label [for]="'telefone' + $index">Telefone</label>
+            </p-floatlabel>
+
+            <div class="w-3/12">
+              <p-button pRipple label="Permissões" [severity]="temaEscuro ? 'contrast' : 'secondary'"
+                        icon="pi pi-lock-open" iconPos="right" [outlined]="true"
+                        (click)="usuarioSelecionado = usuario; visible = true"
+                        styleClass="w-full font-light"></p-button>
+            </div>
+
+            <div class="w-1/12">
+              <p-toggleswitch [(ngModel)]="usuario.ativo" class="mt-2 ml-1"
+                              [pTooltip]="usuario.ativo ? 'Desativar usuário' : 'Ativar usuário'"
+                              tooltipPosition="left"/>
+            </div>
+          } @else {
+            <div class="w-3/12"></div>
+            <div class="w-3/12"></div>
+            <div class="w-1/12"></div>
+          }
+        </div>
+
+        <hr class="mt-2 mb-4 w-full text-primary-500 dark:text-slate-600">
+      }
+
+      <div class="flex justify-end m-2">
+        <p-button pRipple label="Salvar" styleClass="w-50" (click)="salvar()"></p-button>
+      </div>
+    </fieldset>
+
+    <p-drawer [(visible)]="visible" header="Permitir:" position="right" styleClass="w-90">
+      <p-listbox [(ngModel)]="usuarioSelecionado.permissoes" [options]="permissoes"
+                 [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+                 class="w-full" listStyleClass="w-full" scrollHeight="700px"/>
+    </p-drawer>
 
   </div>
 

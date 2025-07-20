@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import CryptoJS from 'crypto-js';
 import {Usuario} from "../models/Usuario";
 import {Sistema} from "../models/Sistema";
+import { plainToInstance } from 'class-transformer';
 
 @Injectable({
   providedIn: 'root',
@@ -39,36 +40,34 @@ export class ArmazenamentoService {
     this.subjectTema.next(temaEscuro);
   }
 
-  public sistema(): Sistema {
+  public sistema(): any {
     let dado = localStorage.getItem('sistema');
     if (dado) {
       let stringJSON = ArmazenamentoService.decrypt(dado);
       try {
-        let sistema = new Sistema(JSON.parse(stringJSON));
-        sistema = new Sistema(sistema);
-        return sistema;
+        let sistema = JSON.parse(stringJSON);
+        return plainToInstance(Sistema, sistema);
       } catch (e) {
         alert('Falha ao recuperar seu sistema, limpe o cache do navegador e tente entrar novamente!');
-        return new Sistema();
+        return null;
       }
     }
-    return new Sistema();
+    return null;
   }
 
-  public usuario(): Usuario {
+  public usuario(): any {
     let dado = localStorage.getItem('usuario');
     if (dado) {
       let stringJSON = ArmazenamentoService.decrypt(dado);
       try {
         let usuario = new Usuario(JSON.parse(stringJSON));
-        usuario = new Usuario(usuario);
-        return usuario;
+        return plainToInstance(Usuario, usuario);
       } catch (e) {
         alert('Falha ao recuperar seu usuario, limpe o cache do navegador e tente entrar novamente!');
-        return new Usuario();
+        return null;
       }
     }
-    return new Usuario();
+    return null;
   }
 
   public sair() {
