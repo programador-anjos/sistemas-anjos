@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build Angular App
-        run: ng build --configuration production
+        run: npm run build -- --configuration production
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
